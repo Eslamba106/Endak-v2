@@ -1,0 +1,45 @@
+.page-link {
+    color: $color;
+    border-color: $border;
+    background-color: $custom-white;
+
+    &:hover {
+        border-color: $border;
+        background-color: $primary-01;
+        color: $primary;
+    }
+
+    &:focus {
+        box-shadow: none;
+        background-color: $primary-01;
+        color: $primary;
+    }
+}
+
+.page-item {
+    &.page-prev {
+        &.disabled {
+            color: $color;
+            opacity: 0.8;
+            .page-link {
+                background-color: $custom-white;
+                border-color: $border;
+                opacity: 0.7;
+            }
+        }
+    }
+
+    &.active {
+        .page-link {
+            background-color: $primary;
+            color: $white;
+            border-color: $primary;
+            box-shadow: none;
+
+            &:hover {
+                background-color: $primary;
+                color: $white;
+            }
+        }
+    }
+}

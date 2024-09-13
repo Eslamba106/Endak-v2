@@ -1,0 +1,121 @@
+// Choices //
+.choices__list--dropdown .choices__item--selectable:after {
+    display: none !important;
+}
+
+.choices__list--dropdown .choices__item--selectable, [dir=rtl] .choices__list--dropdown .choices__item--selectable {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+.choices__inner {
+    background-color: $custom-white !important;
+    border-color: $border !important;
+    min-height: 42px !important;
+    padding: 5.5px 7.5px 3.75px !important;
+    border-radius: 0.3125rem !important;
+}
+
+.choices__list--dropdown,
+.is-open .choices__list--dropdown {
+    border-color: $border !important;
+}
+
+.choices[data-type*=select-one] .choices__button {
+    opacity: .3 !important;
+}
+
+.choices[data-type*=select-one]:after {
+    inset-inline-end: 11.5px;
+}
+
+.choices[data-type*=select-one]:after {
+    border-color: $black-6 transparent transparent transparent !important;
+}
+
+.choices[data-type*=select-one].is-open:after {
+    border-color: transparent transparent $black-6 transparent !important;
+}
+
+.choices[data-type*=select-one] .choices__inner {
+    padding-block-end: 5.5px;
+}
+
+.choices__list--dropdown .choices__item--selectable.is-highlighted {
+    background-color: $primary !important;
+    color: $white !important;
+}
+
+.choices__list--dropdown {
+    background-color: $custom-white !important;
+}
+
+//Swiper
+.testimonialSwiper {
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .swiper-slide {
+        font-size: 18px;
+        background: $primary;
+        border-radius: 0.625rem;
+
+        .card {
+            background-color: $primary;
+            color: $white;
+        }
+    }
+
+    .swiper-slide img {
+        display: block;
+        object-fit: cover;
+    }
+
+    .swiper-pagination-bullet {
+        width: 0.8rem !important;
+        height: 0.8rem !important;
+        background: $white !important;
+        border: 3px solid $primary;
+    }
+}
+
+
+.homeSwiper {
+    .swiper-slide {
+        background: transparent;
+    }
+
+    .swiper-pagination {
+        position: relative;
+    }
+
+    .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+        bottom: 0;
+    }
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 15px !important;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    color: $white !important;
+    border: 1px solid $white-2;
+    background: $white-2;
+    padding: 5px;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    border-radius: 50px;
+}
+
+@media (min-width: 1700px) {
+
+    .swiper-button-prev, .swiper-rtl .swiper-button-next {
+        left: 10rem !important;
+    }
+    
+    .swiper-button-next, .swiper-rtl .swiper-button-prev {
+        right: 10rem !important;
+    }
+}

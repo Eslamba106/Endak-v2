@@ -1,0 +1,68 @@
+.carousel-indicators {
+    position: inherit;
+    margin-block-start: 1.5rem;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: #{$white};
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    opacity: 1;
+    border: 3px solid #{$primary-02};
+    transition: all ease 0.5s;
+
+    &.active {
+        border-color: #{$primary};
+    }
+
+    &:not(.active):hover {
+        border-color: #{$primary-05};
+    }
+}
+
+.carousel-item {
+    .card {
+        background-color: $primary;
+        color: $white;
+    }
+}
+
+// .carousel-inner {
+//     overflow: visible;
+// }
+
+@media (max-width: 767px) {
+    .carousel-inner .carousel-item>div {
+        display: none;
+    }
+
+    .carousel-inner .carousel-item>div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+    .carousel-inner .carousel-item-end.active,
+    .carousel-inner .carousel-item-next {
+        transform: translateX(5%);
+    }
+
+    .carousel-inner .carousel-item-start.active,
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-5%);
+    }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start {
+    transform: translateX(5%);
+}

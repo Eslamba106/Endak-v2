@@ -1,0 +1,105 @@
+[dir="rtl"] {
+
+    [type=email], [type=number], [type=tel], [type=url] {
+        direction: rtl;
+    }
+
+    @media (min-width: 992px) {
+        &[data-nav-layout=horizontal] .app-sidebar .slide.has-sub .slide-menu.child1 {
+            right: 0;
+            left: inherit !important;
+        }
+
+        &[data-nav-layout=horizontal] .app-sidebar .slide-menu::before {
+            transform: rotate(-45deg);
+        }
+    }
+
+    .ribbone span {
+        transform: rotate(45deg);
+    }
+    .patterns-7 {
+        transform: rotate(270deg);
+    }
+    .patterns-8.sub-pattern-1 {
+        transform: rotate(0deg);
+    }
+
+    .patterns-2 {
+        transform: rotate(180deg);
+    } 
+    .patterns-8, .patterns-6 {
+        transform: rotate(270deg);
+    }
+
+    .transform-rotate-180 {
+        transform: rotate(90deg);
+    }
+
+    .categories-dropdowns ul::before {
+        transform: rotate(-45deg);
+    }
+
+    .feature-card-5::after {
+        transform: translateX(50%);
+    }
+
+    .patterns-1 {
+        transform: rotate(0deg);
+    }
+
+    .banner-arrow-down::after {
+        transform: translateX(50%) rotate(-45deg);
+    }
+
+    .feature-card-7 {
+        &::before {
+            transform: translateX(50%) translateZ(-1px);
+        }
+        &::after {
+            transform: translateX(50%) translateZ(-2px);
+        }
+    }
+
+    .custom-card-1, .custom-card-2 {
+        &:before {
+            transform: rotate(-45deg);
+        }
+    }
+
+    .blog-reply::before {
+        transform: rotate(-45deg);
+    }
+
+    .patterns-8.sub-pattern-3 {
+        transform: rotate(180deg);
+    }
+
+    .choices {
+        direction: rtl;
+    }
+
+    .choices[data-type*=select-one]:after {
+        left: 11.5px;
+        right: inherit;
+    }
+    .choices[data-type*=select-one] .choices__button {
+        right: inherit;
+        left: 0;
+        margin-left: 25px;
+        margin-right: inherit;
+    }
+
+    .footer-icon .list-item::before, .fe-chevron-right, .fe-arrow-right, .bi-arrow-right::before {
+        transform: rotate(180deg);
+    }
+    .bi-chevron-right::before {
+        content: "\f284";
+    }
+    .bi-text-indent-left::before {
+        content: "\f5c6";
+    }
+    .feature-card-11:hover .icon {
+        transform: rotate(-45deg);
+    }
+}

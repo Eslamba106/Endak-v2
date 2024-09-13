@@ -1,0 +1,185 @@
+.nav-link {
+    color: #{$color-dark};
+
+    &:hover,
+    &.active {
+        color: #{$primary};
+    }
+}
+
+.tab-style-1 {
+    .nav-link {
+        padding: 0.75rem 2.5rem;
+        font-weight: 600;
+    }
+}
+
+.tab-style-2 {
+    .tab-style-2-link {
+
+        &::after {
+            z-index: 2;
+        }
+
+        &.active,
+        &:hover {
+            +.feature-card-3 {
+                background-color: #{$primary};
+                color: $white !important;
+                border: 1px solid transparent;
+
+                .tab-heading {
+                    color: $white !important;
+                }
+
+                &::before,
+                &::after {
+                    visibility: visible;
+                }
+
+                p {
+                    color: #{$white};
+                }
+            }
+        }
+
+        &:not(.active) {
+            +.feature-card-3 {
+                border: 1px solid #{$border};
+            }
+
+            &:hover {
+                +.feature-card-3 {
+                    color: #{$primary};
+                }
+            }
+        }
+
+        // + .feature-card-3:hover p{
+        //     color: #{$white};
+        // }
+    }
+}
+
+.tab-style-3 {
+    .tab-style-3-link {
+
+        &::after {
+            z-index: 2;
+        }
+
+        &.active,
+        &:hover {
+            +.feature-card-3 {
+                background-color: #{$primary-09};
+                color: $white !important;
+                border: 1px solid #{$primary};
+                border-radius: 0.3rem;
+
+                &::before,
+                &::after {
+                    visibility: visible;
+                }
+
+                .icon {
+                    background: $primary-gradient;
+                    color: $white;
+                }
+            }
+        }
+
+        &:not(.active) {
+            +.feature-card-3 {
+                border: 1px solid #{$border};
+                border-radius: 0.3rem;
+            }
+
+            &:hover {
+                +.feature-card-3 {
+                    color: $white;
+                    border: 1px solid #{$primary};
+                }
+            }
+        }
+
+        // + .feature-card-3 {
+        //     color: #{$muted};
+        // }
+    }
+
+    .icon {
+        background-color: $primary-01;
+        color: $primary;
+        border-radius: 50px;
+        height: 2.3rem;
+        width: 2.3rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-inline-end: 5px;
+        line-height: 0;
+    }
+}
+
+
+.tab-style-4 {
+    .tab-style-4-link {
+
+        &::after {
+            z-index: 2;
+        }
+
+        &.active,
+        &:hover {
+            +.feature-card-3 {
+
+                .tab-heading {
+                    color: $white !important;
+                }
+
+                &::before,
+                &::after {
+                    visibility: visible;
+                }
+
+                .tab-border {
+                    position: relative;
+                    width: 50px;
+                    max-width: 100%;
+                    margin: 0 auto;
+                    height: 2px;
+                    background: #{$primary};
+                    border-radius: 1px;
+                    inset-block-start: 8px;
+                }
+
+                .card-body {
+                    color: #{$primary};
+                }
+            }
+        }
+
+        &:not(.active) {
+
+            &:hover {
+                +.feature-card-3 {
+                    color: #{$primary};
+                }
+
+                .card-body {
+                    color: #{$primary};
+                }
+            }
+        }
+
+        // + .feature-card-3:hover p{
+        //     color: #{$white};
+        // }
+    }
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: $primary;
+    color: $white;
+}

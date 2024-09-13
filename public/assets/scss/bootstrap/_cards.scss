@@ -1,0 +1,1079 @@
+.card {
+    margin-block-end: 1.5rem;
+    border: 0px solid #{$border};
+    border-radius: 0.625rem;
+    box-shadow: #{$shadow};
+    width: 100%;
+    position: relative;
+    background-color: $background;
+
+    .filled {
+        display: none;
+    }
+
+    .feature-avatar-1 {
+        background-color: #{$gray-100};
+        color: #{$white};
+    }
+
+    .overlay-content {
+        position: absolute;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    .feature-content {
+        background-color: #{$gray-100};
+    }
+
+    &:hover,
+    &.hover-active {
+
+        .filled {
+            display: inline-block;
+        }
+
+        .outline {
+            display: none;
+        }
+
+        .feature-avatar {
+            transform: scale(1.28);
+        }
+
+        .feature-avatar-1 {
+            background-color: #{$primary};
+            color: $white;
+            transform: scale(0.8);
+            transition: transform ease 0.3s;
+
+            &.feature-avatar-1-secondary {
+                background-color: rgba(var(--secondary-rgb), 0.1);
+            }
+
+            &.feature-avatar-1-success {
+                background-color: rgba(var(--success-rgb), 0.1);
+            }
+
+            &.feature-avatar-1-danger {
+                background-color: rgba(var(--danger-rgb), 0.1);
+            }
+
+            &.feature-avatar-1-pink {
+                background-color: rgba(var(--pink-rgb), 0.1);
+            }
+        }
+
+        .feature-avatar-2 {
+            background-color: #{$primary};
+            color: $white;
+
+            &.feature-avatar-2-primary {
+                background-color: #{$primary};
+            }
+
+            &.feature-avatar-2-secondary {
+                background-color: rgba(var(--secondary-rgb), 0.1);
+            }
+
+            &.feature-avatar-2-success {
+                background-color: rgba(var(--success-rgb), 0.1);
+            }
+
+            &.feature-avatar-2-danger {
+                background-color: rgba(var(--danger-rgb), 0.1);
+            }
+
+            &.feature-avatar-2-pink {
+                background-color: rgba(var(--pink-rgb), 0.1);
+            }
+        }
+
+        .feature-avatar-3 {
+            background-color: $white-2;
+        }
+
+        .overlay-content {
+            opacity: 1;
+        }
+
+        .muted-content {
+            color: $white;
+            opacity: 0.7;
+        }
+    }
+
+
+    .tool-img-white {
+        display: none;
+    }
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.pricing-card {
+    transition: all ease 0.3s;
+    box-shadow: none;
+
+    &:hover {
+        box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    &.pricing-card-premium:hover {
+        box-shadow: 0px 4px 15px 0px #{$primary-05};
+    }
+}
+
+.feature-card {
+    transition: all ease 0.3s;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.feature-card-1 {
+    background-color: #{$primary};
+    color: $white;
+    z-index: 1;
+
+    &::before {
+        content: "$";
+        position: absolute;
+        font-size: 150px;
+        font-weight: 600;
+        color: $white;
+        inset-inline-end: 5%;
+        inset-block-start: 50%;
+        transform: translateY(-50%);
+        opacity: 0.1;
+        z-index: -1;
+    }
+}
+
+.feature-card-2 {
+    box-shadow: none;
+    border: 1px solid #{$border};
+
+    &:not(.active):hover,
+    &.active {
+        box-shadow: #{$shadow};
+        border-color: transparent;
+    }
+}
+
+.feature-card-3 {
+    transition: all ease 0.3s;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        inset-inline-end: -8%;
+        inset-block-end: -0%;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: $white;
+        visibility: hidden;
+        opacity: 0.07;
+        z-index: -1;
+    }
+
+    &::before {
+        inset-inline-end: 0%;
+        inset-block-end: -25%;
+    }
+
+    &:hover {
+        background-color: #{$primary};
+
+        &::before,
+        &::after {
+            visibility: visible;
+        }
+    }
+
+    &.secondary {
+        &:hover {
+            background-color: #{$secondary};
+        }
+    }
+}
+
+.feature-card-4 {
+    // box-shadow: none;
+
+    .bg-deck {
+        background-color: #{$gray-100};
+    }
+
+    &:hover {
+        .bg-deck {
+            background-color: #{$gray-200};
+        }
+    }
+
+    .icon {
+        background-color: $custom-white;
+    }
+
+    &.feature-card-4-primary {
+        .bg-deck {
+            background-color: #{$primary-01};
+        }
+
+        .icon {
+            border: 1px solid $primary;
+
+            .feature-avatar {
+                background-color: $primary;
+                color: $white;
+            }
+        }
+
+        &.hover {
+
+            // border: 1px solid $primary;
+            &:hover {
+                .bg-deck {
+                    background-color: #{$primary};
+                }
+
+                .avatar {
+                    transform: scale(1);
+                    background-color: $white;
+                    color: $primary;
+                }
+
+                .icon {
+                    background-color: $primary;
+                }
+            }
+
+            .bg-deck {
+                background-color: #{$primary-01};
+            }
+        }
+    }
+
+    &.feature-card-4-secondary {
+        .bg-deck {
+            background-color: rgba(var(--secondary-rgb), 0.1);
+        }
+
+        .icon {
+            border: 1px solid $secondary;
+
+            .feature-avatar {
+                background-color: $secondary;
+                color: $white;
+            }
+        }
+
+        &.hover {
+
+            // border: 1px solid $secondary;
+            &:hover {
+                .bg-deck {
+                    background-color: $secondary;
+                }
+
+                .avatar {
+                    transform: scale(1);
+                    background-color: $white;
+                    color: $secondary;
+                }
+
+                .icon {
+                    background-color: $secondary;
+                }
+            }
+
+            .bg-deck {
+                background-color: rgba(var(--secondary-rgb), 0.1);
+            }
+        }
+    }
+
+    &.feature-card-4-success {
+        .bg-deck {
+            background-color: rgba(var(--success-rgb), 0.1);
+        }
+
+        .icon {
+            border: 1px solid $success;
+
+            .feature-avatar {
+                background-color: $success;
+                color: $white;
+            }
+        }
+
+        &.hover {
+
+            // border: 1px solid $success;
+            &:hover {
+                .bg-deck {
+                    background-color: $success;
+                }
+
+                .avatar {
+                    transform: scale(1);
+                    background-color: $white;
+                    color: $success;
+                }
+
+                .icon {
+                    background-color: $success;
+                }
+            }
+
+            .bg-deck {
+                background-color: rgba(var(--success-rgb), 0.1);
+            }
+        }
+    }
+
+    &.feature-card-4-danger {
+        .bg-deck {
+            background-color: rgba(var(--danger-rgb), 0.1);
+        }
+
+        .icon {
+            border: 1px solid $danger;
+
+            .feature-avatar {
+                background-color: $danger;
+                color: $white;
+            }
+        }
+
+        &.hover {
+
+            // border: 1px solid $danger;
+            &:hover {
+                .bg-deck {
+                    background-color: $danger;
+                }
+
+                .avatar {
+                    transform: scale(1);
+                    background-color: $white;
+                    color: $danger;
+                }
+
+                .icon {
+                    background-color: $danger;
+                }
+            }
+
+            .bg-deck {
+                background-color: rgba(var(--danger-rgb), 0.1);
+            }
+        }
+    }
+
+    &.feature-card-4-info {
+        .bg-deck {
+            background-color: rgba(var(--info-rgb), 0.1);
+        }
+
+        .icon {
+            border: 1px solid $info;
+
+            .feature-avatar {
+                background-color: $info;
+                color: $white;
+            }
+        }
+
+        &.hover {
+
+            // border: 1px solid $info;
+            &:hover {
+                .bg-deck {
+                    background-color: $info;
+                }
+
+                .avatar {
+                    transform: scale(1);
+                    background-color: $white;
+                    color: $info;
+                }
+
+                .icon {
+                    background-color: $info;
+                }
+            }
+
+            .bg-deck {
+                background-color: rgba(var(--info-rgb), 0.1);
+            }
+        }
+    }
+
+    &.feature-card-4-warning {
+        .bg-deck {
+            background-color: rgba(var(--warning-rgb), 0.1);
+        }
+
+        .icon {
+            border: 1px solid $warning;
+
+            .feature-avatar {
+                background-color: $warning;
+                color: $white;
+            }
+        }
+
+        &.hover {
+
+            // border: 1px solid $warning;
+            &:hover {
+                .bg-deck {
+                    background-color: $warning;
+                }
+
+                .avatar {
+                    transform: scale(1);
+                    background-color: $white;
+                    color: $warning;
+                }
+
+                .icon {
+                    background-color: $warning;
+                }
+            }
+
+            .bg-deck {
+                background-color: rgba(var(--warning-rgb), 0.1);
+            }
+        }
+    }
+}
+
+.feature-card-5 {
+    background-color: $custom-white;
+    margin: 20px;
+    z-index: 1;
+    border-radius: 0.625rem;
+
+    &::after {
+        content: "";
+        width: calc(100% + 30px);
+        height: 90%;
+        border-radius: 7px;
+        position: absolute;
+        inset-block-end: -15px;
+        inset-inline-start: 50%;
+        transform: translateX(-50%);
+        background-color: #{$gray-200};
+        transition: all ease-in-out 0.3s;
+        z-index: -1;
+    }
+
+    &.feature-card-5-primary {
+        &:hover {
+            &::after {
+                background-color: #{$primary-02};
+            }
+        }
+
+        &::after {
+            background-color: #{$primary-005};
+        }
+    }
+
+    &.feature-card-5-secondary {
+        &:hover {
+            &::after {
+                background-color: rgba(var(--secondary-rgb), 0.2);
+            }
+        }
+
+        &::after {
+            background-color: rgba(var(--secondary-rgb), 0.05);
+        }
+    }
+
+    &.feature-card-5-success {
+        &:hover {
+            &::after {
+                background-color: rgba(var(--success-rgb), 0.2);
+            }
+        }
+
+        &::after {
+            background-color: rgba(var(--success-rgb), 0.05);
+        }
+    }
+}
+
+.feature-card-8 {
+    background-color: $white;
+    margin: 20px;
+    z-index: 1;
+
+    &::after {
+        content: "";
+        width: calc(100% + 30px);
+        height: 90%;
+        border-radius: 7px;
+        position: absolute;
+        inset-block-start: -15px;
+        inset-inline-start: 50%;
+        transform: translateX(-50%);
+        background-color: #{$gray-200};
+        transition: all ease-in-out 0.3s;
+        z-index: -1;
+    }
+
+    &.feature-card-8-primary {
+        &:hover {
+            &::after {
+                background-color: #{$primary-02};
+            }
+        }
+    }
+
+    &.feature-card-8-secondary {
+        &:hover {
+            &::after {
+                background-color: rgba(var(--secondary-rgb), 0.2);
+            }
+        }
+    }
+
+    &.feature-card-8-success {
+        &:hover {
+            &::after {
+                background-color: rgba(var(--success-rgb), 0.2);
+            }
+        }
+    }
+}
+
+.feature-card-6 {
+
+    &:hover,
+    &.hover-active {
+        background-color: #{$primary};
+        color: $white;
+    }
+}
+
+.feature-card-7 {
+    position: relative;
+    background-color: $custom-white;
+    transform-style: preserve-3d;
+
+    &::before,
+    &::after {
+        content: "";
+        height: 100%;
+        position: absolute;
+        border-radius: calc(0.625rem + 10px);
+        inset-inline-start: 50%;
+        opacity: 0;
+        transition: opacity ease 0.3s;
+    }
+
+    &::before {
+        width: 96%;
+        inset-block-end: -6%;
+        background-color: #{$primary-05};
+        transform: translateX(-50%) translateZ(-1px);
+        // opacity: 1;
+    }
+
+    &::after {
+        width: 91%;
+        inset-block-end: -12%;
+        background-color: #{$primary-02};
+        transform: translateX(-50%) translateZ(-2px);
+        // opacity: 1;
+    }
+
+    &:hover,
+    &.hover-active {
+
+        &::before,
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &.feature-card-7-secondary {
+        &::before {
+            background-color: rgba(var(--secondary-rgb), 0.5);
+        }
+
+        &::after {
+            background-color: rgba(var(--secondary-rgb), 0.2);
+        }
+    }
+
+    &.feature-card-7-success {
+        &::before {
+            background-color: rgba(var(--success-rgb), 0.5);
+        }
+
+        &::after {
+            background-color: rgba(var(--success-rgb), 0.2);
+        }
+    }
+
+    &.feature-card-7-danger {
+        &::before {
+            background-color: rgba(var(--danger-rgb), 0.5);
+        }
+
+        &::after {
+            background-color: rgba(var(--danger-rgb), 0.2);
+        }
+    }
+}
+
+.feature-card-9 {
+    transition: all 350ms ease-in;
+    padding-block-end: 0;
+    overflow: hidden;
+    z-index: 1;
+
+    &:hover {
+        background-color: #{$primary};
+        color: $white;
+
+        svg {
+            fill: $white;
+        }
+
+        &::before,
+        &::after {
+            visibility: visible;
+        }
+
+        .subtitle {
+            color: $white;
+        }
+    }
+
+    &.hover {
+        background-color: #{$primary};
+        color: $white;
+
+        svg {
+            fill: $white;
+        }
+
+        &::before,
+        &::after {
+            visibility: visible;
+        }
+
+        .subtitle {
+            color: $white;
+        }
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        inset-inline-end: -8%;
+        inset-block-start: 0;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: $white;
+        visibility: hidden;
+        opacity: 0.07;
+        z-index: -1;
+    }
+
+    &::before {
+        inset-inline-end: 0;
+        inset-block-start: -12%;
+    }
+}
+
+.feature-card-10 {
+    background-color: $custom-white;
+
+    .icon {
+        padding: 15px 18px;
+        border-start-start-radius: 10%;
+        border-start-end-radius: 30%;
+        border-end-end-radius: 50%;
+        border-end-start-radius: 70%;
+        color: $white;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset-inline-start: 10px;
+            inset-block-start: -3px;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background-color: $custom-white;
+            opacity: 0.2;
+        }
+    }
+}
+
+.feature-card-11 {
+    border-start-start-radius: 50% 10%;
+    border-start-end-radius: 20% 40%;
+    border-end-end-radius: 50% 10%;
+    border-end-start-radius: 20% 40%;
+    background-color: transparent;
+    margin-block-end: 0;
+
+    .icon {
+        padding: 13px 16px;
+        border-start-start-radius: 50% 10%;
+        border-start-end-radius: 20% 40%;
+        border-end-end-radius: 50% 10%;
+        border-end-start-radius: 20% 40%;
+        color: $white;
+        margin-inline-end: 15px;
+        background-color: rgba(255, 255, 255, 0.2);
+        font-size: 15px;
+        transition: all ease 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset-inline-start: -10px;
+            inset-block-start: -10px;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background-color: $white;
+            opacity: 0.08;
+        }
+    }
+
+    &:hover {
+        .icon {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.feature-card-12 {
+    transition-duration: 0.3s;
+
+    &:hover {
+        box-shadow: 0px 6px 18px 4px rgb(6 10 48 / 8%);
+        transform: translateY(10px);
+    }
+}
+
+.feature-card-13 {
+    transition: all 350ms ease-in;
+    z-index: 1;
+    text-align: start;
+    background: $custom-white url(../images/png/74.png) 95% 95%/auto no-repeat scroll;
+    background-size: 20% 32%;
+
+    &:hover {
+        background: #{$primary} url(../images/png/73.png) 95% 95%/auto no-repeat scroll !important;
+        background-size: 20% 32% !important;
+        color: $white;
+        transform: scale(1.03);
+
+        .subtitle {
+            color: $white;
+        }
+    }
+
+    &.hover {
+        background: #{$primary} url(../images/png/73.png) 95% 95%/auto no-repeat scroll;
+        background-size: 20% 32%;
+        color: $white;
+        transform: scale(1.03);
+
+        .subtitle {
+            color: $white;
+        }
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset-inline-end: -30px;
+        inset-block-start: -11%;
+        height: 40%;
+        filter: contrast(0.95);
+        width: 28%;
+        background-color: $custom-white;
+        z-index: -1;
+        border-radius: 50%;
+        opacity: 0.06;
+    }
+}
+
+.feature-card-14 {
+    transition: all 350ms ease-in;
+    z-index: 1;
+    text-align: start;
+    background: linear-gradient(to right, var(--primary-color) 0%, $primary-08 100%) !important;
+
+    &::before {
+        content: "";
+        position: absolute;
+        background-image: url(../images/backgrounds/16.jpg);
+        inset-block-start: 0;
+        height: 100%;
+        width: 100%;
+        background-color: $white;
+        background-size: cover;
+        z-index: -1;
+        opacity: 0.4;
+    }
+}
+
+.feature-card-15 {
+    transition-duration: 0.3s;
+
+    &:hover {
+        box-shadow: 0px 6px 18px 4px rgb(6 10 48 / 8%);
+        transform: translateY(10px);
+    }
+
+    .feature-bg {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset-inline-start: -40%;
+            inset-block-start: 22%;
+            height: 47px;
+            width: 47px;
+            border-radius: 10%;
+            z-index: 0;
+        }
+    }
+
+    &.primary {
+        .feature-bg {
+            &::before {
+                background: linear-gradient(218deg, transparent 10%, $primary-02 90%);
+            }
+        }
+    }
+
+    &.blue {
+        .feature-bg {
+            &::before {
+                background: linear-gradient(218deg, transparent 10%, rgba(var(--blue-rgb), 0.2) 90%);
+            }
+        }
+    }
+
+    &.pink {
+        .feature-bg {
+            &::before {
+                background: linear-gradient(218deg, transparent 10%, rgba(var(--pink-rgb), 0.2) 90%);
+            }
+        }
+    }
+
+    &.success {
+        .feature-bg {
+            &::before {
+                background: linear-gradient(218deg, transparent 10%, rgba(var(--success-rgb), 0.2) 90%);
+            }
+        }
+    }
+
+    &.purple {
+        .feature-bg {
+            &::before {
+                background: linear-gradient(218deg, transparent 10%, rgba(var(--purple-rgb), 0.2) 90%);
+            }
+        }
+    }
+
+    &.danger {
+        .feature-bg {
+            &::before {
+                background: linear-gradient(218deg, transparent 10%, rgba(var(--danger-rgb), 0.2) 90%);
+            }
+        }
+    }
+
+    &.secondary {
+        .feature-bg {
+            &::before {
+                background: linear-gradient(218deg, transparent 10%, rgba(var(--secondary-rgb), 0.2) 90%);
+            }
+        }
+    }
+
+    &.teal {
+        .feature-bg {
+            &::before {
+                background: linear-gradient(218deg, transparent 10%, rgba(var(--teal-rgb), 0.2) 90%);
+            }
+        }
+    }
+
+    &.coffee {
+        .feature-bg {
+            background: linear-gradient(to right, #936237 0%, #603e23 100%);
+        }
+
+        .feature-icon {
+            background: rgb(96 62 35 / 20%);
+            border: 1px solid #936237;
+
+            .avatar {
+                background: linear-gradient(to right, #936237 0%, #603e23 100%);
+            }
+        }
+    }
+
+    &.warning {
+        .feature-bg {
+            &::before {
+                background: linear-gradient(218deg, transparent 10%, rgba(var(--warning-rgb), 0.2) 90%);
+            }
+        }
+    }
+}
+
+.feature-card-16 {
+    transition: all 350ms ease-in;
+    padding-block-end: 0;
+    overflow: hidden;
+    z-index: 1;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        inset-inline-end: -8%;
+        inset-block-start: 0;
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: $primary;
+        opacity: 0.05;
+        z-index: -1;
+    }
+
+    &::before {
+        inset-inline-end: 0;
+        inset-block-start: -12%;
+    }
+
+    &.secondary {
+
+        &::before,
+        &::after {
+            background-color: $secondary;
+        }
+    }
+
+    &.success {
+
+        &::before,
+        &::after {
+            background-color: $success;
+        }
+    }
+
+    &.danger {
+
+        &::before,
+        &::after {
+            background-color: $danger;
+        }
+    }
+
+    &.warning {
+
+        &::before,
+        &::after {
+            background-color: $warning;
+        }
+    }
+
+    &.pink {
+
+        &::before,
+        &::after {
+            background-color: $pink;
+        }
+    }
+
+    &.info {
+
+        &::before,
+        &::after {
+            background-color: $info;
+        }
+    }
+}
+
+.feature-card-17 {
+    position: relative;
+    margin-block-end: 3rem !important;
+
+    .icon {
+        position: absolute;
+        inset-block-start: -14%;
+        inset-inline-start: 45%;
+    }
+
+    &.primary {
+        border-block-start: 2px solid $primary;
+    }
+
+    &.secondary {
+        border-block-start: 2px solid $secondary;
+    }
+
+    &.success {
+        border-block-start: 2px solid $success;
+    }
+
+    &.danger {
+        border-block-start: 2px solid $danger;
+    }
+
+    &.info {
+        border-block-start: 2px solid $info;
+    }
+
+    &.pink {
+        border-block-start: 2px solid $pink;
+    }
+}
+
+.card-aside-column {
+    min-width: 5rem;
+    width: 30%;
+    -ms-flex: 0 0 30%;
+    flex: 0 0 30%;
+    background: no-repeat center/cover;
+}
+
+.card-header {
+    background-color: $white;
+    border-color: $border;
+}

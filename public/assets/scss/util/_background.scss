@@ -1,0 +1,219 @@
+/* Start::background color */
+.bg-primary {
+    background-color: #{$primary} !important;
+}
+
+.bg-secondary {
+    background-color: #{$secondary} !important;
+}
+
+.bg-success {
+    background-color: #{$success} !important;
+}
+
+.bg-pink {
+    background-color: #{$pink} !important;
+}
+
+.bg-warning {
+    background-color: #{$warning} !important;
+}
+
+.bg-danger {
+    background-color: #{$danger} !important;
+}
+
+/* End::background color */
+
+
+/* Start::gray set */
+.bg-gray-100 {
+    background-color: #{$gray-100};
+}
+
+.bg-gray-200 {
+    background-color: #{$gray-200};
+}
+
+/* End::gray set */
+
+
+/* Start::background transparent */
+.bg-primary-transparent {
+    background-color: #{$primary-02} !important;
+    border: 1px solid var(--primary05);
+}
+
+.bg-secondary-transparent {
+    background-color: rgba(var(--secondary-rgb), 0.2);
+    border: 1px solid rgba(var(--secondary-rgb), 0.5);
+}
+
+.bg-info-transparent {
+    background-color: rgba(var(--info-rgb), 0.2);
+    border: 1px solid rgba(var(--info-rgb), 0.5);
+}
+
+.bg-success-transparent {
+    background-color: rgba(var(--success-rgb), 0.2);
+    border: 1px solid rgba(var(--success-rgb), 0.5);
+}
+
+.bg-warning-transparent {
+    background-color: rgba(var(--warning-rgb), 0.2);
+    border: 1px solid rgba(var(--warning-rgb), 0.5);
+}
+
+.bg-danger-transparent {
+    background-color: rgba(var(--danger-rgb), 0.2);
+    border: 1px solid rgba(var(--danger-rgb), 0.5);
+}
+
+.bg-pink-transparent {
+    background-color: rgba(var(--pink-rgb), 0.2);
+    border: 1px solid rgba(var(--pink-rgb), 0.5);
+}
+
+.bg-purple-transparent {
+    background-color: rgba(var(--purple-rgb), 0.2);
+    border: 1px solid rgba(var(--purple-rgb), 0.5);
+}
+
+.bg-teal-transparent {
+    background-color: rgba(var(--teal-rgb), 0.2);
+    border: 1px solid rgba(var(--teal-rgb), 0.5);
+}
+
+.bg-white-transparent {
+    background-color: rgba($white, 0.2);
+}
+
+/* End::background transparent */
+
+/* Start::background gradient */
+.bg-primary-gradient {
+    background: #{$primary-gradient};
+}
+
+.bg-secondary-gradient {
+    background: #{$secondary-gradient};
+}
+
+.bg-success-gradient {
+    background: #{$success-gradient};
+}
+
+.bg-warning-gradient {
+    background: #{$warning-gradient};
+}
+
+.bg-pink-gradient {
+    background: #{$pink-gradient};
+}
+
+.bg-danger-gradient {
+    background: #{$danger-gradient};
+}
+
+.bg-info-gradient {
+    background: #{$info-gradient};
+}
+
+.bg-purple-gradient {
+    background: #{$purple-gradient};
+}
+
+.bg-teal-gradient {
+    background: #{$teal-gradient};
+}
+
+.bg-orange-gradient {
+    background: #{$orange-gradient};
+}
+
+.bg-gray-transparent {
+    background-color: #dfecfa;
+}
+
+.bg-gray-custom {
+    background-color: #f8fbfe;
+}
+
+.bg-gray-gradient {
+    background: linear-gradient(to right, #739dd3 0%, rgb(157 190 229) 100%);
+}
+
+.bg-blue-gradient {
+    background: $blue-gradient;
+}
+
+.bg-white-1 {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.bg-white-2 {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.bg-primary-01 {
+    background-color: #{$primary-01} !important;
+}
+
+.bg-primary-01 {
+    background-color: #{$primary-01} !important;
+}
+
+.bg-primary-02 {
+    background-color: #{$primary-02} !important;
+}
+
+.bg-primary-03 {
+    background-color: #{$primary-03} !important;
+}
+
+.bg-primary-04 {
+    background-color: #{$primary-04} !important;
+}
+
+.bg-primary-05 {
+    background-color: #{$primary-05} !important;
+}
+
+.bg-primary-06 {
+    background-color: #{$primary-06} !important;
+}
+
+.bg-primary-07 {
+    background-color: #{$primary-07} !important;
+}
+
+.bg-primary-08 {
+    background-color: #{$primary-08} !important;
+}
+
+.bg-primary-09 {
+    background-color: #{$primary-09} !important;
+}
+
+// Radial Gradient Backgrounds //
+
+.bg-radial-gradient {
+    background: radial-gradient(circle, rgba(13, 202, 240, 1) 20%, $primary-08 100%);
+}
+
+.bg-primary-radial-gradient {
+    background: radial-gradient(circle, rgb(13, 202, 240) 0%, rgb(20 87 230) 100%);
+}
+
+.bg-linkedin {
+    background: #0985c7;
+    color: $white;
+
+    &:hover {
+        background: #0985c7;
+        color: $white;
+        opacity: 0.9;
+    }
+}
+
+/* End::background gradient */

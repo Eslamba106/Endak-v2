@@ -1,0 +1,52 @@
+.spec-tabs {
+    .nav-link {
+        text-align: start;
+        padding: 10px 12px;
+        font-size: 15px;
+        align-items: center;
+        display: flex;
+        border: 1px solid $border;
+        margin-block-end: 1rem;
+        font-weight: 600;
+        color: $color;
+
+        span {
+            background-color: $primary-01;
+            padding: 7px 12px;
+            font-size: 20px;
+            border-radius: 50px;
+            margin-inline-end: 10px;
+            color: $primary;
+        }
+
+        &.active span {
+            background-color: $white-2;
+            color: $white;
+        }
+
+        &:hover {
+            box-shadow: $shadow;
+
+            span {
+                background-color: $primary;
+                color: $white;
+            }
+        }
+
+        &:last-child {
+            margin-block-end: 0;
+        }
+    }
+
+    .tab-content {
+        padding: 50px;
+        border: 1px solid $border;
+        border-radius: 5px;
+    }
+
+    @media (min-width:992px) {
+        .nav-pills.nav {
+            margin-inline-end: 4rem;
+        }
+    }
+}

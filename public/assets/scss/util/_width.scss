@@ -1,0 +1,32 @@
+/* Start::minimum width */
+.min-w-fit-content {
+    min-width: fit-content;
+}
+
+.w-12p {
+    width: 12% !important;
+}
+
+.w-20p {
+    width: 20%;
+}
+
+.w-33p {
+    width: 33%;
+}
+
+@media (min-width: 992px) {
+    .w-lg-12p {
+        width: 12% !important;
+    }
+}
+
+.w-55 {
+    width: 50% !important;
+}
+
+.w-lg {
+    min-width: 150px;
+}
+
+/* End::minimum width */

@@ -1,0 +1,16 @@
+.accept-cookies {
+  position: fixed;
+  z-index: 9999;
+  inset-inline-start: 0;
+  inset-block-end: 30px;
+  max-width: 23rem;
+  background-color: $custom-white;
+  padding: 20px;
+  border-radius: 3px;
+  border: 1px solid $border;
+  box-shadow: 0 8px 20px 0 rgb(40 37 89 / 60%);
+  margin-inline-start: 30px;
+  text-align: start;
+  display: block;
+  display: none;
+}

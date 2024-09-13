@@ -1,0 +1,170 @@
+[data-nav-style="menu-hover"][data-nav-layout="horizontal"] {
+    @extend .menu-hover;
+
+    .app-sidebar {
+        .side-menu__item {
+            display: flex !important;
+            // justify-content: space-between;
+        }
+
+        .side-menu__icon {
+            margin-block-end: 0 !important;
+            margin-inline-end: 0.35rem !important;
+        }
+    }
+}
+
+[data-nav-style="menu-hover"][toggled="menu-hover-closed"] {
+    @extend .menu-hover;
+}
+
+.menu-hover {
+    @media (min-width: 992px) {
+        .app-sidebar {
+            width: 9rem;
+
+            .main-sidebar {
+                overflow: visible;
+                height: 90%;
+            }
+
+            .main-sidebar-header {
+                width: 9rem;
+            }
+
+            .side-menu__icon {
+                margin-inline-end: 0;
+                margin-block-end: 0.5rem;
+            }
+
+            .slide {
+                padding: 0;
+            }
+
+            .side-menu__angle {
+                display: none !important;
+            }
+
+            .slide-menu {
+                .side-menu__angle {
+                    display: block !important;
+                }
+            }
+
+            .slide-menu {
+
+                &.child1,
+                &.child2,
+                &.child3 {
+                    min-width: 12rem;
+
+                    .slide {
+
+                        // padding-inline-start: 1.1rem;
+                        .side-menu__item {
+                            text-align: start;
+
+                            &:before {
+                                inset-block-start: 0.938rem;
+                                inset-inline-start: 0.75rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            @media(hover: hover) and (pointer: fine) {
+
+                .slide.has-sub:hover {
+                    .slide-menu.child1 {
+                        display: block !important;
+    
+                        .slide.has-sub:hover {
+                            .slide-menu.child2 {
+                                display: block !important;
+    
+                                .slide.has-sub:hover {
+                                    .slide-menu.child3 {
+                                        display: block !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .side-menu__item,
+            .side-menu__label {
+                display: block;
+                text-align: center;
+            }
+
+            .slide.has-sub .slide-menu {
+                position: absolute !important;
+                inset-inline-start: 9rem !important;
+                background: $custom-white;
+                inset-block-start: auto !important;
+                box-shadow: 0.125rem 0.063rem 0.5rem $black-1;
+                transition: none !important;
+
+                &.child2 {
+                    &::before {
+                        display: none;
+                    }
+
+                    inset-inline-start: 12.9rem !important;
+                }
+
+                &.child3 {
+                    &::before {
+                        display: none;
+                    }
+
+                    inset-inline-start: 11.9rem !important;
+                }
+            }
+        }
+
+        .simplebar-content-wrapper {
+            position: initial;
+        }
+
+        .simplebar-mask {
+            position: inherit;
+        }
+
+        .simplebar-placeholder {
+            height: auto !important;
+        }
+
+        .app-header {
+            padding-inline-start: 9rem;
+        }
+    }
+
+
+    @media (min-width: 992px) and (max-width: 1399px){
+        .app-sidebar {
+            .slide.has-sub .slide-menu {
+
+                &.child2 {
+                    &::before {
+                        display: none;
+                    }
+
+                    inset-inline-start: auto !important;
+                }
+
+                &.child3 {
+                    &::before {
+                        display: none;
+                    }
+
+                    inset-inline-start: auto !important;
+                }
+            }
+        }
+    }
+}
+

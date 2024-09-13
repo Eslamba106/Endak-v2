@@ -1,0 +1,47 @@
+// boxed start
+[data-width="boxed"] {
+    @media (min-width:1400px) {
+        body {
+            background-color: $background;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .page {
+            width: 85%;
+            margin: 0 auto;
+            // background-color: $background;
+            position: relative;
+            box-shadow: 0 0 1rem $black-1;
+
+            .app-header {
+                width: 85%;
+                margin: 0 auto;
+            }
+
+            .app-sidebar {
+                inset-inline-start: auto;
+            }
+        }
+
+        &[data-nav-layout="horizontal"] {
+            .app-sidebar {
+                width: 85% !important;
+            }
+        }
+
+        &[page-style="classic"] {
+            .page {
+                background-color: $custom-white;
+            }
+
+            .card {
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+// boxed end

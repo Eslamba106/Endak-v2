@@ -1,0 +1,213 @@
+/* Start::font sizes */
+.tx-11 {
+    font-size: 0.6875rem; //11px
+}
+
+.tx-12 {
+    font-size: 0.7875rem; //11px
+}
+
+.tx-13 {
+    font-size: 0.8125rem; //13px
+}
+
+.tx-14 {
+    font-size: 0.875rem; //14px
+}
+
+.tx-15 {
+    font-size: 0.9375rem; //15px
+}
+
+.tx-16 {
+    font-size: 1rem; //16px
+}
+
+.tx-17 {
+    font-size: 1.15rem; //16px
+}
+
+.tx-18 {
+    font-size: 1.125rem; //18px
+}
+
+.tx-20 {
+    font-size: 1.25rem; //20px
+}
+
+.tx-22 {
+    font-size: 1.319rem !important; //22px
+}
+
+.tx-24 {
+    font-size: 1.44rem; //24px
+}
+
+.tx-26 {
+    font-size: 1.56rem; //26px
+}
+
+.tx-28 {
+    font-size: 1.68rem; //28px
+}
+
+.tx-50 {
+    font-size: 3rem; //50px
+}
+
+/* End::font sizes */
+
+/* Start::text colors */
+.tx-muted {
+    color: #{$muted};
+}
+
+.tx-primary {
+    color: #{$primary};
+}
+
+.tx-secondary {
+    color: $secondary;
+}
+
+.tx-success {
+    color: $success;
+}
+
+.tx-danger {
+    color: $danger;
+}
+
+.tx-info {
+    color: $info;
+}
+
+.tx-purple {
+    color: $purple;
+}
+
+.tx-gray-600 {
+    color: #{$gray-600};
+}
+
+.tx-default {
+    color: #{$color};
+}
+
+.tx-color-default {
+    color: #{$color-dark};
+}
+
+.tx-pink {
+    color: $pink;
+}
+
+.tx-teal {
+    color: $teal;
+}
+
+.tx-warning {
+    color: $warning;
+}
+
+.tx-warning-light {
+    color: #f4d714;
+}
+
+.tx-success-light {
+    color: #78f7b2;
+}
+
+/* End::text colors */
+
+.text-bg-primary {
+    background-color: #{$primary} !important;
+}
+
+.text-bg-secondary {
+    background-color: $secondary !important;
+}
+
+.text-bg-success {
+    background-color: $success !important;
+}
+
+.text-bg-warning {
+    color: #fff !important;
+    background-color: $warning !important;
+}
+
+.text-bg-info {
+    color: #fff !important;
+    background-color: $info !important;
+}
+
+.tx-info-dark {
+    color: #85caff;
+}
+
+.font-variant-caps {
+    font-variant: small-caps;
+}
+
+
+/* Start::links */
+a {
+    text-decoration: none;
+    color: #{$color};
+
+    &:hover {
+        --bs-text-opacity: 1;
+        opacity: 1;
+        color: #{$primary};
+    }
+}
+
+/* End::links */
+
+/* Start::font-weights */
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+/* End::font-weights */
+
+.content-1 {
+    font-size: 50px;
+    line-height: 1.3;
+}
+
+@media (max-width: 991px) {
+    .content-1 {
+        font-size: 40px;
+    }
+}
+
+.content-2 {
+    font-size: 1.165rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "Urbanist", sans-serif;
+    color: $color-dark;
+    font-weight: 600;
+}
+
+.text-shadow {
+    text-shadow: 0px 5px #0b2459;
+}

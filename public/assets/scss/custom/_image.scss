@@ -1,0 +1,53 @@
+.avatar {
+    position: relative;
+    height: 2.625rem;
+    width: 2.625rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    line-height: 0;
+
+    &.avatar-xs {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    &.avatar-sm {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    &.avatar-lg {
+        width: 3.75rem;
+        height: 3.75rem;
+    }
+
+    &.avatar-xl {
+        width: 5.3rem;
+        height: 5.3rem;
+    }
+}
+
+// Team Avatar //
+.team-avatar-left {
+    position: absolute;
+    inset-inline-start: 17px;
+    background-color: $white;
+    inset-block-start: 24%;
+    border: 1px solid $border;
+    color: $muted;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.team-avatar-right {
+    position: absolute;
+    inset-inline-end: 17px;
+    background-color: $white;
+    inset-block-start: 24%;
+    border: 1px solid $border;
+    color: $muted;
+    font-weight: 700;
+    font-size: 12px;
+}

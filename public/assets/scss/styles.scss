@@ -1,0 +1,61 @@
+
+/*------------------------------------------------------------------
+
+[Master Stylesheet]
+
+Project        :   Hostma - Modern Web Hosting Template
+Copyright      :   Spruko Technologies Private Limited 
+Author         :   Spruko
+Author URL     :   https://themeforest.net/user/spruko
+Support	       :   support@spruko.com
+License        :   Licensed under ThemeForest License
+
+-------------------------------------------------------------------*/
+
+@import "variables";
+
+/* ######## FONT ######## */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=block');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@500;600&display=block');
+
+/* ######## BOOTSTRAP ######## */
+@import "bootstrap/buttons";
+@import "bootstrap/carousel";
+@import "bootstrap/dropdown";
+@import "bootstrap/forms";
+@import "bootstrap/cards";
+@import "bootstrap/accordion";
+@import "bootstrap/modal";
+@import "bootstrap/tooltip";
+@import "bootstrap/nav";
+@import "bootstrap/pagination";
+@import "bootstrap/table";
+@import "bootstrap/tabs";
+
+/* ######## CUSTOM ######## */
+@import "custom/cookies";
+@import "custom/customs";
+@import "custom/header";
+@import "custom/image";
+@import "custom/plugins";
+@import "custom/switcher";
+
+/* ######## LAYOUT-STYLES ######## */
+@import "layouts/menu_hover";
+@import "layouts/horizontal";
+@import "layouts/vertical";
+
+/* ######## SWITCHER-STYLES ######## */
+@import "switcher-styles/dark-styles";
+@import "switcher-styles/rtl";
+@import "switcher-styles/boxed";
+
+/* ######## UTILITIES ######## */
+@import "util/typography";
+@import "util/background";
+@import "util/width";
+@import "util/opacity";
+@import "util/margin";
+@import "util/padding";
+@import "util/border";
+@import "util/extras";

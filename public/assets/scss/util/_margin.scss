@@ -1,0 +1,49 @@
+.ms-30p {
+    margin-inline-start: 30% !important;
+}
+
+.ms--80p {
+    margin-inline-start: -80%;
+}
+
+.mt--14p {
+    margin-block-start: -14%;
+}
+
+.mt--19p {
+    margin-block-start: -19%;
+}
+
+.mt--30p {
+    margin-block-start: -30%;
+}
+
+@media (min-width: 578px) {
+    .ms-sm-30p {
+        margin-inline-start: 30% !important;
+    }
+
+    .ms-sm--20p {
+        margin-inline-start: -20%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .ms-xl--20p {
+        margin-inline-start: -20%;
+    }
+}
+
+@media (min-width: 992px) {
+    .mt-lg--13p {
+        margin-block-start: -13%;
+    }
+}
+
+.ms--20p {
+    margin-inline-start: -20%;
+}
+
+.mb--10p {
+    margin-block-end: -10%;
+}

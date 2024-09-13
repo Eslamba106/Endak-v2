@@ -1,0 +1,837 @@
+/* Start::button default */
+.btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 0.3rem;
+}
+
+.btn-check:active+.btn,
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:active {
+    color: $white;
+}
+
+/* End::button default */
+
+
+/* Start::btn-primary */
+.btn-primary {
+    background-color: #{$primary};
+    border-color: #{$primary};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$primary-hover};
+        border-color: #{$primary-border};
+    }
+}
+
+.btn-check:focus+.btn-primary,
+.btn-primary:focus {
+    background-color: #{$primary};
+    border-color: #{$primary-border};
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-primary:focus,
+.btn-check:checked+.btn-primary:focus,
+.btn-primary.active:focus,
+.btn-primary.show:focus,
+.btn-primary:active:focus {
+    box-shadow: 0 0 0 0.2rem #{$primary-05};
+}
+
+.btn-check:active+.btn-primary,
+.btn-check:checked+.btn-primary,
+.btn-primary.active,
+.btn-primary.show,
+.btn-primary:active {
+    background-color: #{$primary};
+    border-color: #{$primary-border};
+}
+
+/* End::btn-primary */
+
+/* Start::btn-secondary */
+.btn-secondary {
+    background-color: #{$secondary} !important;
+    border-color: #{$secondary} !important;
+
+    &:hover,
+    &:focus:hover {
+        background-color: rgba(var(--secondary-rgb), 0.9);
+        border-color: #{$secondary};
+    }
+}
+
+.btn-check:focus+.btn-secondary,
+.btn-secondary:focus {
+    background-color: #{$secondary};
+    border-color: #{$secondary};
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-secondary:focus,
+.btn-check:checked+.btn-secondary:focus,
+.btn-secondary.active:focus,
+.btn-secondary.show:focus,
+.btn-secondary:active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(var(--secondary-rgb), 0.5);
+}
+
+.btn-check:active+.btn-secondary,
+.btn-check:checked+.btn-secondary,
+.btn-secondary.active,
+.btn-secondary.show,
+.btn-secondary:active {
+    background-color: #{$secondary};
+    border-color: #{$secondary};
+}
+
+/* End::btn-secondary */
+
+/* Start::btn-success */
+.btn-success {
+    background-color: #{$success} !important;
+    border-color: #{$success} !important;
+
+    &:hover,
+    &:focus:hover {
+        background-color: rgba(var(--success-rgb), 0.9);
+        border-color: #{$success};
+    }
+}
+
+.btn-check:focus+.btn-success,
+.btn-success:focus {
+    background-color: #{$success};
+    border-color: #{$success};
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-success:focus,
+.btn-check:checked+.btn-success:focus,
+.btn-success.active:focus,
+.btn-success.show:focus,
+.btn-success:active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(var(--success-rgb), 0.5);
+}
+
+.btn-check:active+.btn-success,
+.btn-check:checked+.btn-success,
+.btn-success.active,
+.btn-success.show,
+.btn-success:active {
+    background-color: #{$success};
+    border-color: #{$success};
+}
+
+/* End::btn-success */
+
+/* Start::btn-danger */
+.btn-danger {
+    background-color: #{$danger} !important;
+    border-color: #{$danger} !important;
+
+    &:hover,
+    &:focus:hover {
+        background-color: rgba(var(--danger-rgb), 0.9);
+        border-color: #{$danger};
+    }
+}
+
+.btn-check:focus+.btn-danger,
+.btn-danger:focus {
+    background-color: #{$danger};
+    border-color: #{$danger};
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-danger:focus,
+.btn-check:checked+.btn-danger:focus,
+.btn-danger.active:focus,
+.btn-danger.show:focus,
+.btn-danger:active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(var(--danger-rgb), 0.5);
+}
+
+.btn-check:active+.btn-danger,
+.btn-check:checked+.btn-danger,
+.btn-danger.active,
+.btn-danger.show,
+.btn-danger:active {
+    background-color: #{$danger};
+    border-color: #{$danger};
+}
+
+/* End::btn-danger */
+
+/* Start::btn-light */
+.btn-light {
+    background-color: #{$gray-300};
+    border-color: #{$gray-300};
+    color: #{$color};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$gray-200};
+        border-color: #{$gray-300};
+    }
+}
+
+.btn-pink {
+    background-color: $pink;
+    border-color: $pink;
+    color: #{$white};
+
+    &:hover,
+    &:focus:hover {
+        background-color: rgba(var(--pink-rgb), 0.9);
+        border-color: $pink;
+    }
+}
+
+.btn-check:focus+.btn-light,
+.btn-light:focus {
+    background-color: #{$gray-300};
+    border-color: #{$gray-300};
+    color: #{$color};
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-light:focus,
+.btn-check:checked+.btn-light:focus,
+.btn-light.active:focus,
+.btn-light.show:focus,
+.btn-light:active:focus {
+    box-shadow: 0 0 0 0.2rem #{$gray-300};
+}
+
+.btn-check:active+.btn-light,
+.btn-check:checked+.btn-light,
+.btn-light.active,
+.btn-light.show,
+.btn-light:active {
+    background-color: #{$gray-300};
+    border-color: #{$gray-300};
+    color: #{$color};
+}
+
+/* End::btn-light */
+
+/* Start::btn-white */
+.btn-white {
+    background-color: $white;
+    border-color: $white;
+    color: #4d5875;
+
+    &:hover,
+    &:focus:hover {
+        background-color: $white;
+        border-color: $white;
+        color: #383853;
+    }
+}
+
+.btn-check:focus+.btn-white,
+.btn-white:focus {
+    background-color: $white;
+    border-color: $white;
+    color: #4d5875;
+    outline: 0;
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-white:focus,
+.btn-check:checked+.btn-white:focus,
+.btn-white.active:focus,
+.btn-white.show:focus,
+.btn-white:active:focus {
+    box-shadow: 0 0 0 0.2rem $white-05;
+}
+
+.btn-check:active+.btn-white,
+.btn-check:checked+.btn-white,
+.btn-white.active,
+.btn-white.show,
+.btn-white:active {
+    background-color: $white;
+    border-color: $white;
+}
+
+/* End::btn-white */
+
+/* Start::btn-primary-transparent */
+.btn-primary-transparent {
+    background-color: #{$primary-02};
+    border-color: #{$primary-02};
+    color: #{$primary};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$primary};
+        border-color: #{$primary};
+        color: $white;
+    }
+}
+
+.btn-check:focus+.btn-primary-transparent,
+.btn-primary-transparent:focus {
+    background-color: #{$primary-02};
+    border-color: #{$primary-02};
+    outline: 0;
+    box-shadow: none;
+    color: #{$primary};
+}
+
+.btn-check:active+.btn-primary-transparent:focus,
+.btn-check:checked+.btn-primary-transparent:focus,
+.btn-primary-transparent.active:focus,
+.btn-primary-transparent.show:focus,
+.btn-primary-transparent:active:focus {
+    box-shadow: 0 0 0 0.2rem #{$primary-05};
+}
+
+.btn-check:active+.btn-primary-transparent,
+.btn-check:checked+.btn-primary-transparent,
+.btn-primary-transparent.active,
+.btn-primary-transparent.show,
+.btn-primary-transparent:active {
+    background-color: #{$primary};
+    border-color: #{$primary-02};
+    color: $white;
+}
+
+/* End::btn-primary-transparent */
+
+/* Start::btn-secondary-transparent */
+.btn-secondary-transparent {
+    background-color: rgba(var(--secondary-rgb), 0.2);
+    border-color: rgba(var(--secondary-rgb), 0.2);
+    color: #{$secondary};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$secondary};
+        border-color: #{$secondary};
+        color: $white;
+    }
+}
+
+.btn-check:focus+.btn-secondary-transparent,
+.btn-secondary-transparent:focus {
+    background-color: rgba(var(--secondary-rgb), 0.2);
+    border-color: rgba(var(--secondary-rgb), 0.2);
+    outline: 0;
+    box-shadow: none;
+    color: #{$secondary};
+}
+
+.btn-check:active+.btn-secondary-transparent:focus,
+.btn-check:checked+.btn-secondary-transparent:focus,
+.btn-secondary-transparent.active:focus,
+.btn-secondary-transparent.show:focus,
+.btn-secondary-transparent:active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(var(--secondary-rgb), 0.5);
+}
+
+.btn-check:active+.btn-secondary-transparent,
+.btn-check:checked+.btn-secondary-transparent,
+.btn-secondary-transparent.active,
+.btn-secondary-transparent.show,
+.btn-secondary-transparent:active {
+    background-color: #{$secondary};
+    border-color: rgba(var(--secondary-rgb), 0.2);
+    color: $white;
+}
+
+/* End::btn-secondary-transparent */
+
+/* Start::btn-success-transparent */
+.btn-success-transparent {
+    background-color: rgba(var(--success-rgb), 0.2);
+    border-color: rgba(var(--success-rgb), 0.2);
+    color: #{$success};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$success};
+        border-color: #{$success};
+        color: $white;
+    }
+}
+
+.btn-check:focus+.btn-success-transparent,
+.btn-success-transparent:focus {
+    background-color: rgba(var(--success-rgb), 0.2);
+    border-color: rgba(var(--success-rgb), 0.2);
+    outline: 0;
+    box-shadow: none;
+    color: #{$success};
+}
+
+.btn-check:active+.btn-success-transparent:focus,
+.btn-check:checked+.btn-success-transparent:focus,
+.btn-success-transparent.active:focus,
+.btn-success-transparent.show:focus,
+.btn-success-transparent:active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(var(--success-rgb), 0.5);
+}
+
+.btn-check:active+.btn-success-transparent,
+.btn-check:checked+.btn-success-transparent,
+.btn-success-transparent.active,
+.btn-success-transparent.show,
+.btn-success-transparent:active {
+    background-color: #{$success};
+    border-color: rgba(var(--success-rgb), 0.2);
+    color: $white;
+}
+
+/* End::btn-success-transparent */
+
+/* Start::btn-danger-transparent */
+.btn-danger-transparent {
+    background-color: rgba(var(--danger-rgb), 0.2);
+    border-color: rgba(var(--danger-rgb), 0.2);
+    color: #{$danger};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$danger};
+        border-color: #{$danger};
+        color: $white;
+    }
+}
+
+.btn-check:focus+.btn-danger-transparent,
+.btn-danger-transparent:focus {
+    background-color: rgba(var(--danger-rgb), 0.2);
+    border-color: rgba(var(--danger-rgb), 0.2);
+    outline: 0;
+    box-shadow: none;
+    color: #{$danger};
+}
+
+.btn-check:active+.btn-danger-transparent:focus,
+.btn-check:checked+.btn-danger-transparent:focus,
+.btn-danger-transparent.active:focus,
+.btn-danger-transparent.show:focus,
+.btn-danger-transparent:active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(var(--danger-rgb), 0.5);
+}
+
+.btn-check:active+.btn-danger-transparent,
+.btn-check:checked+.btn-danger-transparent,
+.btn-danger-transparent.active,
+.btn-danger-transparent.show,
+.btn-danger-transparent:active {
+    background-color: #{$danger};
+    border-color: rgba(var(--danger-rgb), 0.2);
+    color: $white;
+}
+
+/* End::btn-danger-transparent */
+
+/* Start::btn-outline-primary */
+.btn-outline-primary {
+    color: #{$primary};
+    border-color: #{$primary};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$primary};
+        border-color: #{$primary};
+        color: $white;
+    }
+}
+
+.btn-check:focus+.btn-outline-primary,
+.btn-outline-primary:focus {
+    background-color: transparent;
+    border-color: #{$primary};
+    color: #{$primary};
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-outline-primary:focus,
+.btn-check:checked+.btn-outline-primary:focus,
+.btn-outline-primary.active:focus,
+.btn-outline-primary.show:focus,
+.btn-outline-primary:active:focus {
+    color: $white;
+    box-shadow: 0 0 0 0.2rem #{$primary-05};
+}
+
+.btn-check:active+.btn-outline-primary,
+.btn-check:checked+.btn-outline-primary,
+.btn-outline-primary.active,
+.btn-outline-primary.show,
+.btn-outline-primary:active {
+    background-color: #{$primary};
+    border-color: #{$primary};
+}
+
+/* End::btn-outline-primary */
+
+/* Start::btn-outline-secondary */
+.btn-outline-secondary {
+    color: #{$secondary};
+    border-color: #{$secondary};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$secondary};
+        border-color: #{$secondary};
+        color: $white;
+    }
+}
+
+.btn-check:focus+.btn-outline-secondary,
+.btn-outline-secondary:focus {
+    background-color: transparent;
+    border-color: #{$secondary};
+    color: #{$secondary};
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-outline-secondary:focus,
+.btn-check:checked+.btn-outline-secondary:focus,
+.btn-outline-secondary.active:focus,
+.btn-outline-secondary.show:focus,
+.btn-outline-secondary:active:focus {
+    color: $white;
+    box-shadow: 0 0 0 0.2rem rgba(var(--secondary-rgb), 0.5);
+}
+
+.btn-check:active+.btn-outline-secondary,
+.btn-check:checked+.btn-outline-secondary,
+.btn-outline-secondary.active,
+.btn-outline-secondary.show,
+.btn-outline-secondary:active {
+    background-color: #{$secondary};
+    border-color: #{$secondary};
+}
+
+/* End::btn-outline-secondary */
+
+/* Start::btn-outline-success */
+.btn-outline-success {
+    color: #{$success};
+    border-color: #{$success};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$success};
+        border-color: #{$success};
+        color: $white;
+    }
+}
+
+.btn-check:focus+.btn-outline-success,
+.btn-outline-success:focus {
+    background-color: transparent;
+    border-color: #{$success};
+    color: #{$success};
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-outline-success:focus,
+.btn-check:checked+.btn-outline-success:focus,
+.btn-outline-success.active:focus,
+.btn-outline-success.show:focus,
+.btn-outline-success:active:focus {
+    color: $white;
+    box-shadow: 0 0 0 0.2rem rgba(var(--success-rgb), 0.5);
+}
+
+.btn-check:active+.btn-outline-success,
+.btn-check:checked+.btn-outline-success,
+.btn-outline-success.active,
+.btn-outline-success.show,
+.btn-outline-success:active {
+    background-color: #{$success};
+    border-color: #{$success};
+}
+
+/* End::btn-outline-success */
+
+/* Start::btn-outline-danger */
+.btn-outline-danger {
+    color: #{$danger};
+    border-color: #{$danger};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$danger};
+        border-color: #{$danger};
+        color: $white;
+    }
+}
+
+.btn-check:focus+.btn-outline-danger,
+.btn-outline-danger:focus {
+    background-color: transparent;
+    border-color: #{$danger};
+    color: #{$danger};
+    box-shadow: none;
+}
+
+.btn-check:active+.btn-outline-danger:focus,
+.btn-check:checked+.btn-outline-danger:focus,
+.btn-outline-danger.active:focus,
+.btn-outline-danger.show:focus,
+.btn-outline-danger:active:focus {
+    color: $white;
+    box-shadow: 0 0 0 0.2rem rgba(var(--danger-rgb), 0.5);
+}
+
+.btn-check:active+.btn-outline-danger,
+.btn-check:checked+.btn-outline-danger,
+.btn-outline-danger.active,
+.btn-outline-danger.show,
+.btn-outline-danger:active {
+    background-color: #{$danger};
+    border-color: #{$danger};
+}
+
+/* End::btn-outline-danger */
+
+
+/* Start::btn-sm|btn-group-sm */
+.btn-group-sm>.btn,
+.btn-sm {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.8rem;
+    border-radius: 0.25rem;
+}
+
+/* Start::btn-sm|btn-group-sm */
+
+
+/* Start::btn-lg|btn-group-lg */
+.btn-group-lg>.btn,
+.btn-lg {  
+    padding: 0.69rem 1.2rem;
+    font-size: 1rem;
+}
+
+/* Start::btn-lg|btn-group-lg */
+
+/* Start::btn-icon */
+.btn-icon {
+    width: 37px;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: $primary-01;
+}
+
+/* End::btn-icon */
+
+/* Start::btn-close */
+.btn-close {
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.btn-info {	
+    background-color: #04aaf5;	
+    border-color: #04aaf5;	
+    color: $white;	
+    &:hover,	
+    &.active {	
+        background-color: #04aaf5;	
+        border-color: #04aaf5;	
+        color: $white;	
+        opacity: 0.9;	
+    }	
+}
+
+.btn-info-dark {
+    background-color: #43abfc;
+    border-color: #43abfc;
+    color: $white;
+
+    &:hover,
+    &.active {
+        background-color: #43abfc;
+        border-color: #43abfc;
+        color: $white;
+        opacity: 0.9;
+    }
+}
+
+.btn-check:active+.btn.btn-info-dark,
+.btn-check:checked+.btn.btn-info-dark,
+.btn.btn-info-dark.active,
+.btn.btn-info-dark.show,
+.btn.btn-info-dark:active {
+    background-color: #43abfc;
+    border-color: #43abfc;
+    color: $white;
+    opacity: 0.9;
+}
+
+.btn.btn-info-dark:focus {
+    background-color: #43abfc;
+    border-color: #43abfc;
+    color: $white;
+    opacity: 0.9;
+}
+
+/* End::btn-close */
+
+/* Start::btn-secondary-gradient */
+.btn-primary-gradient {
+    background: $primary-gradient;
+    border-color: #{$primary};
+    color: #{$white};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$primary};
+        border-color: #{$primary};
+        color: $white;
+    }
+}
+
+.btn-check:focus+.btn-primary-gradient,
+.btn-primary-gradient:focus {
+    background: $primary-gradient;
+    border-color: #{$primary};
+    outline: 0;
+    box-shadow: none;
+    color: #{$white};
+}
+
+.btn-check:active+.btn-primary-gradient:focus,
+.btn-check:checked+.btn-primary-gradient:focus,
+.btn-primary-gradient.active:focus,
+.btn-primary-gradient.show:focus,
+.btn-primary-gradient:active:focus {
+    box-shadow: 0 0 0 0.2rem #{$primary-05};
+}
+
+.btn-check:active+.btn-primary-gradient,
+.btn-check:checked+.btn-primary-gradient,
+.btn-primary-gradient.active,
+.btn-primary-gradient.show,
+.btn-primary-gradient:active {
+    background: $primary-gradient;
+    border-color: #{$primary};
+    color: $white;
+}
+
+/* End::btn-secondary-gradient */
+
+/* Start::btn-secondary-gradient */
+.btn-secondary-gradient {
+    background: $secondary-gradient;
+    border-color: #{$secondary};
+    color: #{$white};
+
+    &:hover,
+    &:focus:hover {
+        background-color: #{$secondary};
+        border-color: #{$secondary};
+        color: $white;
+    }
+}
+
+.btn-check:focus+.btn-secondary-gradient,
+.btn-secondary-gradient:focus {
+    background: $secondary-gradient;
+    border-color: #{$secondary};
+    outline: 0;
+    box-shadow: none;
+    color: #{$secondary};
+}
+
+.btn-check:active+.btn-secondary-gradient:focus,
+.btn-check:checked+.btn-secondary-gradient:focus,
+.btn-secondary-gradient.active:focus,
+.btn-secondary-gradient.show:focus,
+.btn-secondary-gradient:active:focus {
+    box-shadow: 0 0 0 0.2rem rgba(var(--secondary-rgb), 0.5);
+}
+
+.btn-check:active+.btn-secondary-gradient,
+.btn-check:checked+.btn-secondary-gradient,
+.btn-secondary-gradient.active,
+.btn-secondary-gradient.show,
+.btn-secondary-gradient:active {
+    background: $secondary-gradient;
+    border-color: #{$secondary};
+    color: $white;
+}
+
+/* End::btn-secondary-gradient */
+
+/* Start::btn-primary-transparent */
+.btn-primary-transparent {
+    background-color: $primary-02;
+    color: $primary;
+
+    &:hover {
+        background-color: $primary;
+        color: $white;
+    }
+}
+
+/* End::btn-primary-transparent */
+
+/* Start::btn-danger-transparent */
+.btn-danger-transparent {
+    background-color: rgba(var(--danger-rgb), 0.2);
+    border-color: rgba(var(--danger-rgb), 0.2);
+    color: $danger;
+
+    &:hover {
+        background-color: $danger;
+        color: $white;
+    }
+}
+
+/* End::btn-danger-transparent */
+
+/* Start::btn-success-transparent */
+.btn-success-transparent {
+    background-color: rgba(var(--success-rgb), 0.2);
+    border-color: rgba(var(--success-rgb), 0.2);
+    color: $success;
+
+    &:hover {
+        background-color: $success;
+        color: $white;
+    }
+}
+
+/* End::btn-success-transparent */
+
+.btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-close {
+    background-image: none;
+    float: $float-end;
+    width: auto;
+    height: auto;
+
+    i {
+        font-size: 20px;
+        line-height: 0;
+    }
+}

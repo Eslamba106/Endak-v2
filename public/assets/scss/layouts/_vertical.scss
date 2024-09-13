@@ -1,0 +1,429 @@
+.main-sidebar {
+    margin-block-start: 3.72rem;
+    padding-block-start: 0.5rem;
+    padding-block-end: 5rem;
+    height: 100vh;
+    position: relative;
+    overflow: auto;
+}
+
+.app-sidebar {
+    width: 18rem;
+    height: 100%;
+    position: fixed;
+    inset-inline-start: 0;
+    z-index: 100;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.05);
+    transition: all 320ms ease;
+    font-family: "Urbanist", sans-serif;
+
+    .main-sidebar-header {
+        height: 3.75rem;
+        width: 15rem;
+        position: fixed;
+        display: flex;
+        background: $primary-09;
+        z-index: 9;
+        align-items: center;
+        justify-content: center;
+        padding: 0.813rem 1.25rem;
+        border-inline-end: 1px solid $border;
+        border-block-end: 1px solid $border;
+        transition: all 320ms ease;
+
+        .header-logo {
+            img {
+                height: 2rem;
+                line-height: 2rem;
+            }
+
+            .desktop-logo {
+                display: block;
+            }
+
+            .desktop-dark,
+            .toggle-logo,
+            .toggle-dark {
+                display: none;
+            }
+        }
+    }
+
+    .slide__category {
+        color: $primary;
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.065rem;
+        text-transform: uppercase;
+        padding: 0.75rem 1.65rem;
+        white-space: nowrap;
+        opacity: 0.5;
+        position: relative;
+    }
+
+    .slide {
+        margin: 0;
+        padding: 0rem 0.625rem;
+    }
+
+    .side-menu__item {
+        padding: 1.3rem 1.25rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 0.84rem;
+        color: $color;
+        font-weight: 500;
+
+        &.active,
+        &:hover {
+            &:before {
+                border: 1px solid $primary !important;
+            }
+
+            color: $primary;
+
+            .side-menu__label {
+                opacity: 1;
+            }
+
+            .side-menu__icon {
+                fill: $primary;
+            }
+
+            h6 {
+                color: $primary;
+            }
+        }
+    }
+
+    .slide-menu {
+        padding: 0rem;
+    }
+
+    .slide-menu {
+
+        &.child1 {
+            .slide {
+                padding: 0.6rem 1.6rem;
+            }
+        }
+
+        &.child2,
+        &.child3 {
+            .slide {
+                padding: 0.4rem 1.6rem;
+            }
+        }
+    }
+
+    .slide-menu {
+        &.child1.mega-slide-menu-onefr.without-icon {
+
+            .child2,
+            .child3 {
+                padding-block-start: 0.6rem;
+                padding-block-end: 0.5rem;
+            }
+        }
+        &.child1.mega-slide-menu-onefr.without-icon {
+            .slide {
+
+                &:hover,
+                &.active {
+                    color: $primary;
+
+                    &:before {
+                        background-color: $secondary;
+                    }
+                }
+            }
+
+            li {
+                padding-inline-start: 1.3rem;
+                position: relative;
+            }
+        }
+
+        &.child2,
+        &.child3 {
+            .slide {
+                &:before {
+                    inset-block-start: 14px !important;
+                }
+            }
+        }
+
+        i {
+            margin-inline-end: 0.8rem;
+            font-size: 1rem;
+        }
+    }
+
+    .side-menu__label {
+        white-space: nowrap;
+        position: relative;
+        font-size: 16px;
+        line-height: 1;
+        vertical-align: middle;
+    }
+
+    .side-menu__icon {
+        margin-inline-end: 0.625rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        text-align: center;
+        color: $primary;
+        fill: $primary;
+    }
+
+    .side-menu__angle {
+        transform-origin: center;
+        font-size: 0.85rem;
+        transition: all 320ms ease;
+    }
+
+    .slide.side-menu__label1 {
+        display: none;
+    }
+}
+
+.horizontal-logo {
+    padding: 0.85rem 0rem;
+    display: none;
+}
+
+@media (max-width:991.98px) {
+    .app-sidebar {
+        background-color: $custom-white;
+        inset-inline-start: -19rem;
+    }
+
+    .top-menu {
+        display: none;
+    }
+
+    .horizontal-logo {
+        .header-logo {
+
+            .desktop-logo,
+            .desktop-dark,
+            .toggle-dark {
+                display: none;
+            }
+
+            .toggle-logo {
+                display: block;
+            }
+        }
+    }
+
+    .app-sidebar .slide-menu {
+
+        &.child1 {
+            .slide {
+                padding: 0.6rem 0.6rem;
+            }
+        }
+
+        &.child2,
+        &.child3 {
+            .slide {
+                padding: 0.4rem 0.6rem;
+            }
+        }
+    }
+
+    .app-sidebar .side-menu__item {
+        padding: 1rem 0.25rem;
+    }
+
+    .menu-label {
+        margin-inline-start: 10px;
+        margin-block-start: 10px;
+
+        i {
+            font-size: 16px;
+        }
+
+        span {
+            font-size: 13px;
+        }
+    }
+
+    .app-sidebar {
+        border-inline-end: 1px solid $border;
+    }
+}
+
+.slide.has-sub .slide-menu {
+    transform: translate(0, 0) !important;
+    visibility: visible !important;
+}
+
+.nav ul li {
+    list-style-type: none;
+}
+
+.nav>ul {
+    padding-inline-start: 0px;
+}
+
+.slide-menu {
+    display: none;
+}
+
+.slide.has-sub {
+    display: grid;
+    
+    &.open {
+        >.side-menu__item .side-menu__angle {
+            transform: rotate(180deg);
+        }
+
+        .slide.has-sub {
+            &.open {
+                >.side-menu__item .side-menu__angle {
+                    transform: rotate(270deg);
+                }
+
+            }
+        }
+    }
+    .side-menu__item {
+        justify-content: space-between;
+    }
+    .slide .side-menu__item {
+        justify-content: flex-start;
+    }
+
+    .slide.has-sub .side-menu__item {
+        justify-content: space-between;
+    }
+}
+
+/* Responsive Styles Start */
+
+@media (max-width: 991.98px) {
+    .main-content {
+        padding-block-start: 3.75rem;
+    }
+
+    .main-header {
+        z-index: 100;
+        position: fixed;
+        inset-block-start: 0;
+        inset-inline: 0;
+        box-shadow: 0 0 1rem rgb(0 0 0 / 10%);
+        transition: all 320ms ease;
+
+        &.sticky-header {
+            box-shadow: 0 0.125rem 1rem 3px rgb(0 0 0 / 10%);
+        }
+    }
+
+    .main-sidebar-header {
+        display: none !important;
+    }
+
+    .main-sidebar {
+        margin-block-start: 0;
+    }
+
+    .header-element {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        padding: 5px 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1)
+    }
+
+    .brand-main {
+        .desktop-logo {
+            height: 2.5rem;
+        }
+    }
+
+    .main-menu-container {
+        display: block;
+
+        .login-btn {
+            border-color: $border;
+            color: $color;
+        }
+    }
+
+    .sidemenu-toggle {
+        display: flex;
+    }
+
+    .app-sidebar {
+        .slide-menu {
+            &.child1.mega-slide-menu-onefr.without-icon
+             {
+                .slide {
+                    &:before {
+                        inset-inline-start: 9px;
+                        inset-block-start: 17px;
+                    }
+                }
+
+                li {
+                    padding-inline-start: 1.6rem;
+                }
+            }
+        }
+    }
+
+}
+
+.slide-left,
+.slide-right {
+    display: none;
+}
+
+.header-link-icon {
+    font-size: 20px;
+    color: $white;
+    fill: $white;
+    transition: all ease 0.3s;
+}
+
+.slide-menu .side-menu__item {
+    padding: 0;
+}
+
+.header__dropavatar {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 2.5rem;
+    flex: 0 0 2.5rem;
+}
+
+.badge {
+    line-height: 0;
+    padding: 8px;
+    font-size: 10px;
+    font-weight: 500;
+    border-radius: 50px;
+}
+
+.badge-lg {
+    font-size: 12px;
+    padding: 11px;
+}
+
+.blink-text {
+    animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.toggle-menu {
+    display: flex;
+}
+
+/* Responsive Styles End */
