@@ -29,7 +29,9 @@ class Page extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
- 
+    public function getThumbnailUrlAttribute(){
+        return media_image_uri($this->media);
+    }
 
 
     public function getStatusContextAttribute(){

@@ -7,34 +7,41 @@
 @endsection --}}
 
 @section('content')
-<a href="{{route('admin.categories')}}" class="btn btn-secondary btn-xl mr-1" data-toggle="tooltip" title="@lang('admin.categories')"> <i class="la la-folder-open"></i> </a>
-
-<button type="submit" form="form-category" class="btn btn-success btn-xl" data-toggle="tooltip" title="@lang('admin.save')"> <i class="la la-save"></i> </button>
+<a href="{{route('admin.categories')}}" class="btn btn-secondary btn-xl mr-1" data-toggle="tooltip" title="@lang('category.categories')"> <i class="la la-folder-open"></i> </a>
+<?php $lang = config('app.locale'); ?>
+<button type="submit" form="form-category" class="btn btn-success btn-xl" data-toggle="tooltip" title="@lang('general.save')"> <i class="la la-save"></i> </button>
     <form action="" id="form-category" method="post" enctype="multipart/form-data"> 
         @csrf
 
-        <div class="row">
+        {{-- <div class="row"> --}}
 
             <div class="col-md-12">
 
-                <div class="form-group row {{ $errors->has('category_name')? 'has-error':'' }} ">
-                    <label class="col-sm-3 control-label" for="category_name">@lang('admin.category_name') <em>*</em></label>
+                <div class="form-group row {{ $errors->has('category_name_ar')? 'has-error':'' }} ">
+                    <label class="col-sm-3 control-label" for="category_name_ar">@lang('category.category_name_ar') <em>*</em></label>
                     <div class="col-sm-7">
-                        <input type="text" name="category_name" value="" placeholder="@lang('admin.category_name')" id="category_name" class="form-control">
-                        {!! $errors->has('category_name')? '<p class="help-block">'.$errors->first('category_name').'</p>':'' !!}
+                        <input type="text" name="category_name_ar" value="" placeholder="@lang('category.category_name_ar')" id="category_name_ar" class="form-control">
+                        {!! $errors->has('category_name_ar')? '<p class="help-block">'.$errors->first('category_name_ar').'</p>':'' !!}
+                    </div>
+                </div>
+                <div class="form-group row {{ $errors->has('category_name_en')? 'has-error':'' }} ">
+                    <label class="col-sm-3 control-label" for="category_name_en">@lang('category.category_name_en') <em>*</em></label>
+                    <div class="col-sm-7">
+                        <input type="text" name="category_name_en" value="" placeholder="@lang('category.category_name_en')" id="category_name_en" class="form-control">
+                        {!! $errors->has('category_name_en')? '<p class="help-block">'.$errors->first('category_name_en').'</p>':'' !!}
                     </div>
                 </div>
 
                 <div class="form-group row {{ $errors->has('parent')? 'has-error':'' }} ">
-                    <label class="col-sm-3 control-label" for="parent">@lang('admin.parent') </label>
+                    <label class="col-sm-3 control-label" for="parent">@lang('category.parent') </label>
                     <div class="col-sm-7">
                         <select name="parent" id="parent" class="form-control select2">
-                            <option value="0">@lang('admin.select_category')</option>
+                            <option value="0">@lang('category.main')</option>
                             @if($categories->count() > 0)
                                 @foreach($categories as $category)
-                                    <option value="{{$category->id}}"> {!! $category->category_name !!} </option>
+                                    <option value="{{$category->id}}"> {!! ($lang == "ar") ? $category->category_name_ar : $category->category_name_en !!} </option>
                                     @foreach($category->sub_categories as $subCategory)
-                                        <option value="{{$subCategory->id}}"> &nbsp;&nbsp;&nbsp; &raquo; {!! $subCategory->category_name !!} </option>
+                                        <option value="{{$subCategory->id}}"> &nbsp;&nbsp;&nbsp; &raquo; {!! ($lang == "ar") ? $subCategory->category_name_ar :$subCategory->category_name_en !!} </option>
                                     @endforeach
                                 @endforeach
                             @endif
@@ -45,45 +52,43 @@
                 </div>
 
 
-                {{-- <div class="form-group row">
-                    <label class="col-sm-3 control-label">{{__('select_icon')}}</label>
-                    <div class="col-sm-7">
-                        <select class="form-control select2icon" name="icon_class">
-                            <option value="0">{{__('select_icon')}}</option>
-                            @foreach(icon_classes() as $icon => $val)
-                                <option value="{{ $icon }}" data-icon="{{ $icon }}">{{ $icon }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div> --}}
 
-                {{-- <div class="form-group row {{ $errors->has('category_image')? 'has-error':'' }} image-container-row">
-                    <label class="col-sm-3 control-label">{{__('image')}} <em>*</em></label>
-                    <div class="col-sm-7">
-                        {!! image_upload_form('category_image', null, [750,422]) !!}
-                        {!! $errors->has('category_image')? '<p class="help-block">'.$errors->first('category_image').'</p>':'' !!}
-                    </div>
-                </div> --}}
-
-                <div class="form-group row {{ $errors->has('title')? 'has-error':'' }} ">
-                    <label class="col-sm-3 control-label" for="title">@lang('admin.title') 
+                <div class="form-group row {{ $errors->has('title_ar')? 'has-error':'' }} ">
+                    <label class="col-sm-3 control-label" for="title_ar">@lang('category.title_ar') 
                         <br /><span><small class="help-text text-muted">{{ __('max_100_chars') }}</small></span>
                     </label>
                     <div class="col-sm-7">
-                        <input type="text" name="title" value="" placeholder="@lang('admin.title')" id="title" class="form-control">
-                        {!! $errors->has('title')? '<p class="help-block">'.$errors->first('title').'</p>':'' !!}
+                        <input type="text" name="title_ar" value="" placeholder="@lang('category.title_ar')" id="title_ar" class="form-control">
+                        {!! $errors->has('title_ar')? '<p class="help-block">'.$errors->first('title_ar').'</p>':'' !!}
                     </div>
                 </div>
-                <div class="form-group row {{ $errors->has('description')? 'has-error':'' }} ">
-                    <label class="col-sm-3 control-label" for="description">@lang('admin.description') </label>
+
+                <div class="form-group row {{ $errors->has('title_en')? 'has-error':'' }} ">
+                    <label class="col-sm-3 control-label" for="title_en">@lang('category.title_en') 
+                        <br /><span><small class="help-text text-muted">{{ __('max_100_chars') }}</small></span>
+                    </label>
                     <div class="col-sm-7">
-                        <textarea name="description" placeholder="@lang('admin.description')" id="description" class="form-control"></textarea>
-                        {!! $errors->has('description')? '<p class="help-block">'.$errors->first('description').'</p>':'' !!}
+                        <input type="text" name="title_en" value="" placeholder="@lang('category.title_en')" id="title_en" class="form-control">
+                        {!! $errors->has('title_en')? '<p class="help-block">'.$errors->first('title_en').'</p>':'' !!}
+                    </div>
+                </div>
+                <div class="form-group row {{ $errors->has('description_ar')? 'has-error':'' }} ">
+                    <label class="col-sm-3 control-label" for="description_ar">@lang('category.description_ar') </label>
+                    <div class="col-sm-7">
+                        <textarea name="description_ar" placeholder="@lang('category.description_ar')" id="description_ar" class="form-control"></textarea>
+                        {!! $errors->has('description_ar')? '<p class="help-block">'.$errors->first('description_ar').'</p>':'' !!}
+                    </div>
+                </div>
+                <div class="form-group row {{ $errors->has('description_en')? 'has-error':'' }} ">
+                    <label class="col-sm-3 control-label" for="description_en">@lang('category.description_en') </label>
+                    <div class="col-sm-7">
+                        <textarea name="description_en" placeholder="@lang('category.description_en')" id="description_en" class="form-control"></textarea>
+                        {!! $errors->has('description_en')? '<p class="help-block">'.$errors->first('description_en').'</p>':'' !!}
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-sm-3 control-label" for="description">@lang('admin.status')</label>
+                    <label class="col-sm-3 control-label" for="status">@lang('category.status')</label>
                     <div class="col-sm-7">
                         <label><input type="radio" name="status" value="1" checked="checked"> {{__('publish')}}</label> <br />
                         <label><input type="radio" name="status" value="0"> {{__('unpublish')}}</label>
@@ -92,12 +97,12 @@
 
                 <div class="form-group row">
                     <div class="col-sm-7 offset-3">
-                        <button type="submit" form="form-category" class="btn btn-success btn-xl" data-toggle="tooltip" title="@lang('admin.save')"> <i class="la la-save"></i> {{__('save')}} </button>
+                        <button type="submit" form="form-category" class="btn btn-success btn-xl" data-toggle="tooltip" title="@lang('general.save')"> <i class="la la-save"></i> {{__('save')}} </button>
                     </div>
                 </div>
 
 
-            </div>
+            {{-- </div> --}}
 
         </div>
 

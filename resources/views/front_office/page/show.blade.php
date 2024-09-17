@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('title')
-{{ __('page.pages') }}
+{{ $title }}
 @endsection
 
 

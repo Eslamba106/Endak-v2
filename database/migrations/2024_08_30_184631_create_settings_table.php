@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('twitter')->nullable();
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
-            $table->string('address')->nullable();
+            $table->string('address_ar')->nullable();
+            $table->string('address_en')->nullable();
+            $table->string('web_name_ar')->nullable();
+            $table->string('web_name_en')->nullable();
             $table->string('logo')->nullable();
             $table->timestamps();
         });

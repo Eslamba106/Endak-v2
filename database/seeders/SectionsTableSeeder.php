@@ -38,13 +38,22 @@ class SectionsTableSeeder extends Seeder
         Section::updateOrCreate(["id"=> 16], ["name"=> "Update_Page", 'caption' => "Update_Page" , 'section_group_id' => 12 ]);
         Section::updateOrCreate(["id"=> 17], ["name"=> "Delete_Page", 'caption' => "Delete_Page" , 'section_group_id' => 12 ]);
 
-        // Categories 18 - 
+        // Categories 18 - 23
         Section::updateOrCreate(['id'=> 18], ['name'=> 'Admin_Categories' , 'caption' => 'Admin_Categories',]) ;
         Section::updateOrCreate(["id"=> 19], ["name"=> "Show_All_Categories", 'caption' => "Show_All_Categories" , 'section_group_id' => 18 ]);
         Section::updateOrCreate(["id"=> 20], ["name"=> "Show_Category", 'caption' => "Show_Category" , 'section_group_id' => 18 ]);
         Section::updateOrCreate(["id"=> 21], ["name"=> "Create_Category", 'caption' => "Create_Category" , 'section_group_id' => 18 ]);
         Section::updateOrCreate(["id"=> 22], ["name"=> "Update_Category", 'caption' => "Update_Category" , 'section_group_id' => 18 ]);
         Section::updateOrCreate(["id"=> 23], ["name"=> "Delete_Category", 'caption' => "Delete_Category" , 'section_group_id' => 18 ]);
+
+
+        // Departments 24 - 29
+        Section::updateOrCreate(['id'=> 24], ['name'=> 'Admin_Departments' , 'caption' => 'Admin_Departments',]) ;
+        Section::updateOrCreate(["id"=> 25], ["name"=> "Show_All_Departments", 'caption' => "Show_All_Departments" , 'section_group_id' => 24 ]);
+        Section::updateOrCreate(["id"=> 26], ["name"=> "Show_Department", 'caption' => "Show_Department" , 'section_group_id' => 24 ]);
+        Section::updateOrCreate(["id"=> 27], ["name"=> "Create_Department", 'caption' => "Create_Department" , 'section_group_id' => 24 ]);
+        Section::updateOrCreate(["id"=> 28], ["name"=> "Update_Department", 'caption' => "Update_Department" , 'section_group_id' => 24 ]);
+        Section::updateOrCreate(["id"=> 29], ["name"=> "Delete_Department", 'caption' => "Delete_Department" , 'section_group_id' => 24 ]);
 
 
         /* Run Panel Sections */

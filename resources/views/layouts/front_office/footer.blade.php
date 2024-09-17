@@ -1,8 +1,8 @@
         <!-- Start::footer -->
         <footer class="footer bg-primary mt-auto text-white position-relative">
-            <img src="{{ asset('assets/images/patterns/9.png') }}" alt="img" class="patterns-9 z-index-0">
+            {{-- <img src="{{ asset('assets/images/patterns/9.png') }}" alt="img" class="patterns-9 z-index-0">
             <img src="{{ asset('assets/images/patterns/6.png') }}" alt="img" class="patterns-4 z-index-0">
-            <img src="{{ asset('assets/images/patterns/11.png') }}" alt="img" class="patterns-3 z-index-0">
+            <img src="{{ asset('assets/images/patterns/11.png') }}" alt="img" class="patterns-3 z-index-0"> --}}
             <div class="py-5">
                 <?php $settings = App\Models\Settings::first(); ?>
 
@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                             <a href="#" class="d-inline-block mb-3"><img
-                                    src="../assets/images/brand/logo-white.png" alt="img"></a>
+                                    src="{{ $settings->image_url ?? '' }}" width="150px" height="50px" alt="img"></a>
                             {{-- <p class="mb-4 op-8 fw-light">
                                 At dolor clita amet erat takimata sed tempor invidunt lorem.
                                 Justo sea nonumy.

@@ -40,12 +40,20 @@ return [
     'Create_Page'                                           => 'Create Page',
     'Update_Page'                                           => 'Update Page',
     'Delete_Page'                                           => 'Delete Page',
+
     'Admin_Categories'                                      => 'Admin Categories',
     'Show_All_Categories'                                   => 'Show All Categories',
     'Show_Category'                                         => 'Show Category',
     'Create_Category'                                       => 'Create Category',
     'Update_Category'                                       => 'Update Category',
     'Delete_Category'                                       => 'Delete Category',
+    'Admin_Departments'                                      => 'Admin Departments',
+
+    'Show_All_Departments'                                   => 'Show All Departments',
+    'Show_Department'                                         => 'Show Department',
+    'Create_Department'                                       => 'Create Department',
+    'Update_Department'                                       => 'Update Department',
+    'Delete_Department'                                       => 'Delete Department',
 
     'General_Dashboard_page'                                => 'Dashboard',
 ];

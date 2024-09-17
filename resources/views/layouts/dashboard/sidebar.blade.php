@@ -12,7 +12,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                {{-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> --}}
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{ auth()->user()->first_name ?? 'Adminadmin' }}</a>
@@ -25,7 +25,7 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                @can('General_Dashboard_Show')
+                @can('admin_general_dashboard')
                     <li class="nav-item has-treeview">
                         <a href="{{ route('admin.dashboard') }}"
                             class="nav-link {{ request()->is('admin/dashboard*') ? 'active' : '' }}">
@@ -74,10 +74,12 @@
                     </li>
                 @endcan
 
-                @can('Admin_Categories')
+                @can('Admin_Departments')
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link {{ request()->is('admin/departments*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-cog"></i>
+                            {{-- <i class="nav-icon fas fa-cog"></i> --}}
+                            <i class="fas fa-layer-group nav-icon"></i>
+
                             <p>
                                 {{ __('department.departments') }}
                                 <i class="right fas fa-angle-left"></i>
@@ -97,12 +99,12 @@
                                         <p> {{ __('department.create_department') }} </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="" class="nav-link {{ request()->is('admin/departments/edit') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p> {{ __('department.edit_department') }} </p>
                                     </a>
-                                </li>
+                                </li> --}}
 
                             </ul>
                         {{-- @endcan --}}
@@ -112,7 +114,7 @@
                 @can('Admin_Categories')
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link {{ request()->is('admin/categories*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-cog"></i>
+                            <i class="fas fa-tags nav-icon"></i>
                             <p>
                                 {{ __('category.categories') }}
                                 <i class="right fas fa-angle-left"></i>
@@ -132,12 +134,12 @@
                                         <p> {{ __('category.create_category') }} </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="" class="nav-link {{ request()->is('admin/categories/edit') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p> {{ __('category.edit_category') }} </p>
                                     </a>
-                                </li>
+                                </li> --}}
 
                             </ul>
                         {{-- @endcan --}}
@@ -147,7 +149,7 @@
                 @can('Admin_Pages')
                     <li class="nav-item has-treeview">
                         <a href="" class="nav-link {{ request()->is('admin/pages*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-cog"></i>
+                            <i class="fas fa-file-alt nav-icon"></i>
                             <p>
                                 {{ __('page.pages') }}
                                 <i class="right fas fa-angle-left"></i>
@@ -167,12 +169,12 @@
                                         <p> {{ __('page.page_create') }} </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="" class="nav-link {{ request()->is('admin/pages/edit') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p> {{ __('page.edit_page') }} </p>
                                     </a>
-                                </li>
+                                </li> --}}
 
                             </ul>
                         {{-- @endcan --}}
@@ -198,12 +200,12 @@
                                         <p> {{ __('settings.settings') }} </p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="" class="nav-link {{ request()->is('admin/settings/edit') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p> {{ __('settings.edit_settings') }} </p>
                                     </a>
-                                </li>
+                                </li> --}}
 
                             </ul>
                         @endcan

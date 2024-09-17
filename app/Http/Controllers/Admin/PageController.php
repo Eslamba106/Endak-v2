@@ -11,22 +11,22 @@ class PageController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->bulk_action_btn === 'update_status') {
-            if (is_live_env()) {
-                return back()->with('error', ('demo_restriction'));
-            }
+        // if ($request->bulk_action_btn === 'update_status') {
+        //     if (is_live_env()) {
+        //         return back()->with('error', ('demo_restriction'));
+        //     }
 
-            Page::query()->whereIn('id', $request->bulk_ids)->update(['status' => $request->status]);
-            return back()->with('success', ('bulk_action_success'));
-        }
-        if ($request->bulk_action_btn === 'delete') {
-            if (is_live_env()) {
-                return back()->with('error', ('demo_restriction'));
-            }
+        //     Page::query()->whereIn('id', $request->bulk_ids)->update(['status' => $request->status]);
+        //     return back()->with('success', ('bulk_action_success'));
+        // // }
+        // if ($request->bulk_action_btn === 'delete') {
+        //     if (is_live_env()) {
+        //         return back()->with('error', ('demo_restriction'));
+        //     }
 
-            Page::query()->whereIn('id', $request->bulk_ids)->delete();
-            return back()->with('success', ('bulk_action_success'));
-        }
+        //     Page::query()->whereIn('id', $request->bulk_ids)->delete();
+        //     return back()->with('success', ('bulk_action_success'));
+        // }
 
         $title = ('pages');
         $posts = Page::whereType('page')->orderBy('id', 'desc')->paginate(20);
@@ -44,18 +44,20 @@ class PageController extends Controller
         // if(is_live_env()) return back()->with('error', ('app.feature_disable_demo'));
 
         $user = Auth::user();
-        $rules = [
-            'title' => 'required|max:220',
-            'post_content' => 'required',
-        ];
+        // $rules = [
+        //     'title' => 'required|max:220',
+        //     'post_content' => 'required',
+        // ];
         // $this->validate($request, $rules);
 
-        $slug = unique_slug($request->title, 'Models\Page');
+        $slug = unique_slug($request->title_en, 'Models\Page');
         $data = [
             'user_id' => $user->id,
-            'title' => clean_html($request->title),
+            'title_ar' => clean_html($request->title_ar),
+            'title_en' => clean_html($request->title_en),
             'slug' => $slug,
-            'page_content' => clean_html($request->post_content),
+            'page_content_ar' => clean_html($request->page_content_ar),
+            'page_content_en' => clean_html($request->page_content_en),
             'type' => 'page',
             'status' => 1,
         ];
@@ -73,18 +75,14 @@ class PageController extends Controller
 
     public function update(Request $request, $id)
     {
-        // if(is_live_env()) return back()->with('error', ('app.feature_disable_demo'));
-
-        // $rules = [
-        //     'title'     => 'required|max:220',
-        //     'post_content'   => 'required',
-        // ];
-        // $this->validate($request, $rules);
+// ;       dd($request->all());
         $page = Page::find($id);
 
         $data = [
-            'title' => clean_html($request->title),
-            'page_content' => clean_html($request->post_content),
+            'title_ar' => clean_html($request->title_ar),
+            'page_content_en' => clean_html($request->page_content_en),
+            'title_en' => clean_html($request->title_en),
+            'page_content_ar' => clean_html($request->page_content_ar),
         ];
 
         $page->update($data);
@@ -98,8 +96,9 @@ class PageController extends Controller
         if (!$page) {
             return view('theme.error_404');
         }
-        $title = $page->title;
-        return view('admin.pages.show', compact('title', 'page'));
+        $title_ar = $page->title_ar;
+        $title_en = $page->title_en;
+        return view('admin.pages.show', compact( 'title_ar' ,'title_en', 'page'));
     }
     public function pageSingle($slug)
     {

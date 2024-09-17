@@ -38,4 +38,11 @@ return [
     'period'            => "عدد ايام الدورة" ,
     'Front_Office'      => "واجهة المستخدم",
     "Logout"            => "تسجيل الخروج",
+
+    'nothing_here'      => 'لا توجد بيانات',
+    'nothing_here_desc' => 'ليس هناك شئ',
+    'center'            => '',
+    'action'            => 'العمليات',
+    'image'             => 'الصورة',
+    // 'add'=> '',
 ];

@@ -17,51 +17,34 @@ class CategoryController extends Controller
         return view('admin.categories.categories', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     */
     public function create(){
         $data['title'] = __('category');
         $data['sub_title'] = __('category_create');
-        $data['categories'] = Category::whereStep(0)->with('sub_categories')->orderBy('category_name', 'asc')->get();
+        $data['categories'] = Category::whereStep(0)->with('sub_categories')->orderBy('id', 'asc')->get();
 
         return view('admin.categories.category_add', $data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     */
+
     public function store(Request $request)
     {
-        if(is_live_env()) return back()->with('error', __a('demo_restriction'));
 
         $user_id = Auth::user()->id;
-        // $rules = [
-        //     'category_name' => 'required',
-        //     'title' => 'max:100',
-        //     // 'category_image' => 'required',
-        // ];
-        // if($request->parent==0) {
-        //     $rules['category_image'] = 'required';
-        // }
-        // $this->validate($request, $rules);
-
-        $slug = unique_slug(clean_html($request->category_name), 'Models\Category');
+        $slug = unique_slug(clean_html($request->category_name_en), 'Models\Category');
 
         $data = [
             'user_id'               => $user_id,
-            'category_name'         => clean_html($request->category_name),
+            'category_name_en'         => clean_html($request->category_name_en),
+            'category_name_ar'         => clean_html($request->category_name_ar),
             'slug'                  => $slug,
             'category_id'           => clean_html($request->parent),
             'icon_class'            => clean_html($request->icon_class),
             'thumbnail_id'          => clean_html($request->thumbnail_id),
             'category_image'        => ($request->parent==0) ? $request->category_image : 0,
-            'title'                 => clean_html($request->title),
-            'description'           => clean_html($request->description),
+            'title_ar'                 => clean_html($request->title_ar),
+            'title_en'                 => clean_html($request->title_en),
+            'description_ar'           => clean_html($request->description_ar),
+            'description_en'           => clean_html($request->description_en),
             'status'                => clean_html($request->status),
             'step'                  => 0,
             'is_top'                => 0,
@@ -87,9 +70,8 @@ class CategoryController extends Controller
     public function edit($id){
         $category = Category::find($id);
 
-        $data['title'] = __a('category_edit');
         $data['category'] = $category;
-        $data['categories'] = Category::whereStep(0)->with('sub_categories')->orderBy('category_name', 'asc')->where('id', '!=', $id)->get();
+        $data['categories'] = Category::whereStep(0)->with('sub_categories')->orderBy('id', 'asc')->where('id', '!=', $id)->get();
 
         if ( ! $category){
             abort(404);
@@ -98,40 +80,33 @@ class CategoryController extends Controller
         return view('admin.categories.category_edit', $data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     */
+
     public function update(Request $request, $id){
-        if(is_live_env()) return back()->with('error', __a('demo_restriction'));
+        // if(is_live_env()) return back()->with('error', __('demo_restriction'));
 
-        $category = Category::find($id);
-        if ( ! $category){
-            return back()->with('error', trans('admin.category_not_found'));
-        }
+        $category = Category::findOrFail($id);
+        // if ( ! $category){
+        //     return back()->with('error', trans('admin.category_not_found'));
+        // }
 
-        $rules = [
-            'category_name' => 'required',
-            'title' => 'max:100',
-            // 'category_image' => 'required',
-        ];
-        if($request->parent==0) {
-            $rules['category_image'] = 'required';
-        }
-        $this->validate($request, $rules);
+    
+        // if($request->parent==0) {
+        //     $rules['category_image'] = 'required';
+        // }
 
         $data = [
-            'category_name'         => clean_html($request->category_name),
+            'category_name_ar'         => clean_html($request->category_name_ar),
+            'category_name_en'         => clean_html($request->category_name_en),
             'category_id'           => $request->parent,
             'icon_class'            => $request->icon_class,
             'thumbnail_id'          => $request->thumbnail_id,
             'step'                  => 0,
             'status'                => $request->status,
             'category_image'        => ($request->parent==0) ? $request->category_image : 0,
-            'title'                 => clean_html($request->title),
-            'description'           => clean_html($request->description),
+            'title_ar'                 => clean_html($request->title_ar),
+            'title_en'                 => clean_html($request->title_en),
+            'description_ar'           => clean_html($request->description_ar),
+            'description_en'           => clean_html($request->description_en),
             'updated_at'            => date('Y-m-d H:i:s')
         ];
 
@@ -152,21 +127,23 @@ class CategoryController extends Controller
      *
      * @param  int  $id
      */
-    public function destroy(Request $request)
+    public function destroy($slug)
     {
-        if(is_live_env()) return back()->with('error', __a('demo_restriction'));
-
-        if (count($request->categories)){
-            foreach($request->categories as $cid) {
-                $course_count = Course::where('category_id', $cid)->orWhere('second_category_id', $cid)->orWhere('parent_category_id', $cid)->count();
-                if($course_count > 0) {
-                    return ['success' => false, 'message' => 'Unable to delete categories. Some categories are in used', 'data' => ''];
-                }
-            }
-            Category::whereIn('id', $request->categories)->delete();
-            return ['success' => true, 'message' => '', 'data' => ''];
-        }
-        return ['success' => false, 'message' => '', 'data' => ''];
+        
+ $category = Category::whereSlug($slug)->first();
+ $category->delete();
+ return back()->with('success', 'Deleted Successfully');
+        // if (count($request->categories)){
+        //     foreach($request->categories as $cid) {
+        //         $course_count = Course::where('category_id', $cid)->orWhere('second_category_id', $cid)->orWhere('parent_category_id', $cid)->count();
+        //         if($course_count > 0) {
+        //             return ['success' => false, 'message' => 'Unable to delete categories. Some categories are in used', 'data' => ''];
+        //         }
+        //     }
+        //     Category::whereIn('id', $request->categories)->delete();
+        //     return ['success' => true, 'message' => '', 'data' => ''];
+        // }
+        // return ['success' => false, 'message' => '', 'data' => ''];
     }
 
     public function getTopicOptions(Request $request){

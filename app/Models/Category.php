@@ -17,7 +17,8 @@ class Category extends Model
         return $query->where('category_id', 0)->orWhere('category_id', null);
     }
 
-    public function courses()
+
+    public function departments()
     {
         $foreignKey = 'category_id';
         if (! $this->step) {
@@ -26,40 +27,21 @@ class Category extends Model
             $foreignKey = 'second_category_id';
         }
 
-        return $this->hasMany(Course::class, $foreignKey)->publish()->authorExist()->orderBy('created_at', 'desc');
-    }
-    public function offers()
-    {
-        $foreignKey = 'category_id';
-        if (! $this->step) {
-            $foreignKey = 'parent_category_id';
-        } elseif ($this->step == 1) {
-            $foreignKey = 'second_category_id';
-        }
-
-        return $this->hasMany(Offer::class, $foreignKey)->publish()->authorExist()->orderBy('created_at', 'desc');
+        return $this->hasMany(Department::class, $foreignKey)->publish()->authorExist()->orderBy('created_at', 'desc');
     }
 
-    public function category_courses()
+
+    public function category_department()
     {
         $foreignKey = 'category_id';
 
-        return $this->hasMany(Course::class, $foreignKey)->publish()->authorExist();
-    }
-    public function category_offers()
-    {
-        $foreignKey = 'category_id';
-
-        return $this->hasMany(Offer::class, $foreignKey)->publish()->authorExist();
+        return $this->hasMany(Department::class, $foreignKey)->publish()->authorExist();
     }
 
-    public function topic_courses()
+
+    public function topic_departments()
     {
-        return $this->belongsToMany(Course::class, 'course_category', 'category_id', 'course_id')->publish()->authorExist();
-    }
-    public function topic_offers()
-    {
-        return $this->belongsToMany(Offer::class, 'offer_category', 'category_id', 'offer_id')->publish()->authorExist();
+        return $this->belongsToMany(Department::class, 'departments_categories', 'category_id', 'department_id')->publish()->authorExist();
     }
 
     /**
@@ -99,11 +81,11 @@ class Category extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    public function getBgColorAttribute()
-    {
-        $bg_color = '#303' . substr(md5($this->category_name), 0, 3);
-        return $bg_color;
-    }
+    // public function getBgColorAttribute()
+    // {
+    //     $bg_color = '#303' . substr(md5($this->category_name), 0, 3);
+    //     return $bg_color;
+    // }
 
     // public function getCategoryImageUrlAttribute()
     // {

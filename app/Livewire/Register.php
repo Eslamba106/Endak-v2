@@ -14,13 +14,14 @@ class Register extends Component
     public $phone;
 
     public $password;
+    public $image;
 
     protected $rules = [
         "first_name"        => "required|min:3",
         "last_name"         => "required|min:3",
         'email'             => "email", 
-        'password'          => "required|confirmed|min:6", 
-        'phone'             => "required|number|unique",                    
+        'password'          => "required|min:6", 
+        'phone'             => "required",                    
     ];
 
     public function updated($propertyName)

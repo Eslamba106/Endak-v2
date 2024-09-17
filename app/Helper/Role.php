@@ -10,16 +10,16 @@ if (!function_exists("getAdminPanelUrl")) {
 }
 
 if (!function_exists("uploadImage")) {
-    function uploadImage( $request , $folder_name , $name)
+    function uploadImage( $request , $folder_name , $name): mixed
     {
         if (!$request->hasFile($name)) {
-            return;
+            return 0;
         } else {
             $file = $request->file($name);
             $path = $file->store($folder_name, [
                 'disk' => 'public',
             ]);
-            \Log::info('path is ' . $path);
+            // \Log::info('path is ' . $path);
             return $path;
         }
     }

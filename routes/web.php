@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\DepartmentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,7 @@ use App\Http\Controllers\Admin\PageController;
 Route::get('/', function () {
     return view('layouts.home');
 })->name('home');
-// Route::get('{slug}', [PageController::class , 'pageSingle'])->name('page');
+Route::get('/page/{slug}', [PageController::class , 'pageSingle'])->name('page');
 
 // // Translation
 
@@ -39,3 +41,6 @@ Route::post('/register' , [AuthController::class , 'register'])->middleware('gue
 Route::get('logout' , [AuthController::class , 'logout'])->middleware('auth')->name('logout');
 Route::get('/forgot-password', [AuthController::class , 'forgotPassword'])->name('forgot-password');
 
+
+// // Departments 
+Route::get('/departments', [DepartmentsController::class , 'index'])->name('departments');

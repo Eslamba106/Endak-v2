@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('role_name',64);
             $table->integer('role_id')->unsigned();
             $table->integer('otp')->unsigned()->nullable();
+            $table->enum('status' , ['active' , 'disactive' , 'banned'])->default('disactive');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('image')->nullable();

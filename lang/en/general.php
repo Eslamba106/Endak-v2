@@ -39,4 +39,11 @@ return [
 
     'Front_Office'      => "Front Office",
     "Logout"            => "Logout",
+    'nothing_here'      => 'No Data Here',
+    'nothing_here_desc' => 'Nothing Here',
+    'center'            => 'center',
+    'action'            => 'action',
+    'image'             => 'image',
+
+
 ];

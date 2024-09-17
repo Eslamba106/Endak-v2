@@ -13,29 +13,30 @@
 
     <!-- TITLE -->
     <title>@yield('title')</title>
-    
+
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('assets/images/brand/favicon.ico') }}" type="image/x-icon">
+    {{-- <link rel="icon" href="{{ asset('assets/images/brand/favicon.ico') }}" type="image/x-icon"> --}}
+    <link rel="stylesheet" href="{{ asset('home/assets/css/line-awesome.min.css')  }}">
 
     <!-- BOOTSTRAP CSS -->
-    <link id="style" href="{{ asset('assets/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" >
+    <link id="style" href="{{ asset('home/assets/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- STYLE CSS -->
-    <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" >
+    <link href="{{ asset('home/assets/css/styles.css') }}" rel="stylesheet">
 
     <!-- Simonwep-picker CSS -->
-    <link href="{{ asset('assets/libs/@simonwep/pickr/themes/classic.min.css') }}" rel="stylesheet" >
-    <link href="{{ asset('assets/libs/@simonwep/pickr/themes/monolith.min.css') }}" rel="stylesheet" >
-    <link href="{{ asset('assets/libs/@simonwep/pickr/themes/nano.min.css') }}" rel="stylesheet" >
+    <link href="{{ asset('home/assets/libs/@simonwep/pickr/themes/classic.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/assets/libs/@simonwep/pickr/themes/monolith.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/assets/libs/@simonwep/pickr/themes/nano.min.css') }}" rel="stylesheet">
 
     <!-- ICONS CSS -->
-    <link href="../assets/css/icons.css" rel="stylesheet" >
+    <link href="{{ asset('home/assets/css/icons.css') }}" rel="stylesheet">
     @yield('style')
 </head>
 
 <body class="main-body light-theme">
 
-    
+
     <!-- Back-to-top -->
 
 
@@ -46,11 +47,11 @@
 
     <div class="page">
 
-        
+
         @include('layouts.front_office.header')
 
         <div class="main-content app-content">
-            
+
             @yield('header')
             {{-- <section>
                 <div class="section banner-4 banner-section">
@@ -73,32 +74,32 @@
 
         @include('layouts.front_office.footer')
 
-    
 
-    <!-- Bootstrap js -->
-    <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Popper JS -->
-    <script src="{{ asset('assets/libs/@popperjs/core/umd/popper.min.js') }}"></script>
+        <!-- Bootstrap js -->
+        <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Defaultmenu JS -->
-    <script src="{{ asset('assets/js/defaultmenu.js') }}"></script>
+        <!-- Popper JS -->
+        <script src="{{ asset('assets/libs/@popperjs/core/umd/popper.min.js') }}"></script>
 
-    <!-- Categorymenu JS -->
-    <script src="{{ asset('assets/js/category-menu.js') }}"></script>
-    
-    <!-- Accept-cookie JS -->
-    <script src="{{ asset('assets/js/cookies.js') }}"></script>
+        <!-- Defaultmenu JS -->
+        <script src="{{ asset('assets/js/defaultmenu.js') }}"></script>
 
-    <!-- Custom-switcher JS -->
-    <script src="{{ asset('assets/js/custom-switcher.js') }}"></script>
+        <!-- Categorymenu JS -->
+        <script src="{{ asset('assets/js/category-menu.js') }}"></script>
 
-    <!-- Sticky JS -->
-    <script src="{{ asset('assets/js/sticky.js') }}"></script>
+        <!-- Accept-cookie JS -->
+        <script src="{{ asset('assets/js/cookies.js') }}"></script>
 
-    <!-- CUSTOM JS -->
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
-    @yield('script')
+        <!-- Custom-switcher JS -->
+        <script src="{{ asset('assets/js/custom-switcher.js') }}"></script>
+
+        <!-- Sticky JS -->
+        <script src="{{ asset('assets/js/sticky.js') }}"></script>
+
+        <!-- CUSTOM JS -->
+        <script src="{{ asset('assets/js/custom.js') }}"></script>
+        @yield('script')
 </body>
 
 </html>

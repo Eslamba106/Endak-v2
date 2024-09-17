@@ -74,10 +74,10 @@ if (!function_exists('unique_slug')) {
 if (!function_exists('no_data')) {
     function no_data($title = '', $desc = '', $class = null)
     {
-        $title = $title ? $title : __('nothing_here');
-        $desc = $desc ? $desc : __('nothing_here_desc');
+        $title = $title ? $title : __('general.nothing_here');
+        $desc = $desc ? $desc : __('general.nothing_here_desc');
         $class = $class ? $class : 'my-4 pb-4';
-        $no_data_img = asset('assets/images/no-data.svg');
+        $no_data_img = asset('images/no-data.svg');
 
         $output = " <div class='no-data-screen-wrap text-center {$class} '>
             <img src='{$no_data_img}' style='max-height: 250px; width: auto' />
@@ -100,5 +100,25 @@ if (!function_exists('icon_classes')) {
         return $icons;
     }
 }
+if (!function_exists('selected')) {
+    function selected($selected, $current = true, $echo = true)
+    {
+        return __checked_selected_helper($selected, $current, $echo, 'selected');
+    }
+}
 
+if (!function_exists('__checked_selected_helper')) {
+    function __checked_selected_helper($helper, $current, $echo, $type)
+    {
+        if ((string) $helper === (string) $current)
+            $result = " $type='$type'";
+        else
+            $result = '';
+
+        if ($echo)
+            echo $result;
+
+        return $result;
+    }
+}
 

@@ -10,7 +10,7 @@ class Department extends Model
 {
     use HasFactory;
 
-    protected $gurded = ['id'];
+    protected $guarded = ['id'];
 
     public function scopeParent($query)
     {
@@ -25,33 +25,41 @@ class Department extends Model
         return $this->belongsTo(Department::class, 'department_id', 'id');
     }
 
-    public function departmentNameParent()
-    {
-        $parent_id = $this->id;
-        $department_name = '';
+    // public function departmentNameParent()
+    // {
+    //     $parent_id = $this->id;
+    //     $department_name = '';
 
-        if ($parent_id) {
-            $parent_department_names = [];
-            while ($parent_id) {
-                $department = DB::table('departments')->whereId($parent_id)->first();
-                $parent_id = $department->id;
-                $parent_department_names[] = $department->name;
-            }
-            //krsort($parent_category_names);
-            $department_name .= ' → ' . implode(' → ', $parent_department_names);
-        }
-        return $department_name;
-    }
+    //     if ($parent_id) {
+    //         $parent_department_names = [];
+    //         while ($parent_id) {
+    //             $department = DB::table('departments')->whereId($parent_id)->first();
+    //             $parent_id = $department->id;
+    //             $parent_department_names[] = $department->name;
+    //         }
+    //         //krsort($parent_category_names);
+    //         $department_name .= ' → ' . implode(' → ', $parent_department_names);
+    //     }
+    //     return $department_name;
+    // }
 
-    public function getCategoryNameParent()
-    {
-        $department_name = $this->name . $this->departmentNameParent();
-        return $department_name;
-    }
+    // public function getDepartmentNameParent()
+    // {
+    //     $department_name = $this->name . $this->departmentNameParent();
+    //     return $department_name;
+    // }
 
     public function getImageUrlAttribute()
     {
-        return asset('storage/' . $this->image);
+        return asset( 'storage/' . $this->image);
+    }
+    public function topics()
+    {
+        return $this->belongsToMany(Category::class, 'departments_categories');
+    }
+    public function second_category()
+    {
+        return $this->belongsTo(Category::class, 'second_category_id');
     }
 
 }

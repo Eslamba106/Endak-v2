@@ -51,9 +51,10 @@ Route::group(['prefix' => 'categories'], function () {
     Route::get('/create', [CategoryController::class ,'create'])->name('admin.categories.create');
     Route::post('/create', [CategoryController::class ,'store'])->name('admin.categories.store');
     Route::get('/edit/{category}' , [CategoryController::class , 'edit'])->name('admin.categories.edit');
-    Route::put('/update/{category}' , [CategoryController::class , 'update'])->name('admin.categories.update');
+    Route::get('/show/{slug}' , [DepartmentController::class , 'show'])->name('admin.categories.show');
+    Route::post('/edit/{category}' , [CategoryController::class , 'update'])->name('admin.categories.update');
     Route::post('update_top_categories', 'CategoriesController@update_top_categories')->name('update_top_categories');
-    Route::delete('/delete', [CategoryController::class ,'destroy'])->name('admin.categories.delete');
+    Route::get('/delete/{slug}', [CategoryController::class ,'destroy'])->name('admin.categories.delete');
 
 });
 
@@ -77,9 +78,10 @@ Route::group(['prefix' => 'departments'], function () {
     Route::get('/' , [DepartmentController::class , 'index'])->name('admin.departments');
     Route::get('/create', [DepartmentController::class ,'create'])->name('admin.departments.create');
     Route::post('/create', [DepartmentController::class ,'store'])->name('admin.departments.store');
+    Route::get('/show/{slug}' , [DepartmentController::class , 'show'])->name('admin.departments.show');
     Route::get('/edit/{category}' , [DepartmentController::class , 'edit'])->name('admin.departments.edit');
-    Route::put('/update/{category}' , [DepartmentController::class , 'update'])->name('admin.departments.update');
+    Route::post('/edit/{category}' , [DepartmentController::class , 'update'])->name('admin.departments.update');
     Route::post('update_top_departments', 'DepartmentController@update_top_departments')->name('update_top_departments');
-    Route::delete('/delete', [DepartmentController::class ,'destroy'])->name('admin.departments.delete');
+    Route::get('/delete/{slug}', [DepartmentController::class ,'destroy'])->name('admin.departments.delete');
 
 });

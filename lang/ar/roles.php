@@ -39,5 +39,12 @@ return [
     'Update_Category'                                               => 'تحديث التصنيف',
     'Delete_Category'                                               => 'حذف التصنيف',
     'General_Dashboard_page'                                        => 'لوحة التحكم',
+    
+    'Admin_Departments'                                      => 'الاقسام',
+    'Show_All_Departments'  => 'عرض جميع الأقسام',
+    'Show_Department'       => 'عرض القسم',
+    'Create_Department'     => 'إنشاء قسم',
+    'Update_Department'     => 'تحديث القسم',
+    'Delete_Department'     => 'حذف القسم',
 ];
 
