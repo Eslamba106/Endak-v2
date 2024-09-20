@@ -26,6 +26,10 @@ class AbstractRepo
     {
         return $this->model::where('id' , $id)->first();
     }
+    public function getAllWith($key , $value)
+    {
+        return $this->model::where($key , $value)->paginate(6);
+    }
 
     public function getPaginate($paginate = 10)
     {

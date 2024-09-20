@@ -4,6 +4,7 @@
 return [
     'categories'                                    => "Categories",
     "edit_category"                                 => "Edit Category",
+    "create_category"                               => "Create Category",
     "category_name_ar"                              => "Category Name in Arabic ",
     "category_name_en"                              => "Category Name in English ",
     "parent"                                        => "Parent Category",

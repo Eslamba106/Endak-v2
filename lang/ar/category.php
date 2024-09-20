@@ -4,7 +4,8 @@
 return [
     'categories'                                    => "التصنيفات",
     "edit_category"                                 => "تعديل تصنيف",
-    "create_category"                                 => "انشاء تصنيف",
+    "create_category"                               => "انشاء تصنيف",
+    // "category_create"                               => "انشاء تصنيف",
     "category_name_ar"                              => "اسم التصنيف بالعربية ",
     "category_name_en"                              => "اسم التصنيف بالإنجليزية ",
     "parent"                                        => "التصنيف الرئيسية",

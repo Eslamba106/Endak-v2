@@ -3,6 +3,7 @@
 
 return [
     "pages"                                             => "Pages",
+    "page"                                             => "Page",
     "page_create"                                       => "Create Page",
     "create_page"                                       => "Create Page",
     "edit_page"                                         => "Edit Page",

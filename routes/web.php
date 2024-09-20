@@ -4,6 +4,7 @@ use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\DepartmentsController;
 
 /*
@@ -44,3 +45,9 @@ Route::get('/forgot-password', [AuthController::class , 'forgotPassword'])->name
 
 // // Departments 
 Route::get('/departments', [DepartmentsController::class , 'index'])->name('departments');
+
+
+// Posts
+
+Route::get('posts/{id}', [PostController::class , 'index' ])->name('web.posts');
+Route::get('posts/{id}/create', [PostController::class , 'create' ])->name('web.posts.create');

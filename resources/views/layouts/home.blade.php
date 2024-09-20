@@ -77,28 +77,28 @@
 
 
         <!-- Bootstrap js -->
-        <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('home/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
         <!-- Popper JS -->
-        <script src="{{ asset('assets/libs/@popperjs/core/umd/popper.min.js') }}"></script>
+        <script src="{{ asset('home/assets/libs/@popperjs/core/umd/popper.min.js') }}"></script>
 
         <!-- Defaultmenu JS -->
-        <script src="{{ asset('assets/js/defaultmenu.js') }}"></script>
+        <script src="{{ asset('home/assets/js/defaultmenu.js') }}"></script>
 
         <!-- Categorymenu JS -->
-        <script src="{{ asset('assets/js/category-menu.js') }}"></script>
+        <script src="{{ asset('home/assets/js/category-menu.js') }}"></script>
 
         <!-- Accept-cookie JS -->
-        <script src="{{ asset('assets/js/cookies.js') }}"></script>
+        <script src="{{ asset('home/assets/js/cookies.js') }}"></script>
 
         <!-- Custom-switcher JS -->
-        <script src="{{ asset('assets/js/custom-switcher.js') }}"></script>
+        <script src="{{ asset('home/assets/js/custom-switcher.js') }}"></script>
 
         <!-- Sticky JS -->
-        <script src="{{ asset('assets/js/sticky.js') }}"></script>
+        <script src="{{ asset('home/assets/js/sticky.js') }}"></script>
 
         <!-- CUSTOM JS -->
-        <script src="{{ asset('assets/js/custom.js') }}"></script>
+        <script src="{{ asset('home/assets/js/custom.js') }}"></script>
         @yield('script')
 </body>
 

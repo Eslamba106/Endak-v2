@@ -18,14 +18,16 @@ class ResponseServiceProvider extends ServiceProvider
                 return response()->json([
                     'success' => true,
                     'message' => $message,
+                    'status'=> $status,
                     'data' => $data,
                 ], $status);
             });
 
-            Response::macro('apiFail', function ($message = 'fail', $status = 400) {
+            Response::macro('apiFail', function ($message = 'fail', $status = 404) {
                 return response()->json([
                     'success' => false,
                     'message' => $message,
+                    'status'=> $status
                 ], $status);
             });
         }

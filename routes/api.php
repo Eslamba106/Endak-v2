@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,6 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login' , [AuthController::class , 'login'])->name('api_login');
 Route::post('/register' , [AuthController::class , 'register'])->name('api_register');
 Route::get('/logout', [AuthController::class , 'logout'])->name('api_logout')->middleware('auth:sanctum');
+
+Route::get('/posts', [PostController::class ,'index'])->name('all_posts');
+Route::post('/posts/store', [PostController::class ,'store'])->name('post.store');
