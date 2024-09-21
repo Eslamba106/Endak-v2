@@ -181,6 +181,41 @@
 
                     </li>
                 @endcan
+                {{-- @can('Admin_Pages') --}}
+                    <li class="nav-item has-treeview">
+                        <a href="" class="nav-link {{ request()->is('admin/posts*') ? 'active' : '' }}">
+                            <i class="fas fa-file-alt nav-icon"></i>
+                            <p>
+                                {{ __('posts.posts') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        {{-- @can('Edit_Admin_Settings') --}}
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.posts') }}" class="nav-link {{ request()->is('admin/posts') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> {{ __('posts.posts') }} </p>
+                                    </a>
+                                </li>
+                                {{-- <li class="nav-item">
+                                    <a href="{{ route('admin.pages.create') }}" class="nav-link {{ request()->is('admin/pages/create') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> {{ __('page.page_create') }} </p>
+                                    </a>
+                                </li> --}}
+                                {{-- <li class="nav-item">
+                                    <a href="" class="nav-link {{ request()->is('admin/pages/edit') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> {{ __('page.edit_page') }} </p>
+                                    </a>
+                                </li> --}}
+
+                            </ul>
+                        {{-- @endcan --}}
+
+                    </li>
+                {{-- @endcan --}}
 
 
                 @can('Admin_Settings')

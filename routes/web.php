@@ -51,3 +51,5 @@ Route::get('/departments', [DepartmentsController::class , 'index'])->name('depa
 
 Route::get('posts/{id}', [PostController::class , 'index' ])->name('web.posts');
 Route::get('posts/{id}/create', [PostController::class , 'create' ])->name('web.posts.create');
+Route::get('posts/upload_video', [PostController::class , 'uploadLargeFiles' ])->name('web.files.upload.large');
+Route::post('posts/store', [PostController::class , 'store' ])->name('web.posts.store');

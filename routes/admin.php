@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -85,3 +86,22 @@ Route::group(['prefix' => 'departments'], function () {
     Route::get('/delete/{slug}', [DepartmentController::class ,'destroy'])->name('admin.departments.delete');
 
 });
+
+// Posts 
+
+Route::group(['prefix' => 'posts'], function () {
+
+    Route::get('/' , [PostController::class , 'index'])->name('admin.posts');
+    // Route::post('post-stats', [PostController::class , 'post_stats'])->name('post-stats');
+    Route::post('status-update', [PostController::class , 'status_update'])->name('admin.posts.status-update');
+
+    // Route::get('/create', [PageController::class ,'create'])->name('admin.pages.create');
+    // Route::post('/create', [PageController::class ,'store'])->name('admin.pages.store');
+    Route::get('/posts/{slug}' , [PageController::class , 'show'])->name('admin.posts.show');
+    // Route::get('/edit/{setting}' , [PageController::class , 'edit'])->name('admin.pages.edit');
+    // Route::put('/update/{id}' , [PageController::class , 'update'])->name('admin.pages.update');
+    // Route::delete('/delete', [PageController::class ,'destroy'])->name('admin.pages.delete');
+
+});
+
+// 

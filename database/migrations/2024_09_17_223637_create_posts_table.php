@@ -17,10 +17,12 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->text('notes')->nullable();
             $table->string('price')->nullable();
+            $table->string('slug')->nullable();
             $table->string('title')->nullable();
             $table->string('description')->nullable();
 
             $table->string('days_count')->nullable();
+            $table->string('count')->nullable();
 
             $table->enum('status' , ['open' , 'close','active' , 'inactive' ])->default('active');
             $table->enum('add_order' , ['open' , 'pending' , 'complete' ])->default('open');
@@ -37,23 +39,28 @@ return new class extends Migration
             $table->string('to_neighborhood')->nullable();
             $table->string('to_floor')->nullable();
             $table->string('to_house')->nullable();
-
             $table->string('image')->nullable();
-
-            // not 
             $table->string('video')->nullable();
             $table->string('explain')->nullable();
+            $table->string('modal')->nullable();
+            $table->string('manufacturing_year')->nullable();
 
             $table->string('section')->nullable();
             $table->string('code_number')->nullable();
+
             $table->string('name')->nullable();
+
             $table->string('cars')->nullable();
             $table->string('clean')->nullable();
             $table->string('Verion')->nullable();
+
+            
             $table->string('fixed')->nullable();
             $table->string('fingerprint')->nullable();
             $table->string('camera')->nullable();
             $table->string('type')->nullable();
+            $table->string('smart')->nullable();
+            $table->string('system_security')->nullable();
             $table->string('fire_system')->nullable();
             $table->string('networks')->nullable();
             $table->time('time')->nullable();
@@ -62,6 +69,7 @@ return new class extends Migration
             $table->date('date')->nullable();
             $table->string('size')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
