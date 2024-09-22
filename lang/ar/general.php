@@ -44,5 +44,12 @@ return [
     'center'            => '',
     'action'            => 'العمليات',
     'image'             => 'الصورة',
+    'update'            => 'تحديث',
+    'show'              => "عرض",
+    'updated_successfully' => "تم التحديث بنجاح !",
+    'created_successfully' => "تم الاضافة بنجاح !",
+    'deleted_successfully' => "تم الحذف بنجاح !",
+    'actions'             => 'العمليات',
+
     // 'add'=> '',
 ];

@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('days_count')->nullable();
             $table->string('count')->nullable();
 
-            $table->enum('status' , ['open' , 'close','active' , 'inactive' ])->default('active');
-            $table->enum('add_order' , ['open' , 'pending' , 'complete' ])->default('open');
+            $table->enum('admin_status' , ['active' , 'inactive' ])->default('active');
+            $table->enum('status' , ['open' , 'close','pending' , 'complete' ])->default('open');
 
             $table->string('from_city')->nullable();
             $table->string('from_neighborhood')->nullable();

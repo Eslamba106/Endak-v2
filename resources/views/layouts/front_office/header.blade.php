@@ -225,7 +225,7 @@
                                                 </li>
                                                 @forelse ($department->sub_Departments as $sub_Department)
                                                     <li class="slide">
-                                                        <a href="register-domain.html" class="side-menu__item">
+                                                        <a href="{{ route('web.posts' , $sub_Department->id) }}" class="side-menu__item">
                                                             <div class="d-lg-flex align-items-start">
                                                                 <div class="me-3">
                                                                     <span

@@ -44,6 +44,11 @@ return [
     'center'            => 'center',
     'action'            => 'action',
     'image'             => 'image',
-
+    'update'            => 'Update',
+    'show'              => "Show",
+    'updated_successfully' => "Updated Successfully !",
+    'created_successfully' => "Created Successfully !",
+    'deleted_successfully' => "Deleted Successfully !",
+    'actions'             => 'Actions',
 
 ];

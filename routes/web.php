@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -45,11 +46,17 @@ Route::get('/forgot-password', [AuthController::class , 'forgotPassword'])->name
 
 // // Departments 
 Route::get('/departments', [DepartmentsController::class , 'index'])->name('departments');
+Route::get('/departments/{id}', [DepartmentsController::class , 'show'])->name('departments.show');
 
 
 // Posts
 
 Route::get('posts/{id}', [PostController::class , 'index' ])->name('web.posts');
+Route::get('posts/show/{id}', [PostController::class , 'show' ])->name('web.posts.show');
 Route::get('posts/{id}/create', [PostController::class , 'create' ])->name('web.posts.create');
 Route::get('posts/upload_video', [PostController::class , 'uploadLargeFiles' ])->name('web.files.upload.large');
 Route::post('posts/store', [PostController::class , 'store' ])->name('web.posts.store');
+
+// Comments
+
+Route::post('/comments/create' , [CommentController::class , 'store'])->name('comments.store');

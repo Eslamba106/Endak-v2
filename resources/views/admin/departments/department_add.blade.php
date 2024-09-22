@@ -42,7 +42,7 @@
                                 <option value="{{ $department->id }}"> {!! $lang == 'ar' ? $department->name_ar : $department->name_en !!} </option>
                                 @foreach ($department->sub_Departments as $sub_Department)
                                     <option value="{{ $sub_Department->id }}"> &nbsp;&nbsp;&nbsp; &raquo;
-                                        {!! $lang == 'ar' ? $sub_Departments->name_ar : $sub_Departments->name_en !!} </option>
+                                        {!! $lang == 'ar' ? $sub_Department->name_ar : $sub_Department->name_en !!} </option>
                                 @endforeach
                             @endforeach
                         @endif

@@ -12,16 +12,23 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'Login' => 'تسجيل الدخول',
-    'Email_Or_Phone' => 'البريد الإلكتروني أو رقم الهاتف',
-    'The email field is required.' => 'حقل البريد الإلكتروني مطلوب.',
-    'Password' => 'كلمة المرور',
-    'The password field is required.' => 'حقل كلمة المرور مطلوب.',
-    'Forget_Password' => 'نسيت كلمة المرور',
-    'Register' => 'تسجيل',
+    'register'        => 'تسجيل',
+    'first_name'      => 'الاسم الأول',
+    'last_name'       => 'الاسم الأخير',
+    'phone'           => 'رقم الهاتف',
+    'email'           => 'البريد الإلكتروني', 
+    'password'        => 'كلمة المرور',
+    'confirm_password'=> 'تأكيد كلمة المرور',
+    'Do_You_Have_Account' => 'هل لديك حساب؟',
+    'Email_Or_Phone'      => 'البريد الإلكتروني أو رقم الهاتف',
+    'Forget_Password'     => 'نسيت كلمة المرور؟',
+    'login'               => 'تسجيل الدخول',
+    'Phone_Number'      => 'رقم الهاتف',
+    'Send_OTP'           => 'إرسال رمز التحقق',
 
-    // 'failed' => 'These credentials do not match our records.',
-    // 'password' => 'The provided password is incorrect.',
-    // 'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+
+
+
+    
 
 ];

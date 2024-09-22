@@ -28,6 +28,9 @@ class UserServices
         {
             $user = User::where('email' , $data['email'])->orWhere('phone' , $data['email'])->first();
             return $user;
+        }elseif(Auth::attempt(['phone' => $data['phone'], 'password' => $data['password']])){
+            $user = User::where('email' , $data['email'])->orWhere('phone' , $data['email'])->first();
+            return $user;
         }
         else
         {

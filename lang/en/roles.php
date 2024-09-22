@@ -56,4 +56,13 @@ return [
     'Delete_Department'                                       => 'Delete Department',
 
     'General_Dashboard_page'                                => 'Dashboard',
+
+    'Show_All_Posts'           => 'Show All Posts',
+    'Show_Admin_Post'          => 'Show Admin Post',
+    'Show_Post'                 => 'Show Post',
+    'Create_Post'               => 'Create Post',
+    'Update_Post'               => 'Update Post',
+    'Update_Post_Status'        => 'Update Post Status',
+    'Delete_Post'               => 'Delete Post',
+    'Update_Post_Active'        => 'Update Post Active Status',
 ];

@@ -12,6 +12,8 @@ class DepartmentController extends Controller
 {
     public function index(Request $request)
     {
+        $this->authorize('Admin_Departments');
+        $this->authorize('Show_All_Departments');
         $data['title'] = __('department');
         $data['departments'] = Department::with('sub_Departments', 'sub_Departments.sub_Departments')->orderBy('id', 'desc')->paginate(2);
 
@@ -19,6 +21,7 @@ class DepartmentController extends Controller
     }
 
     public function create(){
+        $this->authorize('Create_Department');
         $data['title'] = __('departments');
         $data['sub_title'] = __('department_create');
         $data['departments'] = Department::with('sub_Departments')->orderBy('id', 'asc')->get();
@@ -27,6 +30,7 @@ class DepartmentController extends Controller
     }
     public function store(Request $request)
     {
+        $this->authorize('Create_Department');
 
         $user_id = Auth::user()->id;
 
@@ -65,6 +69,8 @@ class DepartmentController extends Controller
     }
 
     public function edit($id){
+        $this->authorize('Update_Department');
+
         $department = Department::find($id);
 
         $data['title'] = __('category_edit');
@@ -78,6 +84,8 @@ class DepartmentController extends Controller
         return view('admin.departments.department_edit', $data);
     }
     public function show($slug){
+        $this->authorize('Show_Department');
+
         $department = Department::whereSlug($slug)->first();
 
         // $data['department'] = $department;
@@ -91,6 +99,7 @@ class DepartmentController extends Controller
     }
 
     public function update(Request $request, $id){
+        $this->authorize('Update_Department');
 
         $department = Department::find($id);
         if ( ! $department){

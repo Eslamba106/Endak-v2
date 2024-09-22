@@ -31,26 +31,26 @@
 
         </div>
         <div class="form-group">
-            <label for="" class="m-2">{{ __('auth.Email') }}</label>
+            <label for="" class="m-2">{{ __('auth.email') }}</label>
             <input class="form-control" wire:model.lazy="email" type="text" placeholder="{{ __('auth.Email') }}">
             @error('email') <span class="error text-danger">{{ $message }}</span> @enderror
 
         </div>
         <div class="form-group">
-            <label for="" class="m-2">{{ __('auth.Password') }}</label>
-            <input class="form-control" wire:model.lazy="password" type="password" placeholder="{{ __('auth.Password') }}">
+            <label for="" class="m-2">{{ __('auth.password') }}</label>
+            <input class="form-control" wire:model.lazy="password" type="password" placeholder="{{ __('auth.password') }}">
             @error('password') <span class="error text-danger">{{ $message }}</span> @enderror
 
         </div>
         <div class="form-group">
-            <label for="" class="m-2">{{ __('auth.Password') }}</label>
-            <input class="form-control" wire:model.lazy="password" type="password" placeholder="{{ __('auth.Password') }}">
+            <label for="" class="m-2">{{ __('auth.password') }}</label>
+            <input class="form-control" wire:model.lazy="password" type="password" placeholder="{{ __('auth.password') }}">
             @error('password') <span class="error text-danger">{{ $message }}</span> @enderror
 
         </div>
         <div class="form-group">
-            <label for="" class="m-2">{{ __('auth_Password') }}</label>
-            <input class="form-control" wire:model.lazy="image" type="file" placeholder="{{ __('auth.Password') }}">
+            <label for="" class="m-2">{{ __('general.image') }}</label>
+            <input class="form-control" wire:model.lazy="image" type="file" placeholder="{{ __('general.image') }}">
             @error('image') <span class="error text-danger">{{ $message }}</span> @enderror
 
         </div>
@@ -59,7 +59,7 @@
            
             {{-- <a href="" class="m-5">{{ __('auth.Forget_Password') }}</a> --}}
             <p class="m-2 d-inline">
-                <a href="{{ route('login-page') }}">{{ __('auth.Do_You _Have_Account') }}</a>
+                <a href="{{ route('login-page') }}">{{ __('auth.Do_You_Have_Account') }}</a>
             </p>
             
         </div>

@@ -41,6 +41,17 @@ class PostController extends Controller
         $this->post_service->store($data);
         return redirect()->route('web.posts' , $request->department_id)->with('success','Add Seccessfully');
     }
+    public function show($id)
+    {
+        $post = $this->post_service->show($id);
+        // dd($posts);
+        return view('front_office.posts.show', compact('post'));
+    }
+
+
+
+
+
     public function uploadLargeFiles(Request $request)
     {
         $receiver = new FileReceiver('file', $request, HandlerFactory::classFromRequest($request));

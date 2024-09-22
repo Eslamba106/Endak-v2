@@ -27,7 +27,7 @@
 
             <span>{!! $category->category_name_ar !!}</span>
             @if($category->is_top == 1)
-                <span class='badge badge-secondary mx-2'  data-toggle='tooltip' title="{{ __a('top') }}" style="height:18px;"><img src='{{ url("uploads/images/top-menu.png") }}' style="height:11px;margin-top:1px;"/></span>
+                <span class='badge badge-secondary mx-2'  data-toggle='tooltip' title="{{ __('top') }}" style="height:18px;"><img src='{{ url("uploads/images/top-menu.png") }}' style="height:11px;margin-top:1px;"/></span>
             @endif
         </p>
     </td>
@@ -54,7 +54,7 @@
 
             <span>{!! $category->category_name_en !!}</span>
             @if($category->is_top == 1)
-                <span class='badge badge-secondary mx-2'  data-toggle='tooltip' title="{{ __a('top') }}" style="height:18px;"><img src='{{ url("uploads/images/top-menu.png") }}' style="height:11px;margin-top:1px;"/></span>
+                <span class='badge badge-secondary mx-2'  data-toggle='tooltip' title="{{ __('top') }}" style="height:18px;"><img src='{{ url("uploads/images/top-menu.png") }}' style="height:11px;margin-top:1px;"/></span>
             @endif
         </p>
     </td>

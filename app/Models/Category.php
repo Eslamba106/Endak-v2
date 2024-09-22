@@ -10,7 +10,20 @@ class Category extends Model
 {
     protected $guarded = [];
     public $timestamps = true;
-    public $appends = ['category_image_url'];
+    // public $appends = ['category_image_url'];
+
+
+    // public function getCategoryImageUrlAttribute()
+    // {
+    //     $media = Media::find($this->attributes['category_image']);
+    //     $src = ($media) ? $media->slug_ext : '';
+    //     return url('/images/uploads/' . $src);
+    // }
+    // public function getBgColorAttribute()
+    // {
+    //     $bg_color = '#303' . substr(md5($this->category_name), 0, 3);
+    //     return $bg_color;
+    // }
 
     public function scopeParent($query)
     {
@@ -81,18 +94,7 @@ class Category extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
-    // public function getBgColorAttribute()
-    // {
-    //     $bg_color = '#303' . substr(md5($this->category_name), 0, 3);
-    //     return $bg_color;
-    // }
 
-    // public function getCategoryImageUrlAttribute()
-    // {
-    //     $media = Media::find($this->attributes['category_image']);
-    //     $src = ($media) ? $media->slug_ext : '';
-    //     return url('/images/uploads/' . $src);
-    // }
     
     public function getImageUrlAttribute()
     {

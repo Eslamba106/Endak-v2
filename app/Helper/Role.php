@@ -1,6 +1,5 @@
 <?php
 
-
 if (!function_exists("getAdminPanelUrl")) {
     function getAdminPanelUrl($url = null, $withFirstSlash = true)
     {
@@ -10,7 +9,7 @@ if (!function_exists("getAdminPanelUrl")) {
 }
 
 if (!function_exists("uploadImage")) {
-    function uploadImage( $request , $folder_name , $name): mixed
+    function uploadImage($request, $folder_name, $name): mixed
     {
         if (!$request->hasFile($name)) {
             return 0;
@@ -22,5 +21,15 @@ if (!function_exists("uploadImage")) {
             // \Log::info('path is ' . $path);
             return $path;
         }
+    }
+}
+if (!function_exists("uploadImageLivewire")) {
+    function uploadImageLivewire($file, $folder_name): mixed
+    {
+
+        $path = $file->store($folder_name, [
+            'disk' => 'public',
+        ]);
+        return $path;
     }
 }

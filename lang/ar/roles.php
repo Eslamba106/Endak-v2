@@ -46,5 +46,14 @@ return [
     'Create_Department'     => 'إنشاء قسم',
     'Update_Department'     => 'تحديث القسم',
     'Delete_Department'     => 'حذف القسم',
+
+    'Show_All_Posts'           => 'عرض جميع المنشورات',
+    'Show_Admin_Post'          => 'عرض منشور للادمن',
+    'Show_Post'                 => 'عرض المنشور',
+    'Create_Post'               => 'إنشاء منشور',
+    'Update_Post'               => 'تحديث المنشور',
+    'Update_Post_Status'        => 'تحديث حالة المنشور',
+    'Delete_Post'               => 'حذف المنشور',
+    'Update_Post_Active'        => 'تحديث حالة المنشور النشطة',
 ];
 

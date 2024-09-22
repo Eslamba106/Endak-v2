@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-    <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css').'?version='.time()}}">
+    {{-- <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css').'?version='.time()}}"> --}}
 
     <link rel="stylesheet" href="{{ asset('select2-4.0.3/css/select2.css')}}">
     <link rel="stylesheet" href="{{asset('dashboard/css/line-awesome.min.css')}}">
@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ asset('js/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('js/dist/adminlte.min.js') }}"></script>
-    <script src="{{ asset('toastr/toastr.min.js').'?version='.time()}}"></script>
+    {{-- <script src="{{ asset('toastr/toastr.min.js').'?version='.time()}}"></script> --}}
     <script src="{{ asset('select2-4.0.3/js/select2.min.js')}}"></script>
 
     @yield('js')

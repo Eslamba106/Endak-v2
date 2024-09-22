@@ -34,4 +34,8 @@ class AbstractService
     {
         return $this->repo->getAllWith($key , $value);
     }
+
+    // public function getParent(){
+    //     return $this->repo->getParent();
+    // }
 }

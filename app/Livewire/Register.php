@@ -5,9 +5,12 @@ namespace App\Livewire;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
+use Livewire\WithFileUploads;
 
 class Register extends Component
 {
+    use WithFileUploads;
+
     public $first_name;
     public $last_name;
     public $email;
@@ -34,10 +37,10 @@ class Register extends Component
 
         if($this->image){
             
-            $new_image = uploadImage($this , "users" , "image");
+            $new_image = uploadImageLivewire($this->image , "users");
         }
 
-        User::create([
+        $user = User::create([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
@@ -48,6 +51,7 @@ class Register extends Component
             'password' => Hash::make($this->password),
 
         ]);
+        auth()->login($user);
         return redirect()->route('home');
 
     }

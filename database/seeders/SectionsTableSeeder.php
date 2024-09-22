@@ -56,6 +56,18 @@ class SectionsTableSeeder extends Seeder
         Section::updateOrCreate(["id"=> 29], ["name"=> "Delete_Department", 'caption' => "Delete_Department" , 'section_group_id' => 24 ]);
 
 
+        // Posts 30 - 
+        Section::updateOrCreate(['id'=> 30], ['name'=> 'Posts' , 'caption' => 'Posts',]) ;
+        Section::updateOrCreate(["id"=> 31], ["name"=> "Show_All_Posts", 'caption' => "Show_All_Posts" , 'section_group_id' => 30 ]);
+        Section::updateOrCreate(["id"=> 32], ["name"=> "Show_Admin_Post", 'caption' => "Show_Admin_Post" , 'section_group_id' => 30 ]);
+        Section::updateOrCreate(["id"=> 33], ["name"=> "Show_Post", 'caption' => "Show_Post" , 'section_group_id' => 30 ]);
+        Section::updateOrCreate(["id"=> 34], ["name"=> "Create_Post", 'caption' => "Create_Post" , 'section_group_id' => 30 ]);
+        Section::updateOrCreate(["id"=> 35], ["name"=> "Update_Post", 'caption' => "Update_Post" , 'section_group_id' => 30 ]);
+        Section::updateOrCreate(["id"=> 36], ["name"=> "Update_Post_Status", 'caption' => "Update_Post_Status" , 'section_group_id' => 30 ]);
+        Section::updateOrCreate(["id"=> 37], ["name"=> "Delete_Post", 'caption' => "Delete_Post" , 'section_group_id' => 30 ]);
+        Section::updateOrCreate(["id"=> 38], ["name"=> "Update_Post_Active", 'caption' => "Update_Post_Active" , 'section_group_id' => 30 ]);
+
+
         /* Run Panel Sections */
         $this->runPanelSections();
     }

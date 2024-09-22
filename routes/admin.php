@@ -92,6 +92,8 @@ Route::group(['prefix' => 'departments'], function () {
 Route::group(['prefix' => 'posts'], function () {
 
     Route::get('/' , [PostController::class , 'index'])->name('admin.posts');
+    // Route::get('/', 'AdminController@adminOffers')->name('admin_offers');
+
     // Route::post('post-stats', [PostController::class , 'post_stats'])->name('post-stats');
     Route::post('status-update', [PostController::class , 'status_update'])->name('admin.posts.status-update');
 

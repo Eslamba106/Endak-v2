@@ -18,15 +18,15 @@
             @error('email') <span class="error text-danger">{{ $message }}</span> @enderror
         </div>
         <div class="form-group">
-            <label for="" class="m-2">{{ __('auth.Password') }}</label>
-            <input class="form-control" type="password" placeholder="{{ __('auth.Password') }}" wire:model.lazy="password">
+            <label for="" class="m-2">{{ __('auth.password') }}</label>
+            <input class="form-control" type="password" placeholder="{{ __('auth.password') }}" wire:model.lazy="password">
             @error('password') <span class="error text-danger">{{ $message }}</span> @enderror
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-lg w-100 btn-primary mt-2 mb-2">{{ __('auth.Login') }}</button>
+            <button type="submit" class="btn btn-lg w-100 btn-primary mt-2 mb-2">{{ __('auth.login') }}</button>
             <a href="{{ route('forgot-password') }}" class="m-5">{{ __('auth.Forget_Password') }}</a>
             <p class="m-2 d-inline">
-                <a href="{{ route('register-page') }}">{{ __('auth.Register') }}</a>
+                <a href="{{ route('register-page') }}">{{ __('auth.register') }}</a>
             </p>
         </div>
     </form>

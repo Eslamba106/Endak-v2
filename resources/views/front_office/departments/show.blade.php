@@ -33,7 +33,7 @@ $lang = config('app.locale');
                                 <div class="col-md-6">
                                     <div class="card">
                                         <div class="position-relative">
-                                            <a href="{{ route('departments.show' , $department->id) }}">
+                                            <a href="{{ route('web.posts' , $department->id) }}">
                                                 <img class="card-img-top" src="{{ $department->image_url }}" alt="img" width="300" height="300">
                                             </a>
                                             {{-- <span class="badge bg-success blog-badge">{{ $department->name }}</span> --}}
@@ -41,21 +41,7 @@ $lang = config('app.locale');
                                         <div class="card-body d-flex flex-column">
                                             <h5><a href=""> {{ ($lang == 'ar') ? $department->name_ar : $department->name_en }}</a></h5>
                                             <div class="tx-muted">{{ ($lang == 'ar') ?  $department->description_ar : $department->description_en  }}</div>
-                                            {{-- <div class="d-flex align-items-center pt-4 mt-auto"> --}}
-                                                {{-- <div class="avatar me-3 cover-image rounded-circle"> --}}
-                                                    {{-- <img src="../assets/images/profile/3.jpg" class="rounded-circle" alt="img" width="40"> --}}
-                                                    {{-- <i class="fa-solid {{ $department->icon_class }}"></i>  --}}
-                                                    {{-- <i class="la {{$department->icon_class}}" ></i> --}}
-                                                {{-- </div> --}}
-                                                {{-- <div>
-                                                    <a href="javascript:void(0);" class="h6">Dhaval Patel</a>
-                                                    <small class="d-block tx-muted">3 days ago</small>
-                                                </div> --}}
-                                                {{-- <div class="ms-auto">
-                                                    <a href="javascript:void(0)" class="icon d-inline-block tx-muted"><i
-                                                            class="fe fe-heart me-1 rounded-circle p-2 bg-gray-200 tx-muted"></i></a>
-                                                </div> --}}
-                                            {{-- </div> --}}
+                                      
                                         </div>
                                     </div>
                                 </div>
