@@ -14,4 +14,7 @@ return [
     "main"                                          => "رئيسي",
     "details"                                       => "تفاصيل القسم",
     "create_department"                             => "انشاء قسم",
+    "edit_department"                               => "تعديل قسم",
+    "select_input"                                  => 'حدد المدخلات',
+    'inputs'                                        => "المدخلات",
 ];

@@ -1,5 +1,8 @@
 @extends('layouts.dashboard.dashboard')
 
+@section('title')
+    {{ __('department.create_department') }}
+@endsection
 
 @section('content')
     <?php $lang = config('app.locale'); ?>
@@ -99,6 +102,26 @@
             </div>
             <div class="form-group row {{ $errors->has('topics') ? ' has-error' : '' }}">
                 <label class="mb-3 col-sm-3 control-label">{{ __('topics') }} <span style="color:red;">*</span></label>
+                <div class="col-sm-7">
+                    <?php $categories = App\Models\Category::get(); ?>
+
+
+                    @if ($categories->count())
+                        <select name="topics[]" id="tags" class="form-control topics select2" multiple="multiple">
+                            <option value="">{{ __('category.select_category') }}</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ ($lang == 'ar') ? $category->category_name_ar : $category->category_name_en }}</option>
+                 
+                            @endforeach
+                        </select>
+                    @endif
+                    @if ($errors->has('category_id'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
+                    @endif
+                </div>
+            </div>
+            {{-- <div class="form-group row {{ $errors->has('topics') ? ' has-error' : '' }}">
+                <label class="mb-3 col-sm-3 control-label">{{ __('category.topics') }} <span style="color:red;">*</span></label>
                 <?php $categories = App\Models\Category::get(); ?>
                 <div class="col-sm-7">
                     @if ($categories->count())
@@ -121,8 +144,8 @@
                                             @endif
 
                                             <!-- <option value="{{ $sub_category->id }}">
-                                            {{ $sub_category->category_name }}
-                                        </option> -->
+                                                {{ $sub_category->category_name }}
+                                            </option> -->
                                         @endforeach
                                     @endif
                                     </optgroup>
@@ -132,8 +155,28 @@
                     @if ($errors->has('category_id'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
                     @endif
-                </div>
+                </div> --}}
 
+            {{-- </div> --}}
+            <div class="form-group row {{ $errors->has('inputs') ? ' has-error' : '' }}">
+                <label class="mb-3 col-sm-3 control-label">{{ __('department.inputs') }} <span style="color:red;">*</span></label>
+                <div class="col-sm-7">
+                    <?php $all_inputs = App\Models\Inputs::get(); ?>
+
+
+                    @if ($categories->count())
+                        <select name="inputs[]" id="tags" class="form-control inputs select2" multiple="multiple">
+                            <option value="">{{ __('department.select_input') }}</option>
+                            @foreach ($all_inputs as $input)
+                                <option value="{{ $input->id }}" >
+                                    {{ ($lang == 'ar') ? $input->title_ar : $input->title_en }}</option>
+                            @endforeach
+                        </select>
+                    @endif
+                    @if ($errors->has('category_id'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
+                    @endif
+                </div>
             </div>
             {{-- <select class="form-control tags" multiple="multiple">
                     <option selected="selected">orange</option>
@@ -182,5 +225,11 @@
             }
         });
         $('#parent').trigger('change');
+    </script>
+    <script>
+        $(".inputs").select2({
+            topics: true,
+            tokenSeparators: [',', ' ']
+        })
     </script>
 @endsection

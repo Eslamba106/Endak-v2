@@ -4,6 +4,7 @@
     {{ $lang == 'ar' ? 'المنشورات' : 'Posts' }}
 @endsection
 @section('content')
+{{-- <?= $lang = config('app.locale'); ?> --}}
     {{-- <?php $current_url = url()->current();
     $url = explode('/', $current_url);
     $id = (int) end($url);
@@ -40,7 +41,17 @@
                                 <form class="form-horizontal  m-t-20" action="{{ route('web.posts.store') }}"
                                     enctype="multipart/form-data" method="POST">
                                     @csrf
-                                    <div class="mb-3">
+                                    @forelse ($department->inputs as $item)
+                                        <div class="mb-3">
+                                            <div class="col-xs-12">
+                                                <label for="{{ $item->name }}">{{ ($lang == 'ar')? $item->title_ar : $item->title_en }}</label>
+                                                <input class="form-control" type="text" name="{{ $item->name }}"
+                                                    placeholder="{{ ($lang == 'ar')? $item->title_ar : $item->title_en }}">
+                                            </div>
+                                        </div>
+                                    @empty
+                                    @endforelse
+                                    {{-- <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="title">{{ __('general.title') }}</label>
                                             <input class="form-control" type="text" name="title"
@@ -92,19 +103,7 @@
                                                 placeholder="{{ __('posts.price') }}">
                                         </div>
                                     </div>
-                                    @if (
-                                        $department->name_en == 'Car Maintenance' ||
-                                            $department->name_en == 'Private Lessons' ||
-                                            $department->name_en == 'Calligrapher And Advertising' ||
-                                            $department->name_en == 'Water Filters' ||
-                                            $department->name_en == 'Cleaning Services' ||
-                                            $department->name_en == 'Party Preparation' ||
-                                            $department->name_en == 'Garden And Agriculture Coordination' ||
-                                            $department->name_en == 'Pest Control' ||
-                                            $department->name_en == 'Productive Families' ||
-                                            $department->name_en == 'Daily Workers And Craftsmen' ||
-                                            $department->name_en == 'Contracting' ||
-                                            $department->name_en == 'Public Services')
+                                    @if ($department->name_en == 'Car Maintenance' || $department->name_en == 'Private Lessons' || $department->name_en == 'Calligrapher And Advertising' || $department->name_en == 'Water Filters' || $department->name_en == 'Cleaning Services' || $department->name_en == 'Party Preparation' || $department->name_en == 'Garden And Agriculture Coordination' || $department->name_en == 'Pest Control' || $department->name_en == 'Productive Families' || $department->name_en == 'Daily Workers And Craftsmen' || $department->name_en == 'Contracting' || $department->name_en == 'Public Services')
                                         <div class="mb-3">
                                             <div class="col-xs-12">
                                                 <label for="city">{{ __('posts.city') }}</label>
@@ -113,19 +112,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if (
-                                        $department->name_en == 'Car Maintenance' ||
-                                            $department->name_en == 'Calligrapher And Advertising' ||
-                                            $department->name_en == 'Water Filters' ||
-                                            $department->name_en == 'Private Lessons' ||
-                                            $department->name_en == 'Cleaning Services' ||
-                                            $department->name_en == 'Contracting' ||
-                                            $department->name_en == 'Party Preparation' ||
-                                            $department->name_en == 'Garden And Agriculture Coordination' ||
-                                            $department->name_en == 'Pest Control' ||
-                                            $department->name_en == 'Daily Workers And Craftsmen' ||
-                                            $department->name_en == 'Public Services' ||
-                                            $department->name_en == 'Productive Families')
+                                    @if ($department->name_en == 'Car Maintenance' || $department->name_en == 'Calligrapher And Advertising' || $department->name_en == 'Water Filters' || $department->name_en == 'Private Lessons' || $department->name_en == 'Cleaning Services' || $department->name_en == 'Contracting' || $department->name_en == 'Party Preparation' || $department->name_en == 'Garden And Agriculture Coordination' || $department->name_en == 'Pest Control' || $department->name_en == 'Daily Workers And Craftsmen' || $department->name_en == 'Public Services' || $department->name_en == 'Productive Families')
                                         <div class="mb-3">
                                             <div class="col-xs-12">
                                                 <label for="neighborhood">{{ __('posts.neighborhood') }}</label>
@@ -152,20 +139,20 @@
                                             </div>
                                         </div>
                                     @endif
-                                    {{-- <div class="mb-3">
+                                    <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="from_floor">{{ __('posts.from_floor') }}</label>
                                             <input class="form-control" type="text" name="from_floor"
                                                 placeholder="{{ __('posts.from_floor') }}">
                                         </div>
-                                    </div> --}}
-                                    {{-- <div class="mb-3">
+                                    </div> 
+                                     <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="from_house">{{ __('posts.from_house') }}</label>
                                             <input class="form-control" type="text" name="from_house"
                                                 placeholder="{{ __('posts.from_house') }}">
                                         </div>
-                                    </div> --}}
+                                    </div> 
                                     @if ($department->name_en == 'Spare Parts' || $department->name_en == 'Trucks')
                                         <div class="mb-3">
                                             <div class="col-xs-12">
@@ -184,29 +171,29 @@
                                             </div>
                                         </div>
                                     @endif
-                                    {{-- <div class="mb-3">
+                                     <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="to_floor">{{ __('posts.to_floor') }}</label>
                                             <input class="form-control" type="text" name="to_floor"
                                                 placeholder="{{ __('posts.to_floor') }}">
                                         </div>
-                                    </div> --}}
-                                    {{-- <div class="mb-3">
+                                    </div> 
+                                     <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="to_house">{{ __('posts.to_house') }}</label>
                                             <input class="form-control" type="text" name="to_house"
                                                 placeholder="{{ __('posts.to_house') }}">
                                         </div>
-                                    </div> --}}
+                                    </div> 
 
 
-                                    {{-- <div class="mb-3">
+                                     <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="exampleInputEmail1"></label>
                                             <input class="form-control" type="text" name="days_count"
                                                 placeholder="{{ __('posts.days_count') }}">
                                         </div>
-                                    </div> --}}
+                                    </d
                                     @if ($department->name_en == 'Car Maintenance')
                                         <div class="mb-3">
                                             <div class="col-xs-12">
@@ -216,20 +203,20 @@
                                             </div>
                                         </div>
                                     @endif
-                                    {{-- <div class="mb-3">
+                                     <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="section">{{ __('posts.section') }}</label>
                                             <input class="form-control" type="text" name="section"
                                                 placeholder="{{ __('posts.section') }}">
                                         </div>
-                                    </div> --}}
-                                    {{-- <div class="mb-3">
+                                    </div> 
+                                     <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="code_number">{{ __('posts.code_number') }}</label>
                                             <input class="form-control" type="text" name="code_number"
                                                 placeholder="{{ __('posts.code_number') }}">
                                         </div>
-                                    </div> --}}
+                                    </div> 
                                     @if ($department->name_en == 'Spare Parts')
                                         <div class="mb-3">
                                             <div class="col-xs-12">
@@ -239,13 +226,13 @@
                                             </div>
                                         </div>
                                     @endif
-                                    {{-- <div class="mb-3">
+                                     <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="cars">{{ __('posts.cars') }}</label>
                                             <input class="form-control" type="text" name="cars"
                                                 placeholder="{{ __('posts.cars') }}">
                                         </div>
-                                    </div> --}}
+                                    </div> 
                                     @if ($department->name_en == 'Air Conditioning Repair')
                                         <div class="mb-3">
                                             <div class="col-xs-12">
@@ -354,19 +341,14 @@
                                             </div>
                                         </div>
                                     @endif
-                                    {{-- <div class="mb-3">
+                                     <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="size">{{ __('posts.size') }}</label>
                                             <input class="form-control" type="text" name="size"
                                                 placeholder="{{ __('posts.size') }}">
                                         </div>
-                                    </div> --}}
-                                    @if (
-                                        $department->name_en == 'Heavy Equipment' ||
-                                            $department->name_en == 'Party Preparation' ||
-                                            $department->name_en == 'Cleaning Services' ||
-                                            $department->name_en == 'Contracting' ||
-                                            $department->name_en == 'Productive Families')
+                                    </div> 
+                                    @if ($department->name_en == 'Heavy Equipment' || $department->name_en == 'Party Preparation' || $department->name_en == 'Cleaning Services' || $department->name_en == 'Contracting' || $department->name_en == 'Productive Families')
                                         <div class="mb-3">
                                             <div class="col-xs-12">
                                                 <label for="date">{{ __('posts.date') }}</label>
@@ -388,19 +370,7 @@
 
 
 
-                                    @if (
-                                        $department->name_en == 'Car Maintenance' ||
-                                            $department->name_en == 'Pest Control' ||
-                                            $department->name_en == 'Garden And Agriculture Coordination' ||
-                                            $department->name_en == 'Party Preparation' ||
-                                            $department->name_en == 'Spare Parts' ||
-                                            $department->name_en == 'Heavy Equipment' ||
-                                            $department->name_en == 'Air Conditioning Repair' ||
-                                            $department->name_en == 'Daily Workers And Craftsmen' ||
-                                            $department->name_en == 'Calligrapher And Advertising' ||
-                                            $department->name_en == 'Water Filters' ||
-                                            $department->name_en == 'Contracting' ||
-                                            $department->name_en == 'Public Services')
+                                    @if ($department->name_en == 'Car Maintenance' || $department->name_en == 'Pest Control' || $department->name_en == 'Garden And Agriculture Coordination' || $department->name_en == 'Party Preparation' || $department->name_en == 'Spare Parts' || $department->name_en == 'Heavy Equipment' || $department->name_en == 'Air Conditioning Repair' || $department->name_en == 'Daily Workers And Craftsmen' || $department->name_en == 'Calligrapher And Advertising' || $department->name_en == 'Water Filters' || $department->name_en == 'Contracting' || $department->name_en == 'Public Services')
                                         <div class="mb-3">
                                             <div class="col-xs-12">
                                                 <label for="image">{{ __('general.image') }}</label>
@@ -428,11 +398,11 @@
                                             </div>
 
                                         </div>
-                                    @endif
+                                    @endif --}}
 
                                     <div class="">
                                         <button type="submit" class="btn btn-primary">{{ __('general.save') }}</button>
-                                        
+
                                     </div>
                                 </form>
                             </div>

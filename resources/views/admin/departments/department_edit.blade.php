@@ -1,14 +1,6 @@
 @extends('layouts.dashboard.dashboard')
-
-@section('page-header-right')
-    <a href="{{ route('admin.departments') }}" class="ml-1 btn btn-secondary btn-xl" data-toggle="tooltip"
-        title="@lang('departments.departments')"> <i class="la la-folder-open"></i> </a>
-
-    <a href="{{ route('admin.departments.create') }}" class="ml-1 btn btn-primary btn-xl" data-toggle="tooltip"
-        title="@lang('departments.add')"> <i class="la la-plus"></i> </a>
-
-    <button type="submit" form="form-category" class="ml-1 btn btn-success btn-xl" data-toggle="tooltip"
-        title="@lang('general.save')"> <i class="la la-save"></i> </button>
+@section('title')
+    {{ __('department.edit_department') }}
 @endsection
 
 @section('content')
@@ -106,6 +98,43 @@
                 <label class="mb-3 col-sm-3 control-label">{{ __('topics') }} <span style="color:red;">*</span></label>
                 <div class="col-sm-7">
                     <?php $categories = App\Models\Category::get(); ?>
+
+
+                    @if ($categories->count())
+                        <select name="topics[]" id="tags" class="form-control topics select2" multiple="multiple">
+                            <option value="">{{ __('category.select_category') }}</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" {{ ($department->topics) ? selected($department->topics->contains($category->id))  : '' }}>{{ $category->category_name_ar }}</option>
+                 
+                            @endforeach
+                        </select>
+                    @endif
+                    @if ($errors->has('category_id'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
+                    @endif
+                </div>
+            </div>
+            <div class="form-group row {{ $errors->has('inputs') ? ' has-error' : '' }}">
+                <label class="mb-3 col-sm-3 control-label">{{ __('inputs') }} <span style="color:red;">*</span></label>
+                <div class="col-sm-7">
+                    <?php $all_inputs = App\Models\Inputs::get(); ?>
+
+
+                    @if ($all_inputs->count())
+                        <select name="inputs[]" id="tags" class="form-control inputs select2" multiple="multiple">
+                            <option value="">{{ __('category.select_category') }}</option>
+                            @foreach ($all_inputs as $input)
+                                <option value="{{ $input->id }}" {{ ($department->inputs) ? selected($department->inputs->contains($input->id))  : '' }}>{{ $input->title_ar }}</option>
+                 
+                            @endforeach
+                        </select>
+                    @endif
+                    @if ($errors->has('category_id'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
+                    @endif
+                </div>
+            </div>
+
                     {{-- @if ($categories->count())
                         <select name="topics[]" id="topics" class="form-control topics" multiple="multiple">
                             <option value="">{{ __('category.select_category') }}</option>
@@ -135,43 +164,6 @@
                             @endforeach
                         </select>
                     @endif --}}
-
-                    @if ($categories->count())
-                        <select name="topics[]" id="topics" class="form-control topics" multiple="multiple">
-                            <option value="">{{ __('category.select_category') }}</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->category_name_ar }}</option>
-                                <optgroup">
-                                    @if ($category->sub_categories->count())
-                                        @foreach ($category->sub_categories as $sub_category)
-                                            <option value="{{ $sub_category->id }}">
-                                                {{-- {{ $department->topics ? @selected($department->topics->contains($sub_category->id)) : '' }}> --}}
-                                                {{ $sub_category->category_name }}
-                                            </option>
-                                            @if ($sub_category->sub_categories->count())
-                                                @foreach ($sub_category->sub_categories as $sub_category)
-                                                    <option value="{{ $sub_category->id }}">
-                                                        {{ $sub_category->category_name }}
-                                                    </option>
-                                                @endforeach
-                                            @endif
-
-                                            {{-- <!-- <option value="{{ $sub_category->id }}">
-                                            {{ $sub_category->category_name }}
-                                        </option> --> --}}
-                                        @endforeach
-                                    @endif
-                                    </optgroup>
-                            @endforeach
-                        </select>
-                    @endif
-                    @if ($errors->has('category_id'))
-                        <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
-                    @endif
-                </div>
-            </div>
-
-
             {{-- <div class="form-group {{ $errors->has('topics') ? ' has-error' : '' }} row">
 
 
@@ -207,6 +199,7 @@
                             @endforeach
                         </select>
                     @endif
+                    
                     @if ($errors->has('category_id'))
                         <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
                     @endif
@@ -244,6 +237,14 @@
 
 @endsection
 
+{{-- @section('js')
+    <script src="{{ asset('js/tagify.js') }}"></script>
+    <script src="{{ asset('js/tagify.polyfills.min.js') }}"></script>
+    <script>
+        var inputElm = document.querySelector('[id=tags]');
+        tagify = new Tagify(inputElm);
+    </script>
+@endsection --}}
 @section('js')
     <script>
         $(".topics").select2({
@@ -262,4 +263,32 @@
         });
         $('#parent').trigger('change');
     </script>
-@endsection
+    <script>
+        $(".inputs").select2({
+            topics: true,
+            tokenSeparators: [',', ' ']
+        })
+    </script>
+
+@endsection 
+            <!--    {{-- <optgroup">
+                                    @if ($category->sub_categories->count())
+                                        @foreach ($category->sub_categories as $sub_category)
+                                            <option value="{{ $sub_category->id }}">
+                                                {{-- {{ $department->topics ? @selected($department->topics->contains($sub_category->id)) : '' }}> --}}
+                                                {{-- {{ $sub_category->category_name }} --}}
+                                            </option>
+                                            {{-- @if ($sub_category->sub_categories->count())
+                                                @foreach ($sub_category->sub_categories as $sub_category)
+                                                    <option value="{{ $sub_category->id }}">
+                                                        {{ $sub_category->category_name }}
+                                                    </option>
+                                                @endforeach
+                                            @endif --}}
+
+                                            {{-- <option value="{{ $sub_category->id }}">
+                                            {{ $sub_category->category_name }}
+                                        </option>  
+                                        @endforeach
+                                    @endif
+                                    </optgroup> --}} -->

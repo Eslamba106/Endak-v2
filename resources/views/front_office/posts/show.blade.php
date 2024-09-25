@@ -79,8 +79,9 @@
                                         {{-- <a href="javascript:void(0);"> <img class="avatar avatar-lg rounded-circle thumb-sm"
                                                 alt="64x64" src="../assets/images/profile/2.jpg"> </a> --}}
                                     </div>
-                                    @forelse ($post->comments as $comment)
                                         <div class="overflow-visible">
+                                            @forelse ($post->comments as $comment)
+
                                             <div class="border mb-4 p-4 br-5">
                                                 {{-- <nav class="nav float-end">
                                                     <div class="dropdown">
@@ -130,11 +131,11 @@
                                                 </div>
 
                                             </div> --}}
+                                            @empty
+                                                {!! no_data() !!}
+                                        @endforelse
                                         </div>
 
-                                        @empty
-                                            {!! no_data() !!}
-                                    @endforelse
                                 </div>
                             </div>
                         </div>

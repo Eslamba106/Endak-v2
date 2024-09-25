@@ -15,5 +15,6 @@ return [
     "description_ar"                                => "Description in Arabic",
     "description_en"                                => "Description in English",
     "status"                                        => "Status",
-
+    "select_category"                               => 'Select Category',
+    'topics'                                        => 'Categories'
 ];

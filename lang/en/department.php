@@ -14,5 +14,7 @@ return [
     "main"                  => "Main",
     "details"               => "Department Details",
     "create_department"     => "Create Department",
-    
+    "edit_department"       => "Edit Department",
+    "select_input"          => "select Inputs",
+    'inputs'                => "Inputs"
 ];

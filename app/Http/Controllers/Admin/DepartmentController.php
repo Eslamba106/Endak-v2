@@ -64,6 +64,9 @@ class DepartmentController extends Controller
         if ($request->has('topics')) {
             $is_create->topics()->sync($request->topics);
         }
+        if ($request->has('inputs')) {
+            $is_create->inputs()->sync($request->inputs);
+        }
 
         return redirect()->route('admin.departments')->with('success', __('department_created'));
     }
@@ -138,6 +141,9 @@ class DepartmentController extends Controller
         $department->update($data);
         if ($request->has('topics')) {
             $department->topics()->sync($request->topics);
+        }
+        if ($request->has('inputs')) {
+            $department->inputs()->sync($request->inputs);
         }
         if ($old_image && $path) {
             Storage::disk('public')->delete($old_image);

@@ -16,4 +16,7 @@ return [
     "description_ar"                                => "الوصف باللغة العربية",
     "description_en"                                => "الوصف باللغة الإنجليزية",
     "status"                                        => "الحالة",
+    "select_category"                               => 'اختر تصنيف',
+    'topics'                                        => 'التصنيفات',
+
 ];

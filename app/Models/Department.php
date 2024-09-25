@@ -62,5 +62,8 @@ class Department extends Model
     {
         return $this->belongsTo(Category::class, 'second_category_id');
     }
+    public function inputs(){
+        return $this->belongsToMany(Inputs::class , 'inputs_departments');
+    }
 
 }

@@ -1,7 +1,9 @@
 
 
 @extends('layouts.dashboard.dashboard')
-
+@section('title')
+    {{ __('department.departments') }}
+@endsection
 @section('page-header-right')
     <button name="bulk_action_btn" type="button" class=" ml-1 btn btn-primary btn-xl bulk_action_btn" value="1">
         <img src='{{ url("uploads/images/top-menu.png") }}'/> {{__('mark_as_top')}}

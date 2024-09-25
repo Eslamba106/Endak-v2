@@ -53,6 +53,7 @@ return new class extends Migration
             $table->string('cars')->nullable();
             $table->string('clean')->nullable();
             $table->string('Verion')->nullable();
+            $table->string('weight')->nullable();
 
             
             $table->string('fixed')->nullable();
@@ -68,6 +69,7 @@ return new class extends Migration
             $table->string('food')->nullable();
             $table->date('date')->nullable();
             $table->string('size')->nullable();
+            $table->string('general')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
