@@ -88,12 +88,12 @@ class DepartmentController extends Controller
     }
     public function show($slug){
         $this->authorize('Show_Department');
-
+        
         $department = Department::whereSlug($slug)->first();
 
         // $data['department'] = $department;
         $departments = Department::whereStep(0)->with('sub_Departments')->orderBy('id', 'asc')->where('slug', '!=', $slug)->get();
-
+        // dd($departments[1]->posts);
         if ( ! $department){
             abort(404);
         }
@@ -139,12 +139,12 @@ class DepartmentController extends Controller
             }
         }
         $department->update($data);
-        if ($request->has('topics')) {
+        // if ($request->has('topics')) {
             $department->topics()->sync($request->topics);
-        }
-        if ($request->has('inputs')) {
+        // }
+        // if ($request->has('inputs')) {
             $department->inputs()->sync($request->inputs);
-        }
+        // }
         if ($old_image && $path) {
             Storage::disk('public')->delete($old_image);
         }

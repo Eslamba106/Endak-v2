@@ -15,9 +15,9 @@ class PostController extends Controller
         $this->post_service = $post_service;
     }
 
-    public function index()
+    public function index($id)
     {
-        return response()->apiSuccess($this->post_service->getAll());
+        return response()->apiSuccess($this->post_service->getAllWith('department_id' , $id));
     }
     public function store(Request $request){
         $request->validate([

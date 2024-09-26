@@ -43,7 +43,9 @@
     <!-- <a href="javascript:void(0);" class="buy-now" data-target="html">
         <span class="fe fe-message-square"></span>
     </a> -->
-
+    <a href="#top" id="back-to-top" class="back-to-top rounded-circle shadow all-ease-03 fade-in">
+        <i class="fe fe-arrow-up"></i>
+    </a>
 
     <div class="page">
 

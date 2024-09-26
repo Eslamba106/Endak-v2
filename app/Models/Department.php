@@ -65,5 +65,8 @@ class Department extends Model
     public function inputs(){
         return $this->belongsToMany(Inputs::class , 'inputs_departments');
     }
+    public function posts(){
+        return $this->hasMany(Post::class , 'department_id', 'id' );
+    }
 
 }

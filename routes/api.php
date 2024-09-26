@@ -27,7 +27,7 @@ Route::post('/login' , [AuthController::class , 'login'])->name('api_login');
 Route::post('/register' , [AuthController::class , 'register'])->name('api_register');
 Route::get('/logout', [AuthController::class , 'logout'])->name('api_logout')->middleware('auth:sanctum');
 
-Route::get('/posts', [PostController::class ,'index'])->name('all_posts');
+Route::get('/{dapartment_id}/posts', [PostController::class ,'index'])->name('all_posts');
 Route::post('/posts/store', [PostController::class ,'store'])->name('post.store');
 
 
@@ -35,6 +35,7 @@ Route::post('/posts/store', [PostController::class ,'store'])->name('post.store'
 
 Route::get('/departments' ,[DepartmentController::class , 'index'])->name('api.departments');
 Route::get('/departments/{id}' ,[DepartmentController::class , 'childern'])->name('api.departments.childern');
+Route::get('/departments/show_post_inputs/{id}' ,[DepartmentController::class , 'showDepartment'])->name('api.departments.show');
 
 // Categories 
 

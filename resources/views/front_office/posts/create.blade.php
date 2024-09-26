@@ -4,14 +4,6 @@
     {{ $lang == 'ar' ? 'المنشورات' : 'Posts' }}
 @endsection
 @section('content')
-{{-- <?= $lang = config('app.locale'); ?> --}}
-    {{-- <?php $current_url = url()->current();
-    $url = explode('/', $current_url);
-    $id = (int) end($url);
-    dd($id);
-    $department = App\Models\Department::where('id', $id)->first();
-    dd($department);
-    ?> --}}
     <div class="main-content app-content">
         <section>
             <div class="section banner-4 banner-section">
@@ -38,20 +30,60 @@
                         <div class="card">
                             <div class="card-body">
                                 <p class="h5 mb-4">{{ __('order.add_order') }}</p>
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                                 <form class="form-horizontal  m-t-20" action="{{ route('web.posts.store') }}"
                                     enctype="multipart/form-data" method="POST">
                                     @csrf
-                                    @forelse ($department->inputs as $item)
+                                    <input class="form-control" type="hidden" value="{{ $department->id }}"
+                                        name="department_id">
+                                    @foreach ($department->inputs as $item)
+                                        <label for="">{{ __('department.input_titles.' . $item->name) }}</label>
+                                        <input class="form-control" type="text" name="{{ $item->name }}"
+                                            placeholder="{{ __('department.input_titles.' . $item->name) }}">
+                                    @endforeach
+                                
+                                    {{-- @forelse ($department->inputs as $item)
                                         <div class="mb-3">
                                             <div class="col-xs-12">
-                                                <label for="{{ $item->name }}">{{ ($lang == 'ar')? $item->title_ar : $item->title_en }}</label>
+                                                <label
+                                                    for="">{{ $lang == 'ar' ? $item->title_ar : $item->title_en }}</label>
                                                 <input class="form-control" type="text" name="{{ $item->name }}"
-                                                    placeholder="{{ ($lang == 'ar')? $item->title_ar : $item->title_en }}">
+                                                    placeholder="{{ $lang == 'ar' ? $item->title_ar : $item->title_en }}">
                                             </div>
                                         </div>
                                     @empty
-                                    @endforelse
-                                    {{-- <div class="mb-3">
+                                    @endforelse --}}
+
+                                    <div class="">
+                                        <button type="submit" class="btn btn-primary">{{ __('general.save') }}</button>
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+@endsection
+{{-- <?= $lang = config('app.locale') ?> 
+    <?php $current_url = url()->current();
+    $url = explode('/', $current_url);
+    $id = (int) end($url);
+    dd($id);
+    $department = App\Models\Department::where('id', $id)->first();
+    dd($department);
+    ?> --}}
+{{-- <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="title">{{ __('general.title') }}</label>
                                             <input class="form-control" type="text" name="title"
@@ -59,7 +91,9 @@
                                             <input class="form-control" type="hidden" value="{{ $department->id }}"
                                                 name="department_id">
                                         </div>
-                                    </div>
+                                    </div> --}}
+{{-- 
+                                    
                                     <div class="mb-3">
                                         <div class="col-xs-12">
                                             <label for="description">{{ __('posts.Simple_Descriptoin') }}</label>
@@ -400,23 +434,11 @@
                                         </div>
                                     @endif --}}
 
-                                    <div class="">
-                                        <button type="submit" class="btn btn-primary">{{ __('general.save') }}</button>
 
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-@endsection
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/resumablejs@1.1.0/resumable.min.js"></script>
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         let browseFile = $('#browseFile');
         let resumable = new Resumable({
             target: '{{ route('web.files.upload.large') }}',
@@ -474,5 +496,5 @@
         function hideProgress() {
             progress.hide();
         }
-    </script>
+    </script> --}}
 @endsection
