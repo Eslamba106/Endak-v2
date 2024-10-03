@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Builder;
 
 class User extends Authenticatable
 {
@@ -45,6 +46,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function scopeFilter(Builder $builder , $filters){
+
+        // $builder->when($filters['name'] ?? false , function($builder , $value){
+        //     $builder->where('categories.name','like','%'.$value.'%');
+        // });
+
+        $builder->when($filters['status'] ?? false , function($builder , $value){
+            $builder->where('users.status', $value);
+        });
+        // if($filters['name'] ?? false){
+        //     $builder->where('name','like','%'.$filters['name'].'%');
+        // };
+        // if($filters['status'] ?? false){
+        //     $builder->where('status','=',$filters['status']);
+        // };
+    }
     public function hasPermission($section_name)
     {
         if (!isset($this->permissions)) {
@@ -54,9 +73,59 @@ class User extends Authenticatable
 
         return in_array($section_name, $this->permissions);
     }
+    public function scopeActive(Builder $builder){
+        $builder->where('status' , 'active');
+    }
+
+    public function rate(){
+        return $this->hasMany(Rating::class , 'user_id' , 'id');
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'service_provider_id', 'id');
+            // ->orWhere('teacher_id', $this->id);
+    }
+    public function rates()
+    {
+        $orders = $this->orders()
+            // ->where('status', 'active')
+            ->get();
+
+        $rate = 0;
+
+        if (!empty($orders)) {
+            $rates = 0;
+            $count = 0;
+
+            foreach ($orders as $order) {
+                $orderRate = $order->getRate();
+
+                if (!empty($orderRate) and $orderRate > 0) {
+                    $count += 1;
+                    $rates += $orderRate;
+                }
+            }
+
+            if ($rates > 0) {
+                if ($count < 1) {
+                    $count = 1;
+                }
+
+                $rate = number_format($rates / $count, 2);
+            }
+        }
+
+        return $rate;
+    }
+
 
     public function getImageUrlAttribute()
     {
         return asset('storage/' . $this->image);
     }
+    // public function profile(){
+    //     return $this->hasOne(Profile::class , 'user_id' , 'id')
+    //     ->withDefault();
+    // }
 }

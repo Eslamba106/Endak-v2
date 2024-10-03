@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\Api\RatingApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\OrderApiController;
 use App\Http\Controllers\Api\DepartmentController;
+use App\Http\Controllers\Api\MessageApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +50,28 @@ Route::get('/categories/{id}' ,[CategoryController::class , 'childern'])->name('
 
 Route::post('/comments/create' , [CommentController::class , 'store'])->name('api.comments.store');
 Route::get('/comments/{id}' , [CommentController::class , 'index'])->name('api.comments');
+
+
+// Orders 
+
+Route::group(['prefix' => 'orders'], function () {
+
+    Route::post('/create' , [OrderApiController::class , 'store'])->name('api.orders.store')->middleware('auth:sanctum');
+    Route::get('/{id}' , [OrderApiController::class , 'myOrders'])->name('api.orders')->middleware('auth:sanctum');
+
+});
+
+
+// Messages 
+
+Route::group(['prefix' => 'messages'], function () {
+    Route::get('/conversation' , [MessageApiController::class , 'conversation'])->name('api.messages.myconversation')->middleware('auth:sanctum');
+    Route::post('/send' , [MessageApiController::class , 'store'])->name('api.messages.store')->middleware('auth:sanctum');
+    Route::get('/{recipient_id}' , [MessageApiController::class , 'myMessage'])->name('api.messages')->middleware('auth:sanctum');
+
+});
+
+// Rating
+
+
+Route::post('/rating' , [RatingApiController::class , 'store'])->name('api.rating');

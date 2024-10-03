@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,5 +107,28 @@ Route::group(['prefix' => 'posts'], function () {
     // Route::delete('/delete', [PageController::class ,'destroy'])->name('admin.pages.delete');
 
 });
+Route::group(['prefix' => 'products'], function () {
 
-// 
+    Route::get('/' , [ProductController::class , 'index'])->name('admin.products');
+    Route::get('/create', [ProductController::class , 'create'])->name('admin.products.create');
+    Route::post('/create', [ProductController::class , 'store'])->name('admin.products.store');
+    Route::get('/show/{slug}' , [ProductController::class , 'show'])->name('admin.products.show');
+    Route::get('/edit/{product}' , [ProductController::class , 'edit'])->name('admin.products.edit');
+    Route::post('/edit/{product}' , [ProductController::class , 'update'])->name('admin.products.update');
+    Route::get('/delete/{slug}', [ProductController::class ,'destroy'])->name('admin.products.delete');
+
+});
+
+// User Management 
+
+Route::group(['prefix' => 'user_management'], function () {
+
+    Route::get('/' , [UserManagementController::class , 'index'])->name('admin.user_management');
+    // Route::get('/create', [ProductController::class , 'create'])->name('admin.products.create');
+    // Route::post('/create', [ProductController::class , 'store'])->name('admin.products.store');
+    // Route::get('/show/{slug}' , [ProductController::class , 'show'])->name('admin.products.show');
+    // Route::get('/edit/{product}' , [ProductController::class , 'edit'])->name('admin.products.edit');
+    // Route::post('/edit/{product}' , [ProductController::class , 'update'])->name('admin.products.update');
+    // Route::get('/delete/{slug}', [ProductController::class ,'destroy'])->name('admin.products.delete');
+
+});

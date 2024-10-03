@@ -26,10 +26,10 @@ class UserServices
         // dd($data);
         if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']]))
         {
-            $user = User::where('email' , $data['email'])->orWhere('phone' , $data['email'])->first();
+            $user = User::active()->where('email' , $data['email'])->orWhere('phone' , $data['email'])->first();
             return $user;
         }elseif(Auth::attempt(['phone' => $data['phone'], 'password' => $data['password']])){
-            $user = User::where('email' , $data['email'])->orWhere('phone' , $data['email'])->first();
+            $user = User::active()->where('email' , $data['email'])->orWhere('phone' , $data['email'])->first();
             return $user;
         }
         else

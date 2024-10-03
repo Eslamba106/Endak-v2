@@ -40,7 +40,18 @@
                             <td class="width30">{{ __("department.parent") }}</td>
                             <td>{{ ($department->parent_Department) ? $department->parent_Department : __('department.main') }}</td>
                         </tr>
-         
+                        @if (isset($department->products))
+                        <tr>
+                            <td class="width30">{{ __("products.products") }}</td>
+                            <td>
+                                @foreach ($department->products as $product)
+                                    
+                                <li>{{  $product->name_ar }}</li>
+                                @endforeach
+                            </td>
+                        </tr>      
+                        @endif
+                     
                         <tr>
                             <td class="width30">{{ __("department.image") }}</td>
                             <td>

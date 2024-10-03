@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         $loginResponse = $this->userService->login($request->all());
         // dd($loginResponse );
-        if ($loginResponse != false) {
+        if ($loginResponse != false  ) {
             $user = $request->user();
             $token = $user->createToken("$user->first_name");
             return response()->apiSuccess(['token' => $token->plainTextToken, 'user' => $user]);

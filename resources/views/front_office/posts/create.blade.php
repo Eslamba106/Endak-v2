@@ -31,25 +31,44 @@
                             <div class="card-body">
                                 <p class="h5 mb-4">{{ __('order.add_order') }}</p>
                                 @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <form class="form-horizontal  m-t-20" action="{{ route('web.posts.store') }}"
                                     enctype="multipart/form-data" method="POST">
                                     @csrf
+
+
                                     <input class="form-control" type="hidden" value="{{ $department->id }}"
                                         name="department_id">
-                                    @foreach ($department->inputs as $item)
+                                    @forelse ($department->inputs as $item)
                                         <label for="">{{ __('department.input_titles.' . $item->name) }}</label>
                                         <input class="form-control" type="text" name="{{ $item->name }}"
                                             placeholder="{{ __('department.input_titles.' . $item->name) }}">
-                                    @endforeach
-                                
+                                    @empty
+                                        <div class="mb-3">
+                                            <div class="col-xs-12">
+                                                <label
+                                                    for="">{{ __('general.title') }}</label>
+                                                <input class="form-control" type="text" name="title"
+                                                    placeholder="{{ __('general.title') }}">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="col-xs-12">
+                                                <label
+                                                    for="">{{ __('general.price') }}</label>
+                                                <input class="form-control" type="text" name="price"
+                                                    placeholder="{{ __('general.price') }}">
+                                            </div>
+                                        </div>
+                                    @endforelse
+
                                     {{-- @forelse ($department->inputs as $item)
                                         <div class="mb-3">
                                             <div class="col-xs-12">

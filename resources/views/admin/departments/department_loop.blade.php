@@ -9,22 +9,7 @@
         <p class="m-0 d-flex">
 
             <i class="la {{ $department->icon_class }}"></i>
-            {{-- @for ($i = 0; $i <= $department->step; $i++)
-                <span class="category-loop-icon">
-                    @if (!$department->step)
-                        @if ($department->icon_class)
-                        @else
-                            <i class="la la-arrow-circle-up" data-toggle="tooltip" title="Category"></i>
-                        @endif
-                    @endif
-                    @if ($department->step == 1 && $i == 1)
-                        <i class="la la-chevron-circle-right" data-toggle="tooltip" title="Sub Category"></i>
-                    @endif
-                    @if ($department->step == 2 && $i == 2)
-                        <i class="la la-tag" data-toggle="tooltip" title="Topic"></i>
-                    @endif
-                </span>
-            @endfor --}}
+
 
             <span>{!! $department->name_ar !!}</span>
             @if ($department->is_top == 1)

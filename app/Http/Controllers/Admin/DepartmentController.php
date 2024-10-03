@@ -67,6 +67,9 @@ class DepartmentController extends Controller
         if ($request->has('inputs')) {
             $is_create->inputs()->sync($request->inputs);
         }
+        if ($request->has('products')) {
+            $is_create->products()->sync($request->products);
+        }
 
         return redirect()->route('admin.departments')->with('success', __('department_created'));
     }
@@ -103,7 +106,7 @@ class DepartmentController extends Controller
 
     public function update(Request $request, $id){
         $this->authorize('Update_Department');
-
+        // dd($request->all());
         $department = Department::find($id);
         if ( ! $department){
             return back()->with('error', trans('admin.category_not_found'));
@@ -111,12 +114,7 @@ class DepartmentController extends Controller
 
         $old_image = $department->image;
         $path = uploadImage( $request , 'department' , 'image');
-        // dd($path);
-        // if (isset($path) && $path != 0 ) {
-        //     $data['image'] = $path;
-        // }else{
-        //     $data['image'] = $old_image;
-        // }
+
 
         $data = [
             'name_ar'                  => clean_html($request->name_ar),
@@ -144,13 +142,13 @@ class DepartmentController extends Controller
         // }
         // if ($request->has('inputs')) {
             $department->inputs()->sync($request->inputs);
+            $department->products()->sync($request->products);
         // }
         if ($old_image && $path) {
             Storage::disk('public')->delete($old_image);
         }
         return redirect()->route('admin.departments')->with('success' , "Updated Successfully");
 
-        // return back()->with('success', trans('admin.category_updated'));
     }
     public function destroy($slug)
     {

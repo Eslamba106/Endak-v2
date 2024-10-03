@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Department;
-use App\Services\PostServices;
 use Illuminate\Http\Request;
+use App\Services\PostServices;
 use Illuminate\Support\Facades\Storage;
-use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
 use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
+use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
 
 class PostController extends Controller
 {
@@ -34,6 +35,8 @@ class PostController extends Controller
     {
         $request->validate([
             "department_id" => "required",
+            "title" => "required",
+            'price' => "required"
         ]);
         $user = auth()->user()->id;
         $data = $request->all();
@@ -48,6 +51,11 @@ class PostController extends Controller
         return view('front_office.posts.show', compact('post'));
     }
 
+    public function my_posts($id){
+        $posts = Post::where('user_id', $id)->paginate(6);
+        
+        return view('front_office.posts.my_posts' , compact('posts'));
+    }
 
 
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\OrderUserController;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -56,7 +57,14 @@ Route::get('posts/show/{id}', [PostController::class , 'show' ])->name('web.post
 Route::get('posts/{id}/create', [PostController::class , 'create' ])->name('web.posts.create');
 Route::get('posts/upload_video', [PostController::class , 'uploadLargeFiles' ])->name('web.files.upload.large');
 Route::post('posts/store', [PostController::class , 'store' ])->name('web.posts.store');
+Route::get('posts/my_posts/{id}', [PostController::class , 'my_posts' ])->name('web.posts.my_posts');
 
 // Comments
 
 Route::post('/comments/create' , [CommentController::class , 'store'])->name('comments.store');
+
+// Orders 
+
+Route::post('/order/create' , [OrderUserController::class , 'store'])->name('web.order.save');
+
+// Rating 

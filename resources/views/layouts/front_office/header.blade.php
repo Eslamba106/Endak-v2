@@ -1,6 +1,9 @@
 <div class="head_menu_container">
-    <?php $settings = App\Models\Settings::first(); 
+    <?php $settings = App\Models\Settings::first();
     $lang = config('app.locale');
+    if (auth()->check()) {
+        $user = auth()->user();
+    }
     ?>
     <header class="main-header" id="stickyHeader">
 
@@ -20,7 +23,8 @@
                     </div>
                     <!-- End::header-element -->
                     <a href="#" class="brand-main">
-                        <img src="{{ $settings->image_url ?? ''}}" width="150" height="50" alt="img" class="desktop-logo logo-dark">
+                        <img src="{{ $settings->image_url ?? '' }}" width="150" height="50" alt="img"
+                            class="desktop-logo logo-dark">
                         {{-- <img src="../assets/images/brand/toggle-dark.png" alt="img"
                             class="mobile-logo mobile-dark mx-3">
                         <img src="../assets/images/brand/logo-color.png" alt="img" class="desktop-logo logo-color">
@@ -139,9 +143,9 @@
                                 </a>
                             </span>
                             <div class="d-none d-md-block">
-                                <a href="" class="nav-link tx-15 p-0">{{ auth()->user()->first_name }}</a>
+                                <a href="" class="nav-link tx-15 p-0">{{ $user->first_name }}</a>
                             </div>
-                            @if (auth()->user()->role_name == 'admin')
+                            @if ($user->role_name == 'admin')
                                 <a style="margin-left: 10px;color:white"
                                     href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                             @endif
@@ -220,12 +224,13 @@
                                                                 data-toggle="tooltip" title="Category"></i>
 
                                                         </span> <span
-                                                            class="tx-14 tx-primary">{{ ($lang =='ar' ) ? $department->name_ar : $department->name_en}}</span>
+                                                            class="tx-14 tx-primary">{{ $lang == 'ar' ? $department->name_ar : $department->name_en }}</span>
                                                     </p>
                                                 </li>
                                                 @forelse ($department->sub_Departments as $sub_Department)
                                                     <li class="slide">
-                                                        <a href="{{ route('web.posts' , $sub_Department->id) }}" class="side-menu__item">
+                                                        <a href="{{ route('web.posts', $sub_Department->id) }}"
+                                                            class="side-menu__item">
                                                             <div class="d-lg-flex align-items-start">
                                                                 <div class="me-3">
                                                                     <span
@@ -236,9 +241,10 @@
                                                                 </div>
                                                                 <div class="flex-grow-1">
                                                                     <h6 class="d-block mb-1">
-                                                                        {{ ($lang =='ar' ) ? $sub_Department->name_ar : $sub_Department->name_en }}</h6>
+                                                                        {{ $lang == 'ar' ? $sub_Department->name_ar : $sub_Department->name_en }}
+                                                                    </h6>
                                                                     <span
-                                                                        class="tx-default tx-14">{{ ($lang =='ar' ) ? $sub_Department->description_ar : $sub_Department->description_en  }}</span>
+                                                                        class="tx-default tx-14">{{ $lang == 'ar' ? $sub_Department->description_ar : $sub_Department->description_en }}</span>
                                                                 </div>
                                                             </div>
                                                         </a>
@@ -269,9 +275,10 @@
                             <ul class="slide-menu child1 mega-slide-menu-onefr without-icon">
                                 @forelse ($pages as $page)
                                     <li class="slide">
-                                        <a href="{{ route('page' , $page->slug) }}" class="side-menu__item">
+                                        <a href="{{ route('page', $page->slug) }}" class="side-menu__item">
                                             <i class="bi bi-house"></i>
-                                            <span class="fw-500 tx-15">{{ ($lang == 'ar') ? $page->title_ar : $page->title_en }}</span>
+                                            <span
+                                                class="fw-500 tx-15">{{ $lang == 'ar' ? $page->title_ar : $page->title_en }}</span>
                                         </a>
                                     </li>
                                 @empty
@@ -286,6 +293,19 @@
 
                             </ul>
                         </li>
+                        {{-- <?php
+                        
+                        $posts = App\Models\Post::where('user_id', $user->id)->get();
+                        ?> --}}
+                        @if (auth()->check())
+                            <li class="slide">
+                                <a href="{{ route('web.posts.my_posts', $user->id) }}" class="side-menu__item">
+                                    <span class="side-menu__label">{{ __('posts.my_posts') }}</span>
+                                    <i class="fe fe-chevron-down side-menu__angle"></i>
+                                </a>
+
+                            </li>
+                        @endif
                         <!-- End::slide -->
 
 

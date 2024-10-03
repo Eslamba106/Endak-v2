@@ -16,7 +16,9 @@ class DepartmentController extends Controller
 
     public function index()
     {
-        return response()->apiSuccess($this->department_service->getAllWith('department_id', 0));
+        $date = $this->department_service->getAllWith('department_id', 0);
+        
+        return response()->apiSuccess();
     }
     public function childern($id)
     {
@@ -26,8 +28,7 @@ class DepartmentController extends Controller
     {
         $inputs = $this->department_service->show($id)->inputs;
         $data['inputs'] = $inputs;
-        // $data->toArray();
-        // dd($data['inputs']);
+        $data['products'] = $this->department_service->show($id)->products;
         if ($data['inputs']->count() > 0) {
 
             return response()->apiSuccess($data);

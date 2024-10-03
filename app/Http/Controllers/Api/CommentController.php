@@ -17,11 +17,12 @@ class CommentController extends Controller
 
     public function index($id)
     {
+        // $this->authorize('Show_Comments');
         return response()->apiSuccess($this->comment_service->getAllWith('post_id' , $id));
     }
     public function store(Request $request){
-        
-        $data['department_id'] = 
+        // $this->authorize('Add_Comment');
+        // $data['department_id'] = 
         $user =  auth('sanctum')->user()->id;
         $data = $request->all();
         $data['user_id'] = $user; 
@@ -30,10 +31,10 @@ class CommentController extends Controller
         }catch(\Exception $e){
             $message = $e->getMessage();
         }
-        if(isset($dat)){
+        if(isset($data)){
             return response()->apiSuccess($comment_data);
         }else{
-            return response()->apiFail($message);
+            return response()->apiFail($message ?? "fail");
         }
     }
 }

@@ -23,8 +23,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+
                 @can('admin_general_dashboard')
                     <li class="nav-item has-treeview">
                         <a href="{{ route('admin.dashboard') }}"
@@ -70,6 +69,37 @@
                                     </a>
                                 </li>
                             @endcan
+                        </ul>
+                    </li>
+                @endcan
+                @can('Admin_Roles')
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link {{ request()->is('admin/user_management*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user-cog"></i>
+                            <p>
+                                {{ __('user.user_management') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.user_management') }}"
+                                    class="nav-link {{ request()->is('admin/user_management') ? 'active' : '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>{{ __('user.All_User') }}</p>
+                                </a>
+                            </li>
+                            {{-- @can('Create_Admin_Roles')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.roles.create') }}"
+                                        class="nav-link {{ request()->is('admin/user_management/create') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>{{ __('roles.New_Roles') }}</p>
+                                    </a>
+                                </li>
+                            @endcan --}}
                         </ul>
                     </li>
                 @endcan
@@ -132,6 +162,41 @@
                                     <a href="{{ route('admin.categories.create') }}" class="nav-link {{ request()->is('admin/categories/create') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p> {{ __('category.create_category') }} </p>
+                                    </a>
+                                </li>
+                                {{-- <li class="nav-item">
+                                    <a href="" class="nav-link {{ request()->is('admin/categories/edit') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> {{ __('category.edit_category') }} </p>
+                                    </a>
+                                </li> --}}
+
+                            </ul>
+                        {{-- @endcan --}}
+
+                    </li>
+                @endcan
+                @can('Admin_Categories')
+                    <li class="nav-item has-treeview">
+                        <a href="" class="nav-link {{ request()->is('admin/products*') ? 'active' : '' }}">
+                            <i class="fas fa-list nav-icon"></i>
+                            <p>
+                                {{ __('products.products') }}
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        {{-- @can('Edit_Admin_Settings') --}}
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.products') }}" class="nav-link {{ request()->is('admin/products') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> {{ __('products.products') }} </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.products.store') }}" class="nav-link {{ request()->is('admin/products/create') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> {{ __('products.create_product') }} </p>
                                     </a>
                                 </li>
                                 {{-- <li class="nav-item">

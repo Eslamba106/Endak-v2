@@ -56,7 +56,7 @@ class SectionsTableSeeder extends Seeder
         Section::updateOrCreate(["id"=> 29], ["name"=> "Delete_Department", 'caption' => "Delete_Department" , 'section_group_id' => 24 ]);
 
 
-        // Posts 30 - 
+        // Posts 30 - 38
         Section::updateOrCreate(['id'=> 30], ['name'=> 'Posts' , 'caption' => 'Posts',]) ;
         Section::updateOrCreate(["id"=> 31], ["name"=> "Show_All_Posts", 'caption' => "Show_All_Posts" , 'section_group_id' => 30 ]);
         Section::updateOrCreate(["id"=> 32], ["name"=> "Show_Admin_Post", 'caption' => "Show_Admin_Post" , 'section_group_id' => 30 ]);
@@ -66,6 +66,21 @@ class SectionsTableSeeder extends Seeder
         Section::updateOrCreate(["id"=> 36], ["name"=> "Update_Post_Status", 'caption' => "Update_Post_Status" , 'section_group_id' => 30 ]);
         Section::updateOrCreate(["id"=> 37], ["name"=> "Delete_Post", 'caption' => "Delete_Post" , 'section_group_id' => 30 ]);
         Section::updateOrCreate(["id"=> 38], ["name"=> "Update_Post_Active", 'caption' => "Update_Post_Active" , 'section_group_id' => 30 ]);
+        
+        // Comments 39 - 45
+        Section::updateOrCreate(['id'=> 39], ['name'=> 'Comments' , 'caption' => 'Comments',]) ;
+        Section::updateOrCreate(["id"=> 40], ["name"=> "Show_All_Comments", 'caption' => "Show_All_Comments" , 'section_group_id' => 39 ]);
+        Section::updateOrCreate(["id"=> 42], ["name"=> "Show_Admin_Comments", 'caption' => "Show_Admin_Comments" , 'section_group_id' => 39 ]);
+        Section::updateOrCreate(["id"=> 43], ["name"=> "Show_Comments", 'caption' => "Show_Comments" , 'section_group_id' => 39 ]);
+        Section::updateOrCreate(["id"=> 44], ["name"=> "Create_Comment", 'caption' => "Create_Comments" , 'section_group_id' => 39 ]);
+        Section::updateOrCreate(["id"=> 45], ["name"=> "Update_Comment", 'caption' => "Update_Comment" , 'section_group_id' => 39 ]);
+
+
+        // Order 46 - 
+        Section::updateOrCreate(["id"=> 46], ["name"=> "Orders", 'caption' => "Orders" ]);
+        Section::updateOrCreate(["id"=> 47], ["name"=> "Accept_Offer", 'caption' => "Accept_Offer" , 'section_group_id' => 46 ]);
+        // Section::updateOrCreate(["id"=> 47], ["name"=> "Delete_Post", 'caption' => "Delete_Post" , 'section_group_id' => 39 ]);
+        // Section::updateOrCreate(["id"=> 41], ["name"=> "Update_Post_Active", 'caption' => "Update_Post_Active" , 'section_group_id' => 39 ]);
 
 
         /* Run Panel Sections */

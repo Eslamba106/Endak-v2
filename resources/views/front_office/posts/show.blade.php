@@ -1,6 +1,8 @@
 @extends('layouts.home')
 @section('title')
-    <?php $lang = config('app.locale'); ?>
+    <?php $lang = config('app.locale');
+    $user = auth()->user();
+    ?>
     {{ $lang == 'ar' ? 'المشاريع' : 'Projects' }}
 @endsection
 @section('content')
@@ -66,24 +68,24 @@
                                 <p> {{ $post->notes }}
                                 </p>
                                 <p>
-                                    {{ $post->price }} $
+                                    {{ $post->price }}$
                                 </p>
 
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-body pb-0">
-                                <h5 class="mb-4">Comments</h5>
-                                <div class="d-block mb-4 overflow-visible d-block d-sm-flex">
-                                    <div class="me-3 mb-3">
-                                        {{-- <a href="javascript:void(0);"> <img class="avatar avatar-lg rounded-circle thumb-sm"
+                        @can('Show_Comments')
+                            <div class="card">
+                                <div class="card-body pb-0">
+                                    <h5 class="mb-4">Comments</h5>
+                                    <div class="d-block mb-4 overflow-visible d-block d-sm-flex">
+                                        <div class="me-3 mb-3">
+                                            {{-- <a href="javascript:void(0);"> <img class="avatar avatar-lg rounded-circle thumb-sm"
                                                 alt="64x64" src="../assets/images/profile/2.jpg"> </a> --}}
-                                    </div>
+                                        </div>
                                         <div class="overflow-visible">
                                             @forelse ($post->comments as $comment)
-
-                                            <div class="border mb-4 p-4 br-5">
-                                                {{-- <nav class="nav float-end">
+                                                <div class="border mb-4 p-4 br-5">
+                                                    {{-- <nav class="nav float-end">
                                                     <div class="dropdown">
                                                         <a class="nav-link tx-muted fs-16 p-0 ps-4" href="javascript:;"
                                                             data-bs-toggle="dropdown" role="button" aria-haspopup="true"
@@ -100,30 +102,109 @@
                                                         </div>
                                                     </div>
                                                 </nav> --}}
-                                                <h5 class="mt-0">
-                                                    {{ $comment->user->first_name . ' ' . $comment->user->last_name }}</h5>
-                                                <p class="tx-muted"> {{ $comment->description }}</p>
+                                                    <h5 class="mt-0">
+                                                        {{ $comment->user->first_name . ' ' . $comment->user->last_name }}</h5>
+                                                    <p class="tx-muted"> {{ $comment->description }}</p>
+                                                    @if ($user->id == $post->user_id)
+                                                        <form action="{{ route('web.order.save') }}" method="post">
+                                                            @csrf
+                                                            <input type="hidden" name="post_id"
+                                                                value="{{ $post->id ?? null }}">
+                                                            <input type="hidden" name="department_id"
+                                                                value=" {{ $post->department_id }} ">
+                                                            <input type="hidden" name="customer_id"
+                                                                value="{{ $post->user_id }}">
+                                                            <input type="hidden" name="notes" value="{{ $post->notes }}">
 
-                                                <a href="javascript:void(0);"
-                                                    class="btn btn-primary-transparent btn-sm rounded-pill" role="button"
-                                                    data-bs-toggle="reply-form" data-bs-target="comment-1">
-                                                    <i class="fe fe-corner-up-left me-2"></i>Accept Offer
-                                                </a>
+                                                            {{-- 
+//                                                          						
+//                                                          													
+                                                            --}}
+                                                            <input type="hidden" name="food" value="{{ $post->food }}">
+                                                            <input type="hidden" name="date" value="{{ $post->date }}">
+                                                            <input type="hidden" name="size" value="{{ $post->size }}">
+                                                            <input type="hidden" name="general" value="{{ $post->general }}">
 
-                                                <form method="POST" class="reply-form d-none" id="comment-1">
-                                                    <textarea placeholder="Reply to Comment..." class="form-control my-3" rows="3"></textarea>
-                                                    <div class="text-end">
-                                                        <button type="button"
-                                                            class="btn btn-success-transparent btn-sm rounded-pill">Submit</button>
-                                                        <button type="button"
-                                                            class="btn btn-danger-transparent btn-sm rounded-pill"
-                                                            data-bs-toggle="reply-form"
-                                                            data-bs-target="comment-1">Cancel</button>
-                                                    </div>
-                                                </form>
+                                                            <input type="hidden" name="fingerprint" value="{{ $post->fingerprint }}">
+                                                            <input type="hidden" name="camera" value="{{ $post->camera }}">
+                                                            <input type="hidden" name="type" value="{{ $post->type }}">
+                                                            <input type="hidden" name="smart" value="{{ $post->smart }}">
+                                                            <input type="hidden" name="system_security" value="{{ $post->system_security }}">
+                                                            <input type="hidden" name="fire_system" value="{{ $post->fire_system }}">
+                                                            <input type="hidden" name="networks" value="{{ $post->networks }}">
+                                                            <input type="hidden" name="time" value="{{ $post->time }}">
+                                                            <input type="hidden" name="gender" value="{{ $post->gender }}">
 
-                                            </div>
-                                            {{-- <div class="d-block d-sm-flex overflow-visible">
+                                                            <input type="hidden" name="explain" value="{{ $post->explain }}">
+                                                            <input type="hidden" name="modal" value="{{ $post->modal }}">
+                                                            <input type="hidden" name="manufacturing_year" value="{{ $post->manufacturing_year }}">
+                                                            <input type="hidden" name="section" value="{{ $post->section }}">
+                                                            <input type="hidden" name="code_number" value="{{ $post->code_number }}">
+                                                            <input type="hidden" name="name" value="{{ $post->name }}">
+                                                            <input type="hidden" name="cars" value="{{ $post->cars }}">
+                                                            <input type="hidden" name="clean" value="{{ $post->clean }}">
+                                                            <input type="hidden" name="Verion" value="{{ $post->Verion }}">
+                                                            <input type="hidden" name="weight" value="{{ $post->weight }}">
+                                                            <input type="hidden" name="fixed" value="{{ $post->fixed }}">
+
+                                                            <input type="hidden" name="from_neighborhood" value="{{ $post->from_neighborhood }}">
+                                                            <input type="hidden" name="city" value="{{ $post->city }}">
+                                                            <input type="hidden" name="neighborhood" value="{{ $post->neighborhood }}">
+                                                            <input type="hidden" name="from_floor" value="{{ $post->from_floor }}">
+                                                            <input type="hidden" name="from_house" value="{{ $post->from_house }}">
+                                                            <input type="hidden" name="to_city" value="{{ $post->to_city }}">
+                                                            <input type="hidden" name="to_neighborhood" value="{{ $post->to_neighborhood }}">
+                                                            <input type="hidden" name="to_floor" value="{{ $post->to_floor }}">
+                                                            <input type="hidden" name="to_house" value="{{ $post->to_house }}">
+                                                            <input type="hidden" name="image" value="{{ $post->image }}">
+                                                            <input type="hidden" name="video" value="{{ $post->video }}">
+           
+
+
+                                                            <input type="hidden" name="price"
+                                                                value="{{ $post->price }}">
+                                                            <input type="hidden" name="slug"
+                                                                value="{{ $post->slug  }}">
+                                                            <input type="hidden" name="title"
+                                                                value="{{ $post->title }}">
+                                                            <input type="hidden" name="description"
+                                                                value="{{ $post->description }}">
+
+                                                            <input type="hidden" name="days_count"
+                                                                value="{{ $post->days_count }}">
+                                                            <input type="hidden" name="count"
+                                                                value="{{ $post->count }}">
+                                                            <input type="hidden" name="from_city"
+                                                                value="{{ $post->from_city }}">
+                                                       
+
+
+                                                            <input type="hidden" name="service_provider_id"
+                                                                value="{{ $comment->user_id }}">
+                                                            {{-- <input type="hidden" name="post_data" value="{{ $post }}"> --}}
+                                                            <button type="submit"
+                                                                class="btn btn-primary-transparent btn-sm rounded-pill"
+                                                                role="button" data-bs-toggle="reply-form"
+                                                                data-bs-target="comment-1">
+                                                                <i
+                                                                    class="fe fe-corner-up-left me-2"></i>{{ __('order.accept_offer') }}
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                    {{-- <form method="POST" class="reply-form d-none" id="comment-1">
+                                                        <textarea placeholder="Reply to Comment..." class="form-control my-3" rows="3"></textarea>
+                                                        <div class="text-end">
+                                                            <button type="button"
+                                                                class="btn btn-success-transparent btn-sm rounded-pill">Submit</button>
+                                                            <button type="button"
+                                                                class="btn btn-danger-transparent btn-sm rounded-pill"
+                                                                data-bs-toggle="reply-form"
+                                                                data-bs-target="comment-1">Cancel</button>
+                                                        </div>
+                                                    </form> --}}
+
+                                                </div>
+                                                {{-- <div class="d-block d-sm-flex overflow-visible">
                                                 <div class="me-3 mb-3">
                                                     <a href="javascript:void(0);"> <img
                                                             class="avatar avatar-lg rounded-circle thumb-sm" alt="64x64"
@@ -133,41 +214,47 @@
                                             </div> --}}
                                             @empty
                                                 {!! no_data() !!}
-                                        @endforelse
+                                            @endforelse
                                         </div>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-
-
-                        {{-- Comments --}}
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="h5 mb-4">Add a Comments</p>
-                                <form class="form-horizontal  m-t-20" action="{{ route('comments.store') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" value="{{ $post->department_id }}" name="department_id">
-                                    <input type="hidden" value="{{ $post->id }}" name="post_id">
-                                    <div class="mb-3">
-                                        <div class="col-xs-12">
-                                            <textarea class="form-control" rows="5" placeholder="Your Comment" name="description"></textarea>
-                                        </div>
-                                    </div>
-                                    {{-- <div class="mb-3">
+                        @endcan
+                        @can('Create_Comment')
+                            {{-- Comments --}}
+                            <?php $is_add = App\Models\Comment::where('post_id', $post->id)
+                                ->where('user_id', $user->id)
+                                ->first(); ?>
+                            @if ($user->id != $post->user_id && !isset($is_add) && $post->status == "open")
+                                <div class="card">
+                                    <div class="card-body">
+                                        <p class="h5 mb-4">Add a Comments</p>
+                                        <form class="form-horizontal  m-t-20" action="{{ route('comments.store') }}"
+                                            method="POST">
+                                            @csrf
+                                            {{-- <input type="hidden" value="{{ $post->department_id }}" name="department_id"> --}}
+                                            <input type="hidden" value="{{ $post->id }}" name="post_id">
+                                            <div class="mb-3">
+                                                <div class="col-xs-12">
+                                                    <textarea class="form-control" rows="5" placeholder="Your Comment" name="description"></textarea>
+                                                </div>
+                                            </div>
+                                            {{-- <div class="mb-3">
                                         <div class="col-xs-12">
                                             <textarea class="form-control" rows="5" placeholder="Your Notes" name="notes"></textarea>
                                         </div>
                                     </div> --}}
-                                    <div class="">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                        {{-- <a href="javascript:void(0)" class="btn btn-primary">Submit</a> --}}
+                                            <div class="">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                {{-- <a href="javascript:void(0)" class="btn btn-primary">Submit</a> --}}
+                                            </div>
+                                        </form>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
                         </div>
-                    </div>
+                        @endif
+                    @endcan
                     {{-- <div class="col-xl-4"> --}}
                     {{-- <div class="card">
                         <div class="card-body">
@@ -311,4 +398,23 @@
             </div>
         </section>
     </div>
+    @if (Session::has('success'))
+        <script>
+            swal("Message", "{{ Session::get('success') }}", 'success', {
+                button: true,
+                button: "Ok",
+                timer: 3000,
+            })
+        </script>
+    @endif
+    @if (Session::has('info'))
+        <script>
+            swal("Message", "{{ Session::get('info') }}", 'info', {
+                button: true,
+                button: "Ok",
+                timer: 3000,
+            })
+        </script>
+    @endif
+
 @endsection

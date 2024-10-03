@@ -69,4 +69,8 @@ class Department extends Model
         return $this->hasMany(Post::class , 'department_id', 'id' );
     }
 
+    public function products(){
+        return $this->belongsToMany(Product::class , 'products_departments' );
+    }
+
 }

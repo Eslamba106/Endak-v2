@@ -163,13 +163,33 @@
                 <div class="col-sm-7">
                     <?php $all_inputs = App\Models\Inputs::get(); ?>
 
-
-                    @if ($categories->count())
+                    @if ($all_inputs->count() != 0)
                         <select name="inputs[]" id="tags" class="form-control inputs select2" multiple="multiple">
                             <option value="">{{ __('department.select_input') }}</option>
                             @foreach ($all_inputs as $input)
                                 <option value="{{ $input->id }}" >
                                     {{ ($lang == 'ar') ? $input->title_ar : $input->title_en }}</option>
+                            @endforeach
+                        </select>
+                    @endif
+                
+                </div>
+            </div>
+
+
+            <div class="form-group row {{ $errors->has('products') ? ' has-error' : '' }}">
+                <label class="mb-3 col-sm-3 control-label">{{ __('products.products') }} <span style="color:red;">*</span></label>
+                <div class="col-sm-7">
+                    <?php $all_products = App\Models\Product::get(); ?>
+
+
+                    @if ($all_products->count())
+                        <select name="products[]" id="tags" class="form-control products select2" multiple="multiple">
+                            <option value="">{{ __('department.select_product') }}</option>
+                            @foreach ($all_products as $product)
+                                <option value="{{ $product->id }}" >
+                                    {{ ($lang == 'ar') ? $product->name_ar : $product->name_en }}
+                                </option>
                             @endforeach
                         </select>
                     @endif
@@ -228,6 +248,12 @@
     </script>
     <script>
         $(".inputs").select2({
+            topics: true,
+            tokenSeparators: [',', ' ']
+        })
+    </script>
+    <script>
+        $(".products").select2({
             topics: true,
             tokenSeparators: [',', ' ']
         })

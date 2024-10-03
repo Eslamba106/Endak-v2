@@ -121,16 +121,38 @@
 
 
                     @if ($all_inputs->count())
-                        <select name="inputs[]" id="tags" class="form-control inputs select2" multiple="multiple">
-                            <option value="">{{ __('category.select_category') }}</option>
+                        <select name="inputs[]" id="inputs" class="form-control inputs select2" multiple="multiple">
+                            <option value="">{{ __('department.select_input') }}</option>
                             @foreach ($all_inputs as $input)
                                 <option value="{{ $input->id }}" {{ ($department->inputs) ? selected($department->inputs->contains($input->id))  : '' }}>{{ $input->title_ar }}</option>
                  
                             @endforeach
                         </select>
                     @endif
-                    @if ($errors->has('category_id'))
-                        <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
+                    @if ($errors->has('inputs'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('inputs') }}</strong></span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group row {{ $errors->has('products') ? ' has-error' : '' }}">
+                <label class="mb-3 col-sm-3 control-label">{{ __('products') }} <span style="color:red;">*</span></label>
+                <div class="col-sm-7">
+                    <?php $all_products = App\Models\Product::get(); ?>
+
+
+                    @if ($all_products->count())
+                        <select name="products[]" id="product" class="form-control products select2" multiple="multiple">
+                            <option value="">{{ __('category.select_category') }}</option>
+                            @foreach ($all_products as $product)
+                                <option value="{{ $product->id }}" {{ ($department->products) ? selected($department->products->contains($product->id))  : '' }}>
+                                    {{ ($lang == 'ar') ? $product->name_ar : $product->name_en }}</option>
+                 
+                            @endforeach
+                        </select>
+                    @endif
+                    @if ($errors->has('products'))
+                        <span class="invalid-feedback"><strong>{{ $errors->first('products') }}</strong></span>
                     @endif
                 </div>
             </div>
@@ -265,6 +287,12 @@
     </script>
     <script>
         $(".inputs").select2({
+            topics: true,
+            tokenSeparators: [',', ' ']
+        })
+    </script>
+    <script>
+        $(".products").select2({
             topics: true,
             tokenSeparators: [',', ' ']
         })
