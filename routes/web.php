@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\OrderUserController;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\OrderUserController;
 use App\Http\Controllers\DepartmentsController;
 
 /*
@@ -63,8 +64,14 @@ Route::get('posts/my_posts/{id}', [PostController::class , 'my_posts' ])->name('
 
 Route::post('/comments/create' , [CommentController::class , 'store'])->name('comments.store');
 
-// Orders 
-
+// Orders  my_orders
+Route::get('order/my_orders/{id}' , [OrderUserController::class , 'my_orders'])->name('web.order.my_orders');
 Route::post('/order/create' , [OrderUserController::class , 'store'])->name('web.order.save');
 
 // Rating 
+Route::get('/profile/{id}' ,[ProfileController::class , 'show'] )->name('web.profile');
+Route::get('/profile/edit/{id}' ,[ProfileController::class , 'edit'] )->name('web.profile.edit');
+
+// Users 
+
+Route::get('/service_provider' , [ProfileController::class , 'users'])->name('web.user.service_provider');

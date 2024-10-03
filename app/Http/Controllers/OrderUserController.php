@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\OrderServices;
 use DB;
+use App\Models\Order;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Services\OrderServices;
 
 class OrderUserController extends Controller
 {
@@ -21,7 +23,7 @@ class OrderUserController extends Controller
         ]);
         // dd(gettype($request->post_data));
         $data = $request->all();
-
+        $data['slug'] = Str::slug($request->title , '-');
 
         $is_create = $this->order->store($data);
         if($is_create){
@@ -30,5 +32,16 @@ class OrderUserController extends Controller
             ]);
         }
         return redirect()->back()->with('success','Order Creates');
+    }
+    public function my_orders($id){
+        $user = auth()->user();
+        if($user->role_id == 1){
+
+            $orders = Order::where('customer_id' , $id)->get();
+        }elseif($user->role_id == 3){
+            $orders = Order::where('service_provider_id' , $id)->get();
+
+        }
+        return view('front_office.orders.my_orders' , compact('orders'));
     }
 }

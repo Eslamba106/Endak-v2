@@ -23,6 +23,7 @@ class AuthController extends Controller
         // dd($loginResponse );
         if ($loginResponse != false  ) {
             $user = $request->user();
+            $user['rate'] = $user->rates() ;
             $token = $user->createToken("$user->first_name");
             return response()->apiSuccess(['token' => $token->plainTextToken, 'user' => $user]);
         }else{

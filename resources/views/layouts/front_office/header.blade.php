@@ -143,7 +143,7 @@
                                 </a>
                             </span>
                             <div class="d-none d-md-block">
-                                <a href="" class="nav-link tx-15 p-0">{{ $user->first_name }}</a>
+                                <a href="{{ route('web.profile' , $user->id) }}" class="nav-link tx-15 p-0">{{ $user->first_name }}</a>
                             </div>
                             @if ($user->role_name == 'admin')
                                 <a style="margin-left: 10px;color:white"
@@ -293,10 +293,7 @@
 
                             </ul>
                         </li>
-                        {{-- <?php
-                        
-                        $posts = App\Models\Post::where('user_id', $user->id)->get();
-                        ?> --}}
+                    
                         @if (auth()->check())
                             <li class="slide">
                                 <a href="{{ route('web.posts.my_posts', $user->id) }}" class="side-menu__item">
@@ -306,6 +303,24 @@
 
                             </li>
                         @endif
+                        {{-- @if (auth()->check()) --}}
+                            <li class="slide">
+                                <a href="{{ route('web.user.service_provider') }}" class="side-menu__item">
+                                    <span class="side-menu__label">{{ __('user.service_provider') }}</span>
+                                    <i class="fe fe-chevron-down side-menu__angle"></i>
+                                </a>
+
+                            </li>
+                        {{-- @endif --}}
+                        @if (auth()->check()) 
+                            <li class="slide">
+                                <a href="{{ route('web.order.my_orders' , $user->id) }}" class="side-menu__item">
+                                    <span class="side-menu__label">{{ __('order.my_orders') }}</span>
+                                    <i class="fe fe-chevron-down side-menu__angle"></i>
+                                </a>
+
+                            </li>
+                         @endif
                         <!-- End::slide -->
 
 

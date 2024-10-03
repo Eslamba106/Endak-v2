@@ -16,9 +16,13 @@ class DepartmentController extends Controller
 
     public function index()
     {
-        $date = $this->department_service->getAllWith('department_id', 0);
-        
-        return response()->apiSuccess();
+        $data = $this->department_service->getAllWith('department_id', 0);
+        if($data){
+
+            return response()->apiSuccess($data);
+        }else{
+            return response()->apiFail("There is no departments");
+        }
     }
     public function childern($id)
     {

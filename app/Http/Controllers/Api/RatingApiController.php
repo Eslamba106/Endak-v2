@@ -47,11 +47,17 @@ class RatingApiController extends Controller
                 'experience_in_the_project_field' => (int)$data['experience_in_the_project_field'],
                 'deal_with_him_again' => (int)$data['deal_with_him_again'],
                 'delivery_on_time' => (int)$data['delivery_on_time'],
-                'rate' => $rates > 0 ? $rates / 6 : 0,
+                'rate' => $rates > 0 ? number_format($rates, 2) / 6 : 0,
                 'comment' => $data['comment'],
                 'created_at' => time(),
             ]);
-            return $rate;
+            if($rate){
+                return response()->apiSuccess($rate);
+            }else{
+                return response()->apiFail();
+            }
+            
         }
+        return response()->apiFail("Order Not Found or is not Complete");
     }
 }

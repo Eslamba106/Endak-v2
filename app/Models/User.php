@@ -86,10 +86,16 @@ class User extends Authenticatable
         return $this->hasMany(Order::class, 'service_provider_id', 'id');
             // ->orWhere('teacher_id', $this->id);
     }
+    public function myorders()
+    {
+        return $this->hasMany(Order::class, 'customer_id', 'id');
+            // ->orWhere('teacher_id', $this->id);
+    }
     public function rates()
     {
         $orders = $this->orders()
-            // ->where('status', 'active')
+            ->where('status', 'complete')
+            ->where('admin_status', 'active')
             ->get();
 
         $rate = 0;
@@ -99,7 +105,7 @@ class User extends Authenticatable
             $count = 0;
 
             foreach ($orders as $order) {
-                $orderRate = $order->getRate();
+                $orderRate = $order->rate->rate;
 
                 if (!empty($orderRate) and $orderRate > 0) {
                     $count += 1;
