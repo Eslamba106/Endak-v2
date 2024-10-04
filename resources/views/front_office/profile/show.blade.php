@@ -141,9 +141,6 @@
                     </div>
 
                 </div>
-                {{-- <a href="">تعديل الملف الشخصي</a> --}}
-
-
             </div>
 
 
@@ -157,10 +154,8 @@
                 <div
                     class="profile-card d-flex flex-column flex-md-row align-items-center justify-content-between rounded-lg shadow-xs bg-white mb-5 mt-5  p-15 p-md-30">
                     <p class="mb-2">
-                        <strong>About Me : </strong>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur consequatur necessitatibus error
-                        maxime, quo consectetur vel porro repellendus harum molestias? Expedita inventore perspiciatis ipsam
-                        facere quae rerum nihil. Expedita, illum.
+                        <strong>{{ __('user.about_me') }} : </strong>
+                         {{ $user->about_me }}
                     </p>
                 </div>
             </div>
