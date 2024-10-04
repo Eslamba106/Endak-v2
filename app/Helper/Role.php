@@ -18,7 +18,7 @@ if (!function_exists("uploadImage")) {
             $path = $file->store($folder_name, [
                 'disk' => 'public',
             ]);
-            // \Log::info('path is ' . $path);
+            \Log::info('path is ' . $path);
             return $path;
         }
     }
@@ -26,7 +26,7 @@ if (!function_exists("uploadImage")) {
 if (!function_exists("uploadImageLivewire")) {
     function uploadImageLivewire($file, $folder_name): mixed
     {
-
+        // $file =  $request->file($name);
         $path = $file->store($folder_name, [
             'disk' => 'public',
         ]);

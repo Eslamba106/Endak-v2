@@ -90,8 +90,11 @@
                 <a href="{{ route('web.profile.edit', $user->id) }}" class="btn btn-primary m-3">تعديل الملف الشخصي</a>
             @endif
         @endif
-        <img src="{{ $user->image_url }}" class="img-cover profile-img" alt="{{ $user->first_name }}" />
-
+        @if ($user->image )
+            <img src="{{ $user->image_url }}" class="img-cover profile-img" alt="{{ $user->first_name }}" />
+        @else
+            <img src="{{ asset('images/user.png') }}" class="img-cover profile-img" alt="{{ $user->first_name }}" />
+        @endif
         <div class="profile-content pt-40">
             <div class="container position-relative">
                 <div

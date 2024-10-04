@@ -58,19 +58,20 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        // dd($request );
         $request->validate([
-            'first_name' => "required",               // First name is required
-            'last_name' => "required",                // Last name is required
-            'email' => "email",                       // Email must be a valid email address
-            'password' => "required|confirmed|min:6", // Password is required, must be confirmed, and at least 6 characters long
-            'phone' => "required",                    // Phone number is required
+            'first_name' => "required",               
+            'last_name' => "required",            
+            'email' => "email",                      
+            'password' => "required|confirmed|min:6", 
+            'phone' => "required",                    
         ]);
         if($request->image){
             
             $new_image = uploadImage($request , "users" , "image");
         }
 
-        User::create([
+        $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'email' => $request->email,
@@ -81,6 +82,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
 
         ]);
+        auth()->login($user);
         return redirect()->route('home');
 
     }
