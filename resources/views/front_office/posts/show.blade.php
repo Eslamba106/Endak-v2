@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-xl-8">
                         <div class="card">
-                            @if ($post->image_url != null)
+                            @if (isset($post->image))
                                 <img class="card-img-top" src="{{ $post->image_url }}" alt="img">
                             @endif
                             <div class="card-body">

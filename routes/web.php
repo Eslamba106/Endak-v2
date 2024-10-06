@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RatingUserController;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -67,7 +68,8 @@ Route::post('/comments/create' , [CommentController::class , 'store'])->name('co
 // Orders  my_orders
 Route::get('order/my_orders/{id}' , [OrderUserController::class , 'my_orders'])->name('web.order.my_orders');
 Route::post('/order/create' , [OrderUserController::class , 'store'])->name('web.order.save');
-
+Route::get('/order/{id}' , [OrderUserController::class , 'show_order'])->name('web.order.view');
+Route::post('/order/complete' , [OrderUserController::class , 'finish'])->name('web.order.finish');
 // Rating 
 Route::get('/profile/{id}' ,[ProfileController::class , 'show'] )->name('web.profile');
 Route::get('/profile/edit/{id}' ,[ProfileController::class , 'edit'] )->name('web.profile.edit');
@@ -75,3 +77,7 @@ Route::get('/profile/edit/{id}' ,[ProfileController::class , 'edit'] )->name('we
 // Users 
 
 Route::get('/service_provider' , [ProfileController::class , 'users'])->name('web.user.service_provider');
+
+// Order Rating 
+
+Route::get('/add_rate/{id}' , [RatingUserController::class , 'add_rate'])->name('web.add_rate');

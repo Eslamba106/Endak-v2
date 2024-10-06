@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "ec9062d3-bde3-4e73-a504-eba33d4e5d06",
 		"name": "Endak",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "31120614"
 	},
 	"item": [
@@ -164,13 +164,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "14|SPcrv2nGa92ThGBsC105WCOmDCHwtq9e7Fhr2llD0a1e24eb",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "14|SPcrv2nGa92ThGBsC105WCOmDCHwtq9e7Fhr2llD0a1e24eb"
+							}
 						},
 						"method": "GET",
 						"header": [
@@ -180,16 +176,7 @@
 								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "{{url}}/api/logout",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"logout"
-							]
-						}
+						"url": "{{url}}/api/logout"
 					},
 					"response": []
 				}
@@ -209,18 +196,7 @@
 								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:8000/api/posts",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"posts"
-							]
-						}
+						"url": "http://localhost:8000/api/department_id/posts"
 					},
 					"response": []
 				},
@@ -255,17 +231,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{url}}/api/posts/store",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"posts",
-								"store"
-							]
-						}
+						"url": "{{url}}/api/posts/store"
 					},
 					"response": []
 				}
@@ -279,16 +245,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{url}}/api/departments",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"departments"
-							]
-						}
+						"url": "{{url}}/api/departments"
 					},
 					"response": []
 				},
@@ -297,17 +254,22 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{url}}/api/departments/{id}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"departments",
-								"{id}"
-							]
-						}
+						"url": "{{url}}/api/departments/id"
+					},
+					"response": []
+				},
+				{
+					"name": "show_posts_input_for_department",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"url": "{{url}}/api/departments/show_post_inputs/{id}"
 					},
 					"response": []
 				}
@@ -340,16 +302,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "{{url}}/api/categories",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"categories"
-							]
-						}
+						"url": "{{url}}/api/categories"
 					},
 					"response": []
 				},
@@ -358,17 +311,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{url}}/api/categories/{id}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"categories",
-								"{id}"
-							]
-						}
+						"url": "{{url}}/api/categories/{id}"
 					},
 					"response": []
 				}
@@ -382,17 +325,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "{{url}}/api/comments/{post_id}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"comments",
-								"{post_id}"
-							]
-						}
+						"url": "{{url}}/api/comments/{post_id}"
 					},
 					"response": []
 				},
@@ -401,13 +334,9 @@
 					"request": {
 						"auth": {
 							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "1|IwP0z2dCdoO94zb9EzXZSkk94hfBksuH2wS6BVIgbb598203",
-									"type": "string"
-								}
-							]
+							"bearer": {
+								"token": "1|IwP0z2dCdoO94zb9EzXZSkk94hfBksuH2wS6BVIgbb598203"
+							}
 						},
 						"method": "POST",
 						"header": [],
@@ -444,6 +373,188 @@
 								}
 							]
 						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "my orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|0qzsMCRbhckClZBwc5PSC8TDk5AqNH7jEnx5tfa9ea403654"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{url}}/api/orders/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|0qzsMCRbhckClZBwc5PSC8TDk5AqNH7jEnx5tfa9ea403654"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "department_id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "customer_id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "service_provider_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "25",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url}}/api/orders/create"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "send massege",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Show masseges",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Conversation",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rating",
+			"item": [
+				{
+					"name": "Add Rate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "5|QUvE5sQXVjKqR2iYFgKS3ec7jDWl6Bw0mL6uNLVX7606bb2e"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "order_id",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "creator_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "professionalism_in_dealing",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "communication_and_follow_up",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "quality_of_work_delivered",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "experience_in_the_project_field",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "delivery_on_time",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "deal_with_him_again",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "Good job",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url}}/api/rating"
 					},
 					"response": []
 				}

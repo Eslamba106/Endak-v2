@@ -33,11 +33,11 @@ class PostController extends Controller
     }
     public function store(Request $request)
     {
-        $request->validate([
-            "department_id" => "required",
-            "title" => "required",
-            'price' => "required"
-        ]);
+        // $request->validate([
+        //     "department_id" => "required",
+        //     "title" => "required",
+        //     'price' => "required"
+        // ]);
         $user = auth()->user()->id;
         $data = $request->all();
         $data['user_id'] = $user;

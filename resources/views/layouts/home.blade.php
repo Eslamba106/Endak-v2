@@ -10,14 +10,14 @@
     <meta name="author" content="Spruko Technologies Private Limited">
     <meta name="keywords"
         content="whmcs website templates, whmcs html template, hosting template html, bootstrap whmcs, bootstrap web hosting template, web hosting template with whmcs, html hosting template,website hosting and templates, html web hosting, hosting website template, web hosting in html, template hosting bootstrap, whmcs hosting template, whmcs web hosting template">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
     <!-- TITLE -->
     <title>@yield('title')</title>
 
     <!-- Favicon -->
     {{-- <link rel="icon" href="{{ asset('assets/images/brand/favicon.ico') }}" type="image/x-icon"> --}}
-    <link rel="stylesheet" href="{{ asset('home/assets/css/line-awesome.min.css')  }}">
+    <link rel="stylesheet" href="{{ asset('home/assets/css/line-awesome.min.css') }}">
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('home/assets/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -77,7 +77,15 @@
 
         @include('layouts.front_office.footer')
 
-
+        @if (Session::has('error'))
+            <script>
+                swal("Message", "{{ Session::get('error') }}", 'error', {
+                    button: true,
+                    button: "Ok",
+                    timer: 3000,
+                })
+            </script>
+        @endif
 
         <!-- Bootstrap js -->
         <script src="{{ asset('home/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

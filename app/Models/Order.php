@@ -27,5 +27,8 @@ class Order extends Model
     {
         return $this->hasOne(Post::class, 'post_id ', 'id');
     }
-
+    public function getImageUrlAttribute()
+    {
+        return asset( 'storage/' . $this->image);
+    }
 }

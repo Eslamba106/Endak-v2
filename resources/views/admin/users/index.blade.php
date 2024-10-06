@@ -31,10 +31,7 @@
 
                 {{-- <a href="{{route('offer_create')}}" class="btn btn-primary mt-3 mr-2" data-toggle="tooltip" title="@lang('admin.offer_add')"> <i class="la la-plus"></i> </a> --}}
 
-{{-- 
-                <button type="submit" name="bulk_action_btn" value="role" class="btn btn-primary mt-3 mr-2">
-                    <i class="la la-refresh"></i> {{__('general.update')}}
-                </button> --}}
+ 
                 <button type="submit" name="bulk_action_btn" value="update_status" class="btn btn-primary mt-3 mr-2">
                     <i class="la la-refresh"></i> {{__('general.update')}}
                 </button>
