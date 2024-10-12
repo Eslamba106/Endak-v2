@@ -326,6 +326,7 @@
                                 <td class="width30">{{ $order->general }}</td>
                             </tr>
                         @endif
+                       
 
                     </thead>
                 </table>
@@ -359,7 +360,7 @@
                             <input type="hidden" name="id" value="{{ $order->id }}">
                             <a href="{{ route('web.add_rate' , $order->id) }}"   
                                 class="btn btn-primary mt-3 mr-2">
-                                <i class="la la-refresh"></i> {{ __('order.complete') }}
+                                <i class="la la-refresh"></i> {{ __('rate.add') }}
                             </a>
                         </div>
                     </div>

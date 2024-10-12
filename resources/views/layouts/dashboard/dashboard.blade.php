@@ -27,9 +27,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     {{-- <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css').'?version='.time()}}"> --}}
 
-    <link rel="stylesheet" href="{{ asset('select2-4.0.3/css/select2.css')}}">
-    <link rel="stylesheet" href="{{asset('dashboard/css/line-awesome.min.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('select2-4.0.3/css/select2.css') }}">
+    <link rel="stylesheet" href="{{ asset('dashboard/css/line-awesome.min.css') }}">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     @if (session()->has('locale') && session()->get('locale') == 'ar')
@@ -39,6 +40,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     @yield('css')
 </head>
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
@@ -74,8 +76,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
     <script src="{{ asset('js/dist/adminlte.min.js') }}"></script>
     {{-- <script src="{{ asset('toastr/toastr.min.js').'?version='.time()}}"></script> --}}
-    <script src="{{ asset('select2-4.0.3/js/select2.min.js')}}"></script>
-
+    <script src="{{ asset('select2-4.0.3/js/select2.min.js') }}"></script>
+    <script>
+        $(document).on('change', '.bulk_check_all', function() {
+            $('input.check_bulk_item:checkbox').not(this).prop('checked', this.checked);
+        });
+    </script>
     @yield('js')
 </body>
 

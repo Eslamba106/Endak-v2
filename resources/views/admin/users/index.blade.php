@@ -66,7 +66,7 @@
                                 </td>
                                 <td>{{ $user->first_name ." " . $user->last_name }} </td>
                                 <td>{{ $user->email }} </td>
-                                <td>{{ $user->status }} </td>
+                                <td>{{ $user->status }} </td> {{-- {{ ($invoice->invoice_status == 'paid') ? "badge-success" : "badge-warning" }} --}}
                                 <td>{{ $user->role_name }} </td>
                                 <td>{{ $user->created_at->shortAbsoluteDiffForHumans() }}</td>
                                 <td>

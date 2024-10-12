@@ -81,3 +81,4 @@ Route::get('/service_provider' , [ProfileController::class , 'users'])->name('we
 // Order Rating 
 
 Route::get('/add_rate/{id}' , [RatingUserController::class , 'add_rate'])->name('web.add_rate');
+Route::post('/web-rate/store' , [RatingUserController::class , 'store'])->name('web.add_rate.store');

@@ -100,17 +100,21 @@ class User extends Authenticatable
 
         $rate = 0;
 
+
         if (!empty($orders)) {
             $rates = 0;
             $count = 0;
 
             foreach ($orders as $order) {
-                $orderRate = $order->rate->rate;
-
-                if (!empty($orderRate) and $orderRate > 0) {
-                    $count += 1;
-                    $rates += $orderRate;
+                $orderRate = Rating::where('order_id' , $order->id)->first();
+                // \Log::info($orderRate->rate);
+                if(isset($orderRate->rate)){
+                    if (!empty($orderRate->rate) and $orderRate->rate > 0) {
+                        $count += 1;
+                        $rates += $orderRate->rate;
+                    }
                 }
+                
             }
 
             if ($rates > 0) {

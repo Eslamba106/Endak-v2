@@ -93,11 +93,7 @@
                         class="profile-card rounded-lg shadow-xs bg-white p-15 p-md-30">
                         <div class="profile-content pt-40">
                             <div class="container position-relative d-flex justify-content-center ">
-                                {{-- <div style="width:700px"  class="profile-card rounded-lg shadow-xs bg-white p-15 p-md-30 row mb-3 mb-xl-0"> --}}
-                                {{-- <div class="col-xl-4 col-lg-2 col-md-3 col-sm-4 text-center">
-                                    <img src="../assets/images/blog/6.jpg" class="img-fluid br-5 w-100" width="120"
-                                        alt="img">
-                                </div> --}}
+                              
                                 <div class="col-xl-4 col-lg-9 col-md-8 col-sm-8 mb-2">
                                     <span
                                         class="badge  {{ $order->status == 'complete' ? 'bg-primary-transparent tx-primary ' : ' bg-danger-transparent tx-danger' }} me-1 mb-1 mt-3 mt-sm-0">{{ $order->status }}</span>
@@ -105,10 +101,7 @@
 
                                     {{-- <p class="tx-muted">{{ $order->description }}</p> --}}
                                 </div>
-                                <div class="col-xl-8 col-lg-9 col-md-8 col-sm-8 mb-2">
-                                    {{-- <span
-                                        class="badge  {{ $order->status == 'complete' ? 'bg-primary-transparent tx-primary ' : ' bg-danger-transparent tx-danger' }} me-1 mb-1 mt-3 mt-sm-0">{{ $order->status }}</span>
-                                    <h6 class="mb-0"><a href=" "> </a>{{ $order->title }}</h6> --}}
+                                <div class="col-xl-8 col-lg-9 col-md-8 col-sm-8 mb-2"> 
                                     <p>{{ $order->description }}</p>
                                     <hr>
                                     <a href="{{ route('web.order.view' , $order->id) }}" class="btn btn-primary">{{ __('order.show') }}</a>

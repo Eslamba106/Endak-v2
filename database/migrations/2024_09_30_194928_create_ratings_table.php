@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained('orders');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('creator_id')->constrained('users');
+            // $table->unsignedBigInteger('creator_id');
             $table->tinyInteger('professionalism_in_dealing')->default(1);
             $table->tinyInteger('communication_and_follow_up')->default(1);
             $table->tinyInteger('quality_of_work_delivered')->default(1);
