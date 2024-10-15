@@ -230,9 +230,9 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group mt-2"  style="text-align: right;margin-right:10px">
-                        <button class="btn btn-primary mt-2" >{{ trans('rate.add_rate') }}</button>
-                    </div>
+                        <div class="form-group mt-2"  style="text-align: right;margin-right:10px">
+                            <button class="btn btn-primary mt-2" >{{ trans('rate.add_rate') }}</button>
+                        </div>
                     {{-- <button type="submit" class="btn btn-sm btn-primary" style="margin: 30px">{{ trans('product.post_review') }}</button> --}}
                 </form>
 

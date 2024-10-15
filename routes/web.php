@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageUserController;
 use App\Http\Controllers\RatingUserController;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
@@ -82,3 +83,7 @@ Route::get('/service_provider' , [ProfileController::class , 'users'])->name('we
 
 Route::get('/add_rate/{id}' , [RatingUserController::class , 'add_rate'])->name('web.add_rate');
 Route::post('/web-rate/store' , [RatingUserController::class , 'store'])->name('web.add_rate.store');
+
+// Messages web.send_message
+
+Route::get('/send_message/{id}' , [MessageUserController::class , 'send'])->name('web.send_message');

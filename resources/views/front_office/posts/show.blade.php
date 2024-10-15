@@ -85,23 +85,18 @@
                                         <div class="overflow-visible">
                                             @forelse ($post->comments as $comment)
                                                 <div class="border mb-4 p-4 br-5">
-                                                    {{-- <nav class="nav float-end">
+                                                    <nav class="nav float-end">
                                                     <div class="dropdown">
                                                         <a class="nav-link tx-muted fs-16 p-0 ps-4" href="javascript:;"
                                                             data-bs-toggle="dropdown" role="button" aria-haspopup="true"
                                                             aria-expanded="false"><i class="fe fe-more-vertical"></i></a>
                                                         <div class="dropdown-menu dropdown-menu-end">
-                                                            <a class="dropdown-item" href="javascript:void(0)"><i
-                                                                    class="fe fe-edit mx-1"></i> Edit</a>
-                                                            <a class="dropdown-item" href="javascript:void(0)"><i
-                                                                    class="fe fe-corner-up-left mx-1"></i> Reply</a>
-                                                            <a class="dropdown-item" href="javascript:void(0)"><i
-                                                                    class="fe fe-flag mx-1"></i> Report Abuse</a>
-                                                            <a class="dropdown-item" href="javascript:void(0)"><i
-                                                                    class="fe fe-trash-2 mx-1"></i> Delete</a>
+                                                            <a class="dropdown-item" href="{{ route('web.send_message' , $comment->user->id) }}"><i
+                                                                    class="fe fe-mail mx-1"></i> {{ __('messages.send_message') }}</a>
+                                                            
                                                         </div>
                                                     </div>
-                                                </nav> --}}
+                                                </nav>
                                                     <h5 class="mt-0">
                                                         {{ $comment->user->first_name . ' ' . $comment->user->last_name }}</h5>
                                                     <p class="tx-muted"> {{ $comment->description }}</p>
