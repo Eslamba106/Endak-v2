@@ -2,6 +2,7 @@
 
 return [
     "login"             => "تسجيل الدخول",
+    "back"              => "العودة",
     "adminlogin"        => "تسجيل الدخول كأدمن",
     "moderatorlogin"    => "تسجيل الدخول كمشرف",
     "studentlogin"      => "تسجيل الدخول كطالب",

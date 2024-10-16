@@ -24,14 +24,37 @@ class MessageApiController extends Controller
             'recipient_id'   => 'required',
             'message'               => 'required',
         ]);
-        $messages = Message::where('recipient_id' , $request->recipient_id )->where('sender_id' , $request->sender_id)->get();
-
+        
+        $messages = Message::where('recipient_id' , $request->recipient_id )->where('sender_id' , auth('sanctum')->user()->id)->get();
+        $sender = auth('sanctum')->user();
+        $id = $request->recipient_id;
+        // $messages = Message::where(function($query) use ($sender, $id) {
+        //     $query->where('sender_id', $sender->id)
+        //           ->where('recipient_id', $id);
+        // })
+        // ->orWhere(function($query) use ($sender, $id) {
+        //     $query->where('sender_id', $id)
+        //           ->where('recipient_id', $sender->id);
+        // })
+        // ->orderBy('created_at', 'desc')->get();
+        // $messages = Message::where('recipient_id' , $request->recipient_id )->where('sender_id' , $request->sender_id)->get();
+        $sender_id = auth('sanctum')->user()->id;
+        // dd($sender_id);
         $data = $request->all();
+        $conversation = Conversation::where(function($query) use ($sender, $id) {
+                $query->where('sender_id', $sender->id)
+                      ->where('recipient_id', $id);
+            })
+            ->orWhere(function($query) use ($sender, $id) {
+                $query->where('sender_id', $id)
+                      ->where('recipient_id', $sender->id);
+            });
+        // $data['sender_id'] = $sender_id;
         $is_create = $this->message_service->store($data);
         if($is_create != null){
-            if($messages->count() == 0){
+            if(!$conversation){
                 Conversation::create([
-                    'sender_id'           => $request->sender_id,
+                    'sender_id'           =>  $request->sender_id,
                     'recipient_id'   => $request->recipient_id ,
                 ]);
             }

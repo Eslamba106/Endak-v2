@@ -21,6 +21,7 @@ return [
     "copy"              => "All Rights Reserved",
 
     "name"              => "Name",
+    "back"              => "Back",
     "save"              => "Save",
     "cancel"            => "Cancel",
     "created_at"        => "Created At",

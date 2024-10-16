@@ -87,3 +87,4 @@ Route::post('/web-rate/store' , [RatingUserController::class , 'store'])->name('
 // Messages web.send_message
 
 Route::get('/send_message/{id}' , [MessageUserController::class , 'send'])->name('web.send_message');
+Route::post('/send' , [MessageUserController::class , 'store'])->name('messages.store')->middleware('auth');
