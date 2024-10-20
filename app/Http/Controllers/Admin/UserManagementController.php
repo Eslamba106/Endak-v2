@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Conversation;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -44,5 +45,24 @@ class UserManagementController extends Controller
         }
         $users = User::orderBy("created_at","desc")->paginate(10);
         return view("admin.users.index", compact("users"));
+    }
+
+    public function show($id){
+        $user = User::find($id);
+        $conversations =[];
+        $sentConversations = Conversation::where('sender_id', $id)->get();
+
+        $receivedConversations = Conversation::where('recipient_id', $id)->get();
+
+        $conversations = $sentConversations->merge($receivedConversations);
+        // dd($conversations);
+        return view('admin.users.show' , compact('user' , 'conversations'));
+    }
+    public function show_user_conversation($id){
+        $sentConversations = Conversation::where('sender_id', $id)->get();
+
+        $receivedConversations = Conversation::where('recipient_id', $id)->get();
+
+        $conversations = $sentConversations->merge($receivedConversations);
     }
 }

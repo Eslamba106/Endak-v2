@@ -10,10 +10,11 @@
     <meta name="author" content="Spruko Technologies Private Limited">
     <meta name="keywords"
         content="whmcs website templates, whmcs html template, hosting template html, bootstrap whmcs, bootstrap web hosting template, web hosting template with whmcs, html hosting template,website hosting and templates, html web hosting, hosting website template, web hosting in html, template hosting bootstrap, whmcs hosting template, whmcs web hosting template">
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/themes/fontawesome-stars.css" rel="stylesheet">
-        
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bar-rating/1.2.2/themes/fontawesome-stars.css"
+        rel="stylesheet">
+
     <!-- TITLE -->
     <title>@yield('title')</title>
 
@@ -112,6 +113,39 @@
 
         <!-- CUSTOM JS -->
         <script src="{{ asset('home/assets/js/custom.js') }}"></script>
+        <script>
+            // الحصول على لغة التطبيق من Laravel
+            const appLanguage = "{{ app()->getLocale() }}";
+            
+            // تحديد الاتجاه بناءً على اللغة
+            if (appLanguage === "ar") {
+                localStorage.setItem("hostmartl", true);
+                localStorage.removeItem("hostmaltr");
+                rtlFn(); // نفذ وظيفة RTL إذا كانت اللغة العربية
+            } else {
+                localStorage.setItem("hostmaltr", true);
+                localStorage.removeItem("hostmartl");
+                ltrFn(); // نفذ وظيفة LTR إذا كانت اللغة ليست عربية
+            }
+        
+            // إضافة مستمع للأزرار إذا كانت موجودة
+            if (rtlBtn) {
+                rtlBtn.addEventListener('click', () => {
+                    localStorage.setItem("hostmartl", true);
+                    localStorage.removeItem("hostmaltr");
+                    rtlFn();
+                });
+            }
+        
+            if (ltrBtn) {
+                ltrBtn.addEventListener('click', () => {
+                    localStorage.setItem("hostmaltr", true);
+                    localStorage.removeItem("hostmartl");
+                    ltrFn();
+                });
+            }
+        </script>
+        
         @yield('script')
 </body>
 

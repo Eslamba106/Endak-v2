@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'All_User' => "جميع المستخدمين",
+    'Home' => "الرئيسية",
+    'Set_Status' => "تعيين الحالة",
+    'set_role' => "تعيين الدور",
+    'name' => "الاسم",
+    'email' => "البريد الإلكتروني",
+    'status' => "الحالة",
+    'type' => "النوع",
+    'created_at' => "تاريخ الإنشاء",
+    'disactive' => "غير مفعل",
+    'banned' => "محظور",
+    'service_provider' => "مزود الخدمة",
+    'user_management' => "إدارة المستخدمين",
+    'user'            => "مستخدم",
+    "first_name" => "الاسم الأول",
+    "last_name" => "الاسم الأخير",
+    "phone" => "الهاتف",
+    "role_name" => "اسم الدور",
+    "parent" => "ولي الأمر",
+    "main" => "الرئيسي",
+    "image" => "الصورة",
+    "rate" => "التقييم",
+    "conversations" => "المحادثات",
+    "conversations_with" => "محادثة مع : ",
+    'providers'          => "مزودين الخدمات",
+    
+];

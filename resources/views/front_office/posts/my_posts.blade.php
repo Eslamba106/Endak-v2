@@ -22,9 +22,10 @@
                         <div class="row align-items-center">
                             <div class="col-md-12 text-center">
                                 <div class="">
-                                    <p class="mb-3 content-1 h5 text-white">{{ __('posts.projects') }} <span
-                                            class="tx-info-dark">{{ __('page.page') }}</span></p>
-                                    @if ($lang == 'ar')
+                                    <p class="mb-3 content-1 h5 text-white">{{ __('posts.my_posts') }} 
+                                        {{-- <span class="tx-info-dark">{{ __('page.page') }}</span> --}}
+                                        </p>
+                                    {{-- @if ($lang == 'ar')
                                         <p class="mb-0 tx-28">
                                             {{ __('department.department') }}
                                             {{ isset($department) ? ($lang == 'ar' ? $department->name_ar : $department->name_en) : '' }}
@@ -34,7 +35,7 @@
                                             {{ isset($department) ? ($lang == 'ar' ? $department->name_ar : $department->name_en) : '' }}
                                             {{ __('department.department') }}
                                         </p>
-                                    @endif
+                                    @endif --}}
                                 </div>
                             </div>
                         </div>

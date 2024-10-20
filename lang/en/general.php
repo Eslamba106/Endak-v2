@@ -51,5 +51,7 @@ return [
     'created_successfully' => "Created Successfully !",
     'deleted_successfully' => "Deleted Successfully !",
     'actions'             => 'Actions',
-
+    'call_to_us'            => "Call to Us",
+    'why'               => "Why Choose Us?",
+    'about_us'          => "About Us"
 ];

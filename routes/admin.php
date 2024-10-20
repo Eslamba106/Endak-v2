@@ -124,9 +124,10 @@ Route::group(['prefix' => 'products'], function () {
 Route::group(['prefix' => 'user_management'], function () {
 
     Route::get('/' , [UserManagementController::class , 'index'])->name('admin.user_management');
+    Route::get('/show/{id}' , [UserManagementController::class , 'show'])->name('admin.user_management.show');
+    Route::get('/show_user_conversation/{id}' , [UserManagementController::class , 'show_user_conversation'])->name('show_user_conversation');
     // Route::get('/create', [ProductController::class , 'create'])->name('admin.products.create');
     // Route::post('/create', [ProductController::class , 'store'])->name('admin.products.store');
-    // Route::get('/show/{slug}' , [ProductController::class , 'show'])->name('admin.products.show');
     // Route::get('/edit/{product}' , [ProductController::class , 'edit'])->name('admin.products.edit');
     // Route::post('/edit/{product}' , [ProductController::class , 'update'])->name('admin.products.update');
     // Route::get('/delete/{slug}', [ProductController::class ,'destroy'])->name('admin.products.delete');

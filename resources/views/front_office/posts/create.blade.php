@@ -47,9 +47,9 @@
                                     <input class="form-control" type="hidden" value="{{ $department->id }}"
                                         name="department_id">
                                     @forelse ($department->inputs as $item)
-                                        <label for="">{{ __('department.input_titles.' . $item->name) }}</label>
+                                        <label for="">{{ ($lang == 'ar' ) ?  $item->title_ar :  $item->title_en }}</label>
                                         <input class="form-control" type="text" name="{{ $item->name }}"
-                                            placeholder="{{ __('department.input_titles.' . $item->name) }}">
+                                            placeholder="{{ ($lang == 'ar' ) ?  $item->title_ar :  $item->title_en }}">
                                     @empty
                                         <div class="mb-3">
                                             <div class="col-xs-12">
@@ -81,7 +81,7 @@
                                     @empty
                                     @endforelse --}}
 
-                                    <div class="">
+                                    <div class="mt-3">
                                         <button type="submit" class="btn btn-primary">{{ __('general.save') }}</button>
 
                                     </div>

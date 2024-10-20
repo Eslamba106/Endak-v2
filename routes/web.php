@@ -24,7 +24,7 @@ use App\Http\Controllers\DepartmentsController;
 */
 
 Route::get('/', function () {
-    return view('layouts.home');
+    return view('front_office.home');
 })->name('home');
 Route::get('/page/{slug}', [PageController::class , 'pageSingle'])->name('page');
 

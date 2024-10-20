@@ -130,7 +130,7 @@
                         <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i
                                 class="bi bi-telephone text-white"></i></span>
                         <div class="d-none d-md-block">
-                            <a href="javascript:void(0);" class="nav-link tx-15 p-0">Call to Us</a>
+                            <a href="javascript:void(0);" class="nav-link tx-15 p-0">{{ __('general.call_to_us') }}</a>
                             <a href="tel:{{ $settings->phone ?? '01150099801' }}"
                                 class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">{{ $settings->phone ?? '01150099801' }}</a>
                         </div>
@@ -146,8 +146,8 @@
                                 <a href="{{ route('web.profile' , $user->id) }}" class="nav-link tx-15 p-0">{{ $user->first_name }}</a>
                             </div>
                             @if ($user->role_name == 'admin')
-                                <a style="margin-left: 10px;color:white"
-                                    href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+                                <a style="{{ ($lang == 'ar' ) ? "margin-right: 10px;" : "margin-left: 10px;" }} color:white"
+                                    href="{{ route('admin.dashboard') }}">{{ __('general.dashboard') }}</a>
                             @endif
                         @else
                             <a id="live-chat" href="{{ route('login-page') }}" class="stretched-link"></a>
@@ -198,7 +198,7 @@
                         <!-- Start::slide -->
                         <li class="slide">
                             <a href="{{ route('home') }}" class="side-menu__item">
-                                <span class="side-menu__label">Home</span>
+                                <span class="side-menu__label">{{ __('general.home') }}</span>
                                 {{-- <i class="fe fe-chevron-down side-menu__angle"></i> --}}
                             </a>
                         </li>
@@ -266,33 +266,7 @@
 
 
                         <!-- Start::slide -->
-                        <?php $pages = App\Models\Page::paginate(5); ?>
-                        <li class="slide has-sub">
-                            <a href="javascript:void(0);" class="side-menu__item">
-                                <span class="side-menu__label">{{ __('page.pages') }}</span>
-                                <i class="fe fe-chevron-down side-menu__angle"></i>
-                            </a>
-                            <ul class="slide-menu child1 mega-slide-menu-onefr without-icon">
-                                @forelse ($pages as $page)
-                                    <li class="slide">
-                                        <a href="{{ route('page', $page->slug) }}" class="side-menu__item">
-                                            <i class="bi bi-house"></i>
-                                            <span
-                                                class="fw-500 tx-15">{{ $lang == 'ar' ? $page->title_ar : $page->title_en }}</span>
-                                        </a>
-                                    </li>
-                                @empty
-                                @endforelse
-
-                                <li class="slide">
-                                    <a href="switcher.html" class="side-menu__item">
-                                        <i class="bi bi-gear"></i>
-                                        <span class="fw-500 tx-15">Switcher</span>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
+                        
                     
                         @if (auth()->check())
                             <li class="slide">
@@ -323,7 +297,71 @@
                          @endif
                         <!-- End::slide -->
 
+                        <?php $pages = App\Models\Page::paginate(5); ?>
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <span class="side-menu__label">{{ __('page.pages') }}</span>
+                                <i class="fe fe-chevron-down side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1 mega-slide-menu-onefr without-icon">
+                                @forelse ($pages as $page)
+                                    <li class="slide">
+                                        <a href="{{ route('page', $page->slug) }}" class="side-menu__item">
+                                            <i class="bi bi-house"></i>
+                                            <span
+                                                class="fw-500 tx-15">{{ $lang == 'ar' ? $page->title_ar : $page->title_en }}</span>
+                                        </a>
+                                    </li>
+                                @empty
+                                @endforelse
 
+                                {{-- <li class="slide">
+                                    <a href="switcher.html" class="side-menu__item">
+                                        <i class="bi bi-gear"></i>
+                                        <span class="fw-500 tx-15">Switcher</span>
+                                    </a>
+                                </li> --}}
+
+                            </ul>
+                        </li>
+                        
+                        <li class="slide has-sub">
+                            <a href="javascript:void(0);" class="side-menu__item">
+                                <span class="side-menu__label">{{ __('general.lang') }}</span>
+                                <i class="fe fe-chevron-down side-menu__angle"></i>
+                            </a>
+                            <ul class="slide-menu child1 mega-slide-menu-onefr without-icon">
+                                    <li class="slide">
+                                        <a href="{{ route('lang', 'ar') }}" class="dropdown-item">
+                                            {{ __('general.arabic') }}
+                                            <span class="float-right text-muted text-sm">
+                                                <img src="{{ URL::asset('images/flags/SA.png') }}" alt="">
+                            
+                                            </span>
+                                        </a>
+                                       
+                                    </li>
+                                    <li class="slide">
+                                        
+                                        <a href="{{ route('lang', 'en') }}" class="dropdown-item">
+                                            {{ __('general.english') }}
+                                            <span class="float-right text-muted text-sm">
+                                                <img src="{{ URL::asset('images/flags/US.png') }}" alt="">
+                            
+                                            </span>
+                                        </a>
+                                    </li>
+                               
+
+                                {{-- <li class="slide">
+                                    <a href="switcher.html" class="side-menu__item">
+                                        <i class="bi bi-gear"></i>
+                                        <span class="fw-500 tx-15">Switcher</span>
+                                    </a>
+                                </li> --}}
+
+                            </ul>
+                        </li>
                     </ul>
                     {{-- <div class="d-xl-flex d-lg-none d-grid gap-2 text-center">
                         <a href="register.html" class="btn btn-secondary min-w-fit-content">Register</a>

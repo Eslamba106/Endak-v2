@@ -51,6 +51,7 @@ return [
     'created_successfully' => "تم الاضافة بنجاح !",
     'deleted_successfully' => "تم الحذف بنجاح !",
     'actions'             => 'العمليات',
-
-    // 'add'=> '',
+    'call_to_us'            => "اتصل بنا",
+    'why'               => "لماذا تختارنا ؟",
+    'about_us'          => "من نحن ؟ ",
 ];

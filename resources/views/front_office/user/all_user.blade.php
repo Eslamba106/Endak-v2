@@ -6,7 +6,7 @@
 @section('style')
     <link rel="stylesheet" href="{{ asset('css/css-stars.css') }}">
     <style>
-                .stars-card {
+        .stars-card {
             min-height: 20px;
         }
 
@@ -29,7 +29,7 @@
 @section('content')
     <div class="page">
 
-        <?php 
+        <?php
         // $current_url = url()->current();
         // $url = explode('/', $current_url);
         // $id = (int) end($url);
@@ -46,8 +46,9 @@
                         <div class="row align-items-center">
                             <div class="col-md-12 text-center">
                                 <div class="">
-                                    <p class="mb-3 content-1 h5 text-white">{{ __('posts.projects') }} <span
-                                            class="tx-info-dark">{{ __('page.page') }}</span></p>
+                                    <p class="mb-3 content-1 h5 text-white">{{ __('user.All_User') }}
+                                        {{-- <span class="tx-info-dark">{{ __('page.page') }}</span> --}}
+                                    </p>
                                     {{-- @if ($lang == 'ar')
                                         <p class="mb-0 tx-28">
                                             {{ __('department.department') }}
@@ -76,15 +77,19 @@
                                     <div class="col-md-6">
                                         <div class="card">
                                             <div class="position-relative">
-                                                
-                                                <a href="{{ route('web.profile' , $user->id ) }}">
-                                                    <img class="card-img-top" src="{{ $user->image_url }}"
-                                                        alt="img">
-                                                </a> 
+
+                                                <a href="{{ route('web.profile', $user->id) }}">
+                                                    @if ($user->image)
+                                                        <img class="card-img-top" src="{{ $user->image_url }}"
+                                                            alt="img">
+                                                    @endif
+                                                </a>
                                                 {{-- <span class="badge bg-secondary blog-badge">{{ $user->add_order }}</span> --}}
                                             </div>
                                             <div class="card-body d-flex flex-column">
-                                                <h5><a href="{{ route('web.profile' , $user->id) }}">{{ $user->first_name .' ' .$user->last_name }}</a></h5>
+                                                <h5><a
+                                                        href="{{ route('web.profile', $user->id) }}">{{ $user->first_name . ' ' . $user->last_name }}</a>
+                                                </h5>
                                                 <div class="tx-muted">{{ $user->description }}</div>
                                                 <div class="d-flex align-items-center pt-4 mt-auto">
                                                     {{-- <div class="avatar me-3 cover-image rounded-circle">
@@ -94,26 +99,29 @@
                                                     <div>
                                                         <div class="stars-card d-flex align-items-center ">
                                                             @php
-                                                            $i = 5;
-                                    
-                                                            $rate = $user->rates();
-                                                        @endphp
-                                                        @if ($user->role_id == 3)
-                                                            <div class="stars-card d-flex align-items-center ">
-                                    
-                                    
-                                                                @while (--$i >= 5 - $rate)
-                                                                    <i data-feather="star" width="20" height="20" class="active"></i>
-                                                                @endwhile
-                                                                @while ($i-- >= 0)
-                                                                    <i data-feather="star" width="20" height="20" class=""></i>
-                                                                @endwhile
-                                                                <span class="badge badge-primary ml-10 bg-primary">{{ $rate }}</span>
-                                    
-                                                            </div>
-                                                        @endif
+                                                                $i = 5;
+
+                                                                $rate = $user->rates();
+                                                            @endphp
+                                                            @if ($user->role_id == 3)
+                                                                <div class="stars-card d-flex align-items-center ">
+
+
+                                                                    @while (--$i >= 5 - $rate)
+                                                                        <i data-feather="star" width="20" height="20"
+                                                                            class="active"></i>
+                                                                    @endwhile
+                                                                    @while ($i-- >= 0)
+                                                                        <i data-feather="star" width="20" height="20"
+                                                                            class=""></i>
+                                                                    @endwhile
+                                                                    <span
+                                                                        class="badge badge-primary ml-10 bg-primary">{{ $rate }}</span>
+
+                                                                </div>
+                                                            @endif
                                                         </div>
-                                                        
+
                                                     </div>
                                                     {{-- <div class="ms-auto">
                                                 <a href="javascript:void(0)" class="icon d-inline-block tx-muted"><i class="fe fe-heart me-1 rounded-circle p-2 bg-gray-200 tx-muted"></i></a>
@@ -131,8 +139,8 @@
                         </div>
                         {!! $users->links() !!}
                         <!-- COL-END -->
-             
-                            {{-- <div class="card">
+
+                        {{-- <div class="card">
                             <div class="card-body">
                                 <form action="javascript:void(0);" class="form">
                                     <div class="form-group custom-form-group">
@@ -145,7 +153,7 @@
 
 
 
-                            {{-- <div class="card">
+                        {{-- <div class="card">
                             <div class="card-body">
                                 <p class="h5 mb-4">Tags</p>
                                 <div class="tags">
@@ -161,11 +169,11 @@
                             </div>
                         </div> --}}
 
-                        </div>
                     </div>
                 </div>
-            </section>
         </div>
+        </section>
+    </div>
 
 
 

@@ -11,5 +11,7 @@ return [
     'active'                                => 'Active',
     'inactive'                              => 'Inactive',
     'add_post'                              => "Add Post",
-    'projects'                              => "Projects"
+    'projects'                              => "Projects",
+    "my_posts" => "My Posts",
+
 ];

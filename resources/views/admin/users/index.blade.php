@@ -1,10 +1,10 @@
 @extends('layouts.dashboard.dashboard')
 @section('title')
-    {{ __('users.All_User') }}
+    {{ __('user.All_User') }}
 @endsection
 
 @section('page_name')
-    {{ __('users.All_User') }}
+    {{ __('user.All_User') }}
 @endsection
 @section('content')
 <?php $lang = config('app.locale'); ?>
@@ -70,7 +70,7 @@
                                 <td>{{ $user->role_name }} </td>
                                 <td>{{ $user->created_at->shortAbsoluteDiffForHumans() }}</td>
                                 <td>
-                                    <a href="{{ route('web.posts.show', $user->id) }}" class="btn btn-purple"><i
+                                    <a href="{{ route('admin.user_management.show', $user->id) }}" class="btn btn-purple"><i
                                             class="la la-eye" title="@lang('general.show')"></i> </a>
                                     
                                  

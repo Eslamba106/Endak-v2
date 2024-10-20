@@ -21,7 +21,7 @@
                             <div class="">
                                 <p class="mb-3 content-1 h5 text-white">{{ __('department.departments') }} <span
                                         class="tx-info-dark">{{ __('general.center') }}</span></p>
-                                <p class="mb-0 tx-28">We Fight Passionately to Get Our Clients Every Time They Deserve</p>
+                                {{-- <p class="mb-0 tx-28">We Fight Passionately to Get Our Clients Every Time They Deserve</p> --}}
                             </div>
                         </div>
                     </div>

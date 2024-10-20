@@ -11,5 +11,6 @@ return [
     'inactive'                              => 'غير نشط',
     'add_post'                              => "اضافة منشور",
     'projects'                              => "المشاريع",
+    "my_posts" => "منشوراتي",
 
 ];
