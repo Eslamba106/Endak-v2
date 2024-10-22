@@ -1,7 +1,7 @@
 @extends('layouts.home')
 @section('title')
     <?php $lang = config('app.locale'); ?>
-    {{ $lang == 'ar' ? 'الصفحة الشخصية' : 'Profile' }}
+    {{ $lang == 'ar' ? 'اضافة تقييم' : 'Add rate' }}
 @endsection
 @section('style')
     <link rel="stylesheet" href="{{ asset('css/css-stars.css') }}">

@@ -135,6 +135,31 @@
                                 class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">{{ $settings->phone ?? '01150099801' }}</a>
                         </div>
                     </li>
+
+
+
+                    {{-- <li class="d-flex align-items-center position-relative me-md-4 me-2">
+                        <a href="mailto:{{ $settings->email ?? 'example@example.com' }}" class="stretched-link"></a>
+                        <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2">
+                            <i class="bi bi-chat text-white"></i> <!-- تغيير الأيقونة هنا -->
+                        </span>
+                        <div class="d-none d-md-block">
+                            <a href="javascript:void(0);" class="nav-link tx-15 p-0">{{ __('general.message_us') }}</a>
+                            <a href="mailto:{{ $settings->email ?? 'example@example.com' }}"
+                               class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">{{ $settings->email ?? 'example@example.com' }}</a>
+                        </div>
+                    </li> --}}
+
+                    {{-- <li class="d-flex align-items-center position-relative me-md-4 me-2">
+                        <a href="tel:+1236789657" class="stretched-link"></a>
+                        <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i
+                                class="bi bi-telephone text-white"></i></span>
+                        <div class="d-none d-md-block">
+                            <a href="javascript:void(0);" class="nav-link tx-15 p-0">{{ __('general.call_to_us') }}</a>
+                            <a href="tel:{{ $settings->phone ?? '01150099801' }}"
+                                class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">{{ $settings->phone ?? '01150099801' }}</a>
+                        </div>
+                    </li> --}}
                     <li class="d-flex align-items-center position-relative">
 
                         @if (auth()->check())
@@ -143,10 +168,11 @@
                                 </a>
                             </span>
                             <div class="d-none d-md-block">
-                                <a href="{{ route('web.profile' , $user->id) }}" class="nav-link tx-15 p-0">{{ $user->first_name }}</a>
+                                <a href="{{ route('web.profile', $user->id) }}"
+                                    class="nav-link tx-15 p-0">{{ $user->first_name }}</a>
                             </div>
                             @if ($user->role_name == 'admin')
-                                <a style="{{ ($lang == 'ar' ) ? "margin-right: 10px;" : "margin-left: 10px;" }} color:white"
+                                <a style="{{ $lang == 'ar' ? 'margin-right: 10px;' : 'margin-left: 10px;' }} color:white"
                                     href="{{ route('admin.dashboard') }}">{{ __('general.dashboard') }}</a>
                             @endif
                         @else
@@ -156,11 +182,71 @@
 
                             </span>
                             <div class="d-none d-md-block">
-                                <a href="{{ route('login-page') }}" class="nav-link tx-15 p-0">{{ __('auth.login') }}</a>
+                                <a href="{{ route('login-page') }}"
+                                    class="nav-link tx-15 p-0">{{ __('auth.login') }}</a>
                             </div>
                         @endif
 
                     </li>
+                    <style>
+                        .dropdown-menu {
+                            max-height: 300px;
+                            overflow-y: auto;
+                        }
+                    </style>
+                    @if (auth()->check())
+                        <li class="d-flex align-items-center position-relative me-md-4 me-2 dropdown">
+                            <?php $messages = App\Models\Message::where('recipient_id', auth()->user()->id)
+                                ->limit(5)
+                                ->orderBy('created_at', 'desc')
+                                ->get(); ?>
+
+                            <span data-bs-toggle="dropdown" aria-expanded="false" style="color: #1a4388"
+                                class="dropdown-toggle avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"
+                                style="border: none; margin: 0;">
+                                <i class="bi bi-chat text-white"></i>
+                            </span>
+
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                @forelse ($messages as $message)
+                                <?php $sender_message = App\Models\User::where('id', $message->sender_id)->first(); ?>
+
+                                    <li>
+                                        <a href="{{ route('web.send_message', $sender_message->id) }}" class="dropdown-item">
+                                            <!-- Message Start -->
+                                            <div class="media">
+                                                <div class="d-flex align-items-center"> <!-- إضافة Flexbox -->
+                                                    @if ($sender_message->image)
+                                                        <img src="{{ $sender_message->image_url }}" alt="User Avatar"
+                                                            width="40px" height="40px"
+                                                            class="img-size-50 mr-3 img-circle">
+                                                    @endif
+                                                    <h6 class="dropdown-item-title mb-0"> <!-- إزالة الهامش السفلي -->
+                                                        {{ $sender_message->first_name }}
+                                                    </h6>
+                                                </div>
+
+                                                <div class="media-body">
+
+                                                    <p class="text-sm">    {{ implode(' ', array_slice(explode(' ', $message->message), 0, 5)) }} @if (strlen($message->message) > 5) ... @endif
+                                                    </p>
+                                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>{{ $message->created_at->shortAbsoluteDiffForHumans() }}</p>
+                                                </div>
+                                            </div>
+                                            <!-- Message End -->
+                                        </a>
+                                    </li>
+                                @empty
+                                    لا توجد رسائل
+                                @endforelse
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                {{-- <li><a href="#" class="dropdown-item text-center">عرض المزيد</a></li> --}}
+                            </ul>
+                        </li>
+                    @endif
+
                 </ul>
             </div>
         </div>
@@ -266,8 +352,8 @@
 
 
                         <!-- Start::slide -->
-                        
-                    
+
+
                         @if (auth()->check())
                             <li class="slide">
                                 <a href="{{ route('web.posts.my_posts', $user->id) }}" class="side-menu__item">
@@ -278,23 +364,23 @@
                             </li>
                         @endif
                         {{-- @if (auth()->check()) --}}
-                            <li class="slide">
-                                <a href="{{ route('web.user.service_provider') }}" class="side-menu__item">
-                                    <span class="side-menu__label">{{ __('user.service_provider') }}</span>
-                                    <i class="fe fe-chevron-down side-menu__angle"></i>
-                                </a>
+                        <li class="slide">
+                            <a href="{{ route('web.user.service_provider') }}" class="side-menu__item">
+                                <span class="side-menu__label">{{ __('user.service_provider') }}</span>
+                                <i class="fe fe-chevron-down side-menu__angle"></i>
+                            </a>
 
-                            </li>
+                        </li>
                         {{-- @endif --}}
-                        @if (auth()->check()) 
+                        @if (auth()->check())
                             <li class="slide">
-                                <a href="{{ route('web.order.my_orders' , $user->id) }}" class="side-menu__item">
+                                <a href="{{ route('web.order.my_orders', $user->id) }}" class="side-menu__item">
                                     <span class="side-menu__label">{{ __('order.my_orders') }}</span>
                                     <i class="fe fe-chevron-down side-menu__angle"></i>
                                 </a>
 
                             </li>
-                         @endif
+                        @endif
                         <!-- End::slide -->
 
                         <?php $pages = App\Models\Page::paginate(5); ?>
@@ -324,34 +410,34 @@
 
                             </ul>
                         </li>
-                        
+
                         <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
                                 <span class="side-menu__label">{{ __('general.lang') }}</span>
                                 <i class="fe fe-chevron-down side-menu__angle"></i>
                             </a>
                             <ul class="slide-menu child1 mega-slide-menu-onefr without-icon">
-                                    <li class="slide">
-                                        <a href="{{ route('lang', 'ar') }}" class="dropdown-item" id="rtlBtn">
-                                            {{ __('general.arabic') }}
-                                            <span class="float-right text-muted text-sm">
-                                                <img src="{{ URL::asset('images/flags/SA.png') }}" alt="">
-                            
-                                            </span>
-                                        </a>
-                                       
-                                    </li>
-                                    <li class="slide">
-                                        
-                                        <a href="{{ route('lang', 'en') }}" class="dropdown-item" id="ltrBtn" >
-                                            {{ __('general.english') }}
-                                            <span class="float-right text-muted text-sm">
-                                                <img src="{{ URL::asset('images/flags/US.png') }}" alt="">
-                            
-                                            </span>
-                                        </a>
-                                    </li>
-                               
+                                <li class="slide">
+                                    <a href="{{ route('lang', 'ar') }}" class="dropdown-item" id="rtlBtn">
+                                        {{ __('general.arabic') }}
+                                        <span class="float-right text-muted text-sm">
+                                            <img src="{{ URL::asset('images/flags/SA.png') }}" alt="">
+
+                                        </span>
+                                    </a>
+
+                                </li>
+                                <li class="slide">
+
+                                    <a href="{{ route('lang', 'en') }}" class="dropdown-item" id="ltrBtn">
+                                        {{ __('general.english') }}
+                                        <span class="float-right text-muted text-sm">
+                                            <img src="{{ URL::asset('images/flags/US.png') }}" alt="">
+
+                                        </span>
+                                    </a>
+                                </li>
+
 
                                 {{-- <li class="slide">
                                     <a href="switcher.html" class="side-menu__item">
