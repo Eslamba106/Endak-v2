@@ -26,5 +26,6 @@ return [
     "conversations" => "المحادثات",
     "conversations_with" => "محادثة مع : ",
     'providers'          => "مزودين الخدمات",
+    'about_me'           => "نبذة عني",
     
 ];

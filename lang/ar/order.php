@@ -5,5 +5,9 @@ return [
     "add_order" => "إضافة طلب",
     "order" => "طلب",
     "orders" => "الطلبات",
-
+    "order_complete_count"  => "الطلبات المكتملة",
+    "count"  => "عدد الطلبات",
+    'complete'  => "مكتمل",
+    'pending'   => "قيد التنفيذ",
+    
 ];

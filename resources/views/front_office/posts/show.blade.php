@@ -1,6 +1,7 @@
 @extends('layouts.home')
 @section('title')
-    <?php $lang = config('app.locale');
+    <?php 
+    $lang = config('app.locale');
     $user = auth()->user();
     ?>
     {{ $lang == 'ar' ? 'المشاريع' : 'Projects' }}
@@ -13,8 +14,10 @@
                     <div class="row align-items-center">
                         <div class="col-md-12 text-center">
                             <div class="">
-                                <p class="mb-3 content-1 h5 text-white">Blog <span class="tx-info-dark">Description</span></p>
-                                <p class="mb-0 tx-28">We Fight Passionately to Get Our Clients Every Time They Deserve</p>
+                                <h1 class="mb-3 content-1 text-white"> {{ $lang == 'ar' ? 'المنشور' : 'Post'  }}
+                                    {{-- <span class="tx-info-dark">Description</span> --}}
+                                </h1>
+                                {{-- <p class="mb-0 tx-28">We Fight Passionately to Get Our Clients Every Time They Deserve</p> --}}
                             </div>
                         </div>
                     </div>
@@ -39,7 +42,7 @@
                                                 alt="avatar-img">
                                         @endif
                                         <div class="pe-3">
-                                            <h6 class="mb-0">Author Name</h6>
+                                            <h6 class="mb-0">{{ $lang == 'ar' ? 'اضيف بواسطة' : 'Author Name'  }}</h6>
                                             <p class="tx-muted tx-15 fw-500 mb-0">{{ $post->user->first_name }}</p>
                                         </div>
                                     </div>
@@ -47,7 +50,7 @@
                                         <span class="avatar bg-gray-200 rounded-circle tx-muted border me-3"><i
                                                 class="fe fe-grid"></i></span>
                                         <div class="pe-3">
-                                            <h6 class="mb-0">Categories</h6>
+                                            <h6 class="mb-0">{{ $lang == 'ar' ? 'القسم' : 'Department'  }}</h6>
                                             <p class="tx-muted tx-15 fw-500 mb-0">{{ $post->department->name_en }}</p>
                                         </div>
                                     </div>
@@ -55,7 +58,7 @@
                                         <span class="avatar bg-gray-200 rounded-circle tx-muted border me-3"><i
                                                 class="fe fe-calendar"></i></span>
                                         <div class="pe-3">
-                                            <h6 class="mb-0">Date</h6>
+                                            <h6 class="mb-0">{{ $lang == 'ar' ? 'التاريخ' : 'Date'  }}</h6>
                                             <p class="tx-muted tx-15 fw-500 mb-0">
                                                 {{ $post->created_at->shortAbsoluteDiffForHumans() }}</p>
                                         </div>
@@ -68,7 +71,7 @@
                                 <p> {{ $post->notes }}
                                 </p>
                                 <p>
-                                    {{ $post->price }}$
+                                   {{ ($post->price) ? $post->price .'$' : ""}}
                                 </p>
 
                             </div>

@@ -128,14 +128,14 @@
                     <div class="user-stats d-flex justify-content-between mt-20 mt-md-0 mb-30 mb-md-0">
                         @if ($user->role_id == 3)
                             <div class="stat-item">
+                                <span class="stat-label font-14 text-gray">{{ trans('order.count') }}</span>
                                 <strong class="stat-value font-20">{{ count($user->orders) }}</strong>
-                                <span class="stat-label font-14 text-gray">{{ trans('panel.courses') }}</span>
                             </div>
                         @endif
                         @if ($user->role_id == 1)
                             <div class="stat-item">
-                                <strong class="stat-value font-20">{{ count($user->myorders) }}</strong>
                                 <span class="stat-label font-14 text-gray">{{ trans('order.order_complete_count') }}</span>
+                                <strong class="stat-value font-20">{{ count($user->myorders) }}</strong>
                             </div>
                         @endif
                     </div>
@@ -161,6 +161,24 @@
             </div>
         </div>
     </div>
+    @if (Session::has('success'))
+    <script>
+        swal("Message", "{{ Session::get('success') }}", 'success', {
+            button: true,
+            button: "Ok",
+            timer: 3000,
+        })
+    </script>
+@endif
+@if (Session::has('info'))
+    <script>
+        swal("Message", "{{ Session::get('info') }}", 'info', {
+            button: true,
+            button: "Ok",
+            timer: 3000,
+        })
+    </script>
+@endif
 @endsection
 @section('script')
     {{-- <script src="{{ asset('js/app.js') }}" ></script> --}}

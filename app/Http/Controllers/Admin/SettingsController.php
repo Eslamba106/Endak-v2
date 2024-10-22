@@ -21,7 +21,7 @@ class SettingsController extends Controller
     }
     public function update(Request $request)
     {
-
+        // dd($request->all());
         $setting = Settings::first();
         $old_image = $setting->logo;
         $data = $request->except('logo');
@@ -33,6 +33,17 @@ class SettingsController extends Controller
         $setting->update([
             "web_name" => $request->web_name,
             "logo" => $new_image ?? $old_image,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "facebook" => $request->facebook,
+            "twitter" => $request->twitter,
+            "instagram" => $request->instagram,
+            "linkedin" => $request->linkedin,
+            "address_ar" => $request->address_ar,
+            "address_en" => $request->address_en,
+            "web_name_ar" => $request->web_name_ar,
+            "web_name_en" => $request->web_name_en, 
+            "about_us" => $request->about_us, 
         ]);
         if ($old_image && $new_image) {
             Storage::disk('public')->delete($old_image);

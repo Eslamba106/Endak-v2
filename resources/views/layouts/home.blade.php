@@ -23,11 +23,15 @@
     <link rel="stylesheet" href="{{ asset('home/assets/css/line-awesome.min.css') }}">
 
     <!-- BOOTSTRAP CSS -->
-    <link id="style" href="{{ asset('home/assets/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    {{-- <link id="style" href="{{ asset('home/assets/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> --}}
 
     <!-- STYLE CSS -->
     <link href="{{ asset('home/assets/css/styles.css') }}" rel="stylesheet">
-
+    {{-- @if(config('app.locale') == 'ar') --}}
+    <link href="{{ asset('home/assets/libs/bootstrap/css/bootstrap.rtl.min.css') }}" rel="stylesheet">
+    {{-- @else --}}
+    <link id="style" href="{{ asset('home/assets/libs/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    {{-- @endif --}}
     <!-- Simonwep-picker CSS -->
     <link href="{{ asset('home/assets/libs/@simonwep/pickr/themes/classic.min.css') }}" rel="stylesheet">
     <link href="{{ asset('home/assets/libs/@simonwep/pickr/themes/monolith.min.css') }}" rel="stylesheet">
@@ -36,6 +40,12 @@
     <!-- ICONS CSS -->
     <link href="{{ asset('home/assets/css/icons.css') }}" rel="stylesheet">
     @yield('style')
+    <style>
+        a{
+            text-decoration: none;
+            color: black
+        }
+    </style>
 </head>
 
 <body class="main-body light-theme">
@@ -115,8 +125,12 @@
         <script src="{{ asset('home/assets/js/custom.js') }}"></script>
         <script>
             // الحصول على لغة التطبيق من Laravel
-            const appLanguage = "{{ app()->getLocale() }}";
-            
+            // $lang = config('app.locale');
+            const appLanguage = "{{ config('app.locale') }}";
+            // const appLanguage = "{{ app()->getLocale() }}";
+            const rtlBtn = document.getElementById('rtlBtn'); // استبدل 'rtl-button-id' بالمعرف الفعلي للزر RTL
+            const ltrBtn = document.getElementById('ltrBtn'); // استبدل 'ltr-button-id' بالمعرف الفعلي للزر LTR
+
             // تحديد الاتجاه بناءً على اللغة
             if (appLanguage === "ar") {
                 localStorage.setItem("hostmartl", true);
@@ -127,7 +141,7 @@
                 localStorage.removeItem("hostmartl");
                 ltrFn(); // نفذ وظيفة LTR إذا كانت اللغة ليست عربية
             }
-        
+
             // إضافة مستمع للأزرار إذا كانت موجودة
             if (rtlBtn) {
                 rtlBtn.addEventListener('click', () => {
@@ -136,7 +150,7 @@
                     rtlFn();
                 });
             }
-        
+
             if (ltrBtn) {
                 ltrBtn.addEventListener('click', () => {
                     localStorage.setItem("hostmaltr", true);
@@ -145,7 +159,7 @@
                 });
             }
         </script>
-        
+
         @yield('script')
 </body>
 

@@ -1,7 +1,7 @@
 <?php
 
-return 
-[
+return
+    [
     'All_User' => "All Users",
     'Home' => "Home",
     'Set_Status' => "Set Status",
@@ -15,7 +15,7 @@ return
     "banned" => "Banned",
     "service_provider" => "Service Provider",
     "user_management" => "User Management",
-    'user'            => "User",
+    'user' => "User",
     "first_name" => "First Name",
     "last_name" => "Last Name",
     "phone" => "Phone",
@@ -26,6 +26,6 @@ return
     "rate" => "Rate",
     "conversations" => "Conversations",
     "conversations_with" => "Conversation with : ",
-    'providers'          => "Service Providers",
-
+    'providers' => "Service Providers",
+    'about_me' => 'About Me',
 ];

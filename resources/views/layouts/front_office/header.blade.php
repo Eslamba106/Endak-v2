@@ -156,7 +156,7 @@
 
                             </span>
                             <div class="d-none d-md-block">
-                                <a href="{{ route('login-page') }}" class="nav-link tx-15 p-0">{{ __('Login') }}</a>
+                                <a href="{{ route('login-page') }}" class="nav-link tx-15 p-0">{{ __('auth.login') }}</a>
                             </div>
                         @endif
 
@@ -332,7 +332,7 @@
                             </a>
                             <ul class="slide-menu child1 mega-slide-menu-onefr without-icon">
                                     <li class="slide">
-                                        <a href="{{ route('lang', 'ar') }}" class="dropdown-item">
+                                        <a href="{{ route('lang', 'ar') }}" class="dropdown-item" id="rtlBtn">
                                             {{ __('general.arabic') }}
                                             <span class="float-right text-muted text-sm">
                                                 <img src="{{ URL::asset('images/flags/SA.png') }}" alt="">
@@ -343,7 +343,7 @@
                                     </li>
                                     <li class="slide">
                                         
-                                        <a href="{{ route('lang', 'en') }}" class="dropdown-item">
+                                        <a href="{{ route('lang', 'en') }}" class="dropdown-item" id="ltrBtn" >
                                             {{ __('general.english') }}
                                             <span class="float-right text-muted text-sm">
                                                 <img src="{{ URL::asset('images/flags/US.png') }}" alt="">

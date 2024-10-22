@@ -26,9 +26,14 @@
             @method('put')
 
             <div class="form-group">
-                <lable class="" for="">{{ __("settings.website_name") }}</lable>
-                <input type="text" name="web_name" class="form-control mt-2"
-                    value="{{ old('web_name', $settings->web_name) }}" />
+                <lable class="" for="">{{ __("settings.website_name_en") }}</lable>
+                <input type="text" name="web_name_en" class="form-control mt-2"
+                    value="{{ old('web_name_en', $settings->web_name_en) }}" />
+            </div>
+            <div class="form-group">
+                <lable class="" for="">{{ __("settings.website_name_ar") }}</lable>
+                <input type="text" name="website_name_ar" class="form-control mt-2"
+                    value="{{ old('website_name_ar', $settings->web_name_ar) }}" />
             </div>
             <div class="form-group">
                 <lable class="" for="">{{ __('general.email') }}</lable>
@@ -56,9 +61,20 @@
                     value="{{ old('linkedin', $settings->linkedin) }}" />
             </div>
             <div class="form-group">
-                <lable class="" for="">{{ __("settings.address") }}</lable>
-                <input type="text" name="address" class="form-control mt-2"
-                    value="{{ old('address', $settings->address) }}" />
+                <lable class="" for="">{{ __("settings.address_ar") }}</lable>
+                <input type="text" name="address_ar" class="form-control mt-2"
+                    value="{{ old('address_ar', $settings->address_ar) }}" />
+            </div>
+            <div class="form-group">
+                <lable class="" for="">{{ __("settings.address_en") }}</lable>
+                <input type="text" name="address_en" class="form-control mt-2"
+                    value="{{ old('address_en', $settings->address_en) }}" />
+            </div>
+            <div class="form-group">
+                <lable class="" for="">{{ __("general.about_us") }}</lable>
+                <textarea name="about_us" class="form-control mt-2" cols="10" rows="5">{{ old('address', $settings->about_us) }}</textarea>
+                {{-- <input type="text" name="about_us" class="form-control mt-2"
+                    value="{{ old('address', $settings->about_us) }}" /> --}}
             </div>
             <div class="form-group">
                 <lable class="" for="">{{ __("settings.logo") }}</lable>

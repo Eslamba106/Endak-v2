@@ -88,37 +88,37 @@
 
         <div class="profile-content pt-40"  >
             <div  class="container position-relative d-flex justify-content-center " >
-
-                <form action="" method="POST" enctype="multipart/form-data" style="width:700px"   class="profile-card rounded-lg shadow-xs bg-white p-15 p-md-30" >
+                <?php $user = auth()->user(); ?>
+                <form action="{{ route('web.profile.update') }}" method="POST" enctype="multipart/form-data" style="width:700px"   class="profile-card rounded-lg shadow-xs bg-white p-15 p-md-30" >
                     @csrf
                     <div class="form-group mt-2">
                         <label for="name">{{ __('user.first_name') }} : </label>
-                        <input type="text" class="form-control" name="first_name">
+                        <input type="text" class="form-control" name="first_name" value="{{ old('first_name', $user->first_name) }}">
                     </div>
                     <div class="form-group mt-2">
                         <label for="name">{{ __('user.last_name') }} : </label>
-                        <input type="text" class="form-control" name="last_name">
+                        <input type="text" class="form-control" name="last_name" value="{{ old('last_name', $user->last_name) }}">
                     </div>
                     <div class="form-group mt-2">
                         <label for="name">{{ __('user.phone') }} : </label>
-                        <input type="text" class="form-control" name="phone">
+                        <input type="text" class="form-control" name="phone" value="{{ old('phone', $user->phone) }}">
                     </div>
                     <div class="form-group mt-2">
                         <label for="name">{{ __('user.email') }} : </label>
-                        <input type="text" class="form-control" name="email">
+                        <input type="text" class="form-control" name="email" value="{{ old('email', $user->email) }}">
                     </div>
                     <div class="form-group mt-2">
                         <label for="name">{{ __('user.about_me') }} : </label>
-                        <textarea class="form-control" name="about_me" id="" cols="30" rows="10"></textarea>
+                        <textarea class="form-control" name="about_me" id="" cols="30" rows="10">{{ old('email', $user->about_me) }}</textarea>
                         {{-- <input type="text" class="form-control" name="about_me"> --}}
                     </div>
 
                     <div class="form-group mt-2">
                         <label for="name">{{ __('user.image') }} : </label>
-                        <input type="file" class="form-control" name="image">
+                        <input type="file" class="form-control" name="image" value="{{ old('image', $user->image) }}">
                     </div>
                     <div class="form-group mt-2"  style="text-align: right;margin-right:10px">
-                        <button class="btn btn-primary mt-2" >Submit</button>
+                        <button class="btn btn-primary mt-2" >{{ __('general.save') }}</button>
                     </div>
                 </form>
            
@@ -130,7 +130,24 @@
 
 
     </section>
-
+    @if (Session::has('success'))
+        <script>
+            swal("Message", "{{ Session::get('success') }}", 'success', {
+                button: true,
+                button: "Ok",
+                timer: 3000,
+            })
+        </script>
+    @endif
+    @if (Session::has('info'))
+        <script>
+            swal("Message", "{{ Session::get('info') }}", 'info', {
+                button: true,
+                button: "Ok",
+                timer: 3000,
+            })
+        </script>
+    @endif
 @endsection
 @section('script')
     <script src="{{ asset('js/feather-icons/dist/feather.min.js') }}"></script>

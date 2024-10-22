@@ -147,6 +147,8 @@
                                                 {{-- {!! $main_department->posts->paginate(2)->links() !!} --}}
                                             @endif
                                             <!-- COL-END -->
+                                            @if (auth()->check())
+                                                
                                             <div class="col-xl-4">
                                                 <div class="card">
                                                     <div class="card-body">
@@ -159,6 +161,8 @@
 
 
                                             </div>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </section>

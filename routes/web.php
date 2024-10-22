@@ -74,6 +74,7 @@ Route::post('/order/complete' , [OrderUserController::class , 'finish'])->name('
 // Rating 
 Route::get('/profile/{id}' ,[ProfileController::class , 'show'] )->name('web.profile');
 Route::get('/profile/edit/{id}' ,[ProfileController::class , 'edit'] )->name('web.profile.edit');
+Route::post('/profile/update' ,[ProfileController::class , 'update'] )->name('web.profile.update');
 
 // Users 
 

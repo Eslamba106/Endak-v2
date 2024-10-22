@@ -20,8 +20,12 @@
                     <table id="example2" class="table table-bordered table-hover">
                         <thead>
                             <tr>
-                                <td class="width30">{{ __("settings.website_name") }}</td>
-                                <td>{{ $settings->web_name ?? '#' }}</td>
+                                <td class="width30">{{ __("settings.website_name_ar") }}</td>
+                                <td>{{ $settings->web_name_ar ?? '#' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="width30">{{ __("settings.website_name_en") }}</td>
+                                <td>{{ $settings->web_name_en ?? '#' }}</td>
                             </tr>
                             <tr>
                                 <td class="width30">{{ __('general.email') }}</td>
@@ -48,8 +52,16 @@
                                 <td>{{ $settings->linkedin ?? '#' }}</td>
                             </tr>
                             <tr>
-                                <td class="width30">{{ __("settings.address") }}</td>
-                                <td>{{ $settings->address ?? '#' }}</td>
+                                <td class="width30">{{ __("settings.address_ar") }}</td>
+                                <td>{{ $settings->address_ar ?? '#' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="width30">{{ __("settings.address_en") }}</td>
+                                <td>{{ $settings->address_en ?? '#' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="width30">{{ __("general.about_us") }}</td>
+                                <td>{{ $settings->about_us ?? '#' }}</td>
                             </tr>
                             <tr>
                                 <td class="width30">{{ __("settings.logo") }}</td>
@@ -78,4 +90,22 @@
             </div>
         </div>
     </div>
+    @if (Session::has('success'))
+    <script>
+        swal("Message", "{{ Session::get('success') }}", 'success', {
+            button: true,
+            button: "Ok",
+            timer: 3000,
+        })
+    </script>
+@endif
+@if (Session::has('info'))
+    <script>
+        swal("Message", "{{ Session::get('info') }}", 'info', {
+            button: true,
+            button: "Ok",
+            timer: 3000,
+        })
+    </script>
+@endif
 @endsection
