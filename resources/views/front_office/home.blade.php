@@ -43,10 +43,51 @@
         <div class="container">
             <div class="row">
                 <div class="heading-section">
+                    <div class="heading-subtitle">
+                        <span class="tx-primary tx-16 fw-semibold">{{ __('department.departments') }}</span>
+                    </div>
+                </div>
+                
+                @forelse ($departments as $department)
+                    <div class="col-xl-3 col-sm-6 mb-4">
+                        <a href="{{ route('departments.show', $department->id) }}">
+                            <div class="card border feature-card-15 mb-xl-0">
+                                <div class="card-body text-center">
+                                    @if ($department->image)
+                                        <span class="avatar avatar-lg rounded-circle bg-primary text-white mb-3 tx-22">
+                                            <img src="{{ $department->image_url }}" alt="" width="40px" height="40px">
+                                        </span>
+                                    @else
+                                        <span class="avatar avatar-lg rounded-circle bg-primary text-white mb-3 tx-22">
+                                            <i class="bi bi-gem"></i>
+                                        </span>
+                                    @endif
+                                    <h5>{{ $lang == 'ar' ? $department->name_ar : $department->name_en }}</h5>
+                                    <p class="mb-0">
+                                        {{ $lang == 'ar' ? $department->description_ar : $department->description_en }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @empty
+                    <p>{{ __('department.no_departments_found') }}</p>
+                @endforelse
+    
+            </div>
+        </div>
+    </section>
+    
+    {{-- <section class="section overflow-hidden">
+        <img src="../assets/images/patterns/2.png" alt="img" class="patterns-6 op-1 z-index-0 top-14p">
+        <img src="../assets/images/patterns/7.png" alt="img" class="patterns-5 left-0 transform-rotate-180 z-index-0">
+        <div class="container">
+            <div class="row">
+                <div class="heading-section">
                     <div class="heading-subtitle"><span
                             class="tx-primary tx-16 fw-semibold">{{ __('department.departments') }}</span></div>
                     {{-- <div class="heading-title">Best Services You <span class="tx-primary">Get</span></div>
-                <div class="heading-description">Domain & Hosting Services</div> --}}
+                <div class="heading-description">Domain & Hosting Services</div> 
                 </div>
                 @forelse ($departments as $department)
                     <a href="{{ route('departments.show' , $department->id) }}">
@@ -75,7 +116,7 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="section bg-pattern-2 bg-image2">
         <div class="container">
             <div class="heading-section">
