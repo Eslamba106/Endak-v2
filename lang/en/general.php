@@ -19,7 +19,8 @@ return [
     "home"              => "Home",
     "dashboard"         => "Dashboard",
     "copy"              => "All Rights Reserved",
-
+    'title'             => "Title",
+    'price'             => "Price",
     "name"              => "Name",
     "back"              => "Back",
     "save"              => "Save",
@@ -53,5 +54,7 @@ return [
     'actions'             => 'Actions',
     'call_to_us'            => "Call to Us",
     'why'               => "Why Choose Us?",
-    'about_us'          => "About Us"
+    'about_us'          => "About Us",
+    'add_comment'   =>'Add a Comments',
+    'comments'      => "Comments",
 ];

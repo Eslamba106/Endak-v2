@@ -54,6 +54,26 @@
                         {!! $errors->has('description_en') ? '<p class="help-block">' . $errors->first('description_en') . '</p>' : '' !!}
                     </div>
                 </div>
+                <div class="form-group row {{ $errors->has('topics') ? ' has-error' : '' }}">
+                    <label class="mb-3 col-sm-3 control-label">{{ __('topics') }} <span style="color:red;">*</span></label>
+                    <div class="col-sm-7">
+                        <?php $categories = App\Models\Category::get(); ?>
+    
+    
+                        @if ($categories->count())
+                            <select name="topics[]" id="tags" class="form-control topics select2" multiple="multiple">
+                                <option value="">{{ __('category.select_category') }}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" {{ ($product->topics) ? selected($product->topics->contains($category->id))  : '' }}>{{ $category->category_name_ar }}</option>
+                     
+                                @endforeach
+                            </select>
+                        @endif
+                        @if ($errors->has('category_id'))
+                            <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
+                        @endif
+                    </div>
+                </div>
                 <div class="form-group row {{ $errors->has('image') ? 'has-error' : '' }} ">
                     <label class="col-sm-3 control-label" for="image">@lang('department.image')
                     </label>
@@ -79,6 +99,12 @@
 @endsection
 
 @section('js')
+    <script>
+        $(".topics").select2({
+            topics: true,
+            tokenSeparators: [',', ' ']
+        })
+    </script>
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script>
         // Replace the <textarea id="editor1"> with a CKEditor

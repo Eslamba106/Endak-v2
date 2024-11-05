@@ -64,5 +64,8 @@ class UserManagementController extends Controller
         $receivedConversations = Conversation::where('recipient_id', $id)->get();
 
         $conversations = $sentConversations->merge($receivedConversations);
+        // return $conversations;
+        // dd($conversations[0]->messages);
+        return view('admin.users.message' , compact('conversations'));
     }
 }

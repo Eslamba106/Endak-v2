@@ -9,8 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('departments_categories', function (Blueprint $table) {
-            $table->foreignId('department_id');
-            $table->foreignId('category_id');
+            
         });
     }
 

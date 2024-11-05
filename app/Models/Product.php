@@ -18,4 +18,8 @@ class Product extends Model
     {
         return asset('storage/' . $this->image);
     }
+    public function topics()
+    {
+        return $this->belongsToMany(Category::class, 'products_categories');
+    }
 }

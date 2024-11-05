@@ -9,5 +9,6 @@ return [
     "count"  =>  "Order Count",
     'complete'  => "Complete",
     'pending'   => "under work",
+    'accept_offer'   => "Accept Offer",
     
 ];

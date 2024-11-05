@@ -5,4 +5,5 @@ return [
     "chat_sidebar" => "Chat Sidebar",
     "send" => "Send",
     'chat'      => "Chat",
+    'send_message' =>  "Send Message",
 ];

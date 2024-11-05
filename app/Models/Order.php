@@ -13,6 +13,10 @@ class Order extends Model
     {
         return $this->hasOne(Rating::class, 'order_id', 'id');
     }
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItems::class, 'order_id', 'id');
+    }
 
     public function customer()
     {

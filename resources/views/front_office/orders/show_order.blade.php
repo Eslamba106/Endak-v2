@@ -104,6 +104,7 @@
                                 <td class="width30">{{ $order->title }}</td>
                             </tr>
                         @endif
+                        
                         @if ($order->notes != null)
                             <tr>
                                 <td class="width30">{{ $order->notes }}</td>
@@ -326,7 +327,21 @@
                                 <td class="width30">{{ $order->general }}</td>
                             </tr>
                         @endif
-                       
+                        @if ($order->orderItems != null)
+                        @foreach ($order->orderItems as $order_item)
+                            
+                        <tr>
+                            <td class="width30">
+                                <span>{{ ($lang == 'ar') ? 'اسم المنتج' : "Product Name" }} : </span>
+                                {{ ($lang == 'ar') ? $order_item->product->name_ar : $order_item->product->name_en }} - 
+                                <span>{{ ($lang == 'ar') ? 'وصف المنتج' : "Product Description" }} : </span>
+                                {{ ($lang == 'ar') ? $order_item->product->description_ar : $order_item->product->description_en }} -  
+                                <span>{{ ($lang == 'ar') ? 'الكمية المطلوبة' : "Quantity" }} : </span> {{ $order_item->quantity }}
+
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
 
                     </thead>
                 </table>

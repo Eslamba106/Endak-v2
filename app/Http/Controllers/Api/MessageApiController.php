@@ -50,16 +50,28 @@ class MessageApiController extends Controller
                       ->where('recipient_id', $sender->id);
             });
         // $data['sender_id'] = $sender_id;
-        $is_create = $this->message_service->store($data);
-        if($is_create != null){
-            if(!$conversation){
-                Conversation::create([
-                    'sender_id'           =>  $request->sender_id,
-                    'recipient_id'   => $request->recipient_id ,
-                ]);
-            }
-            return response()->apiSuccess($is_create);
+        if(!$conversation){
+            $conversation_id = Conversation::create([
+                'sender_id'           =>  $request->sender_id,
+                'recipient_id'   => $request->recipient_id ,
+            ]);
         }
+        $is_create = Message::create([
+            'conversation_id'   => ($conversation_id) ? $conversation_id->id : $conversation->id ,
+            'message'           => $request->message,
+            'sender_id'           =>  $request->sender_id,
+            'recipient_id'   => $request->recipient_id ,
+        ]);
+        // $is_create = $this->message_service->store($data);
+        // if($is_create != null){
+        //     if(!$conversation){
+        //         Conversation::create([
+        //             'sender_id'           =>  $request->sender_id,
+        //             'recipient_id'   => $request->recipient_id ,
+        //         ]);
+        //     }
+        //     return response()->apiSuccess($is_create);
+        // }
         return response()->apiFail();
 
     }

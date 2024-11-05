@@ -25,6 +25,33 @@
             color: #ffc600;
             fill: #ffc600;
         }
+
+        .myform {
+    max-width: 500px; /* تحديد عرض النموذج */
+    margin: 0 auto; /* محاذاة النموذج في المنتصف */
+}
+
+.input-group {
+    width: 100%; /* تأكد من أن المجموعة تأخذ عرض كامل */
+}
+
+.form-control {
+    height: 60px; /* زيادة ارتفاع حقل الإدخال */
+    font-size: 1.2rem; /* زيادة حجم الخط */
+    padding: 15px; /* إضافة padding للحقل */
+    border-radius: 5px 0 0 5px; /* زوايا مدورة للحقل */
+    border: 1px solid #ced4da; /* ضبط الحدود */
+}
+
+.btn-primary {
+    height: 60px; /* زيادة ارتفاع الزر */
+    font-size: 1.2rem; /* زيادة حجم الخط */
+    border-radius: 0 5px 5px 0; /* زوايا مدورة للزر */
+}
+
+
+
+    
     </style>
 @endsection
 @section('content')
@@ -37,6 +64,37 @@
     $providers_count = App\Models\User::where('role_id', 3)->count();
     $users = App\Models\User::where('role_id', 3)->limit(6)->get();
     ?>
+<section class="section bg-pattern-2 bg-image2">
+    <div class="container">
+        <div class="heading-section">
+            <div class="heading-title text-white" style="font-size: 50px;">أكبر سوق عربي للخدمات المصغرة</div>
+            <div class="heading-description text-white op-8">
+                أنجز أعمالك بسهولة وأمان بأسعار تبدأ من 5$ فقط 
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-4 col-sm-6">
+                <div class="card text-center feature-card-16 mb-lg-0 shadow-sm">
+                    <div class="card-body">
+                        {{-- <h4 class="mb-4">ابحث عن الأقسام</h4>
+--}}
+                        <form action="{{ route('search') }}" method="GET" class="myform">
+                            <div class="input-group mb-3">
+                                <input type="text" name="query" class="form-control form-control-lg"
+                                       placeholder="ابحث هنا..." required>
+                                <button class="btn btn-primary btn-lg" type="submit">بحث</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
     <section class="section overflow-hidden">
         <img src="../assets/images/patterns/2.png" alt="img" class="patterns-6 op-1 z-index-0 top-14p">
         <img src="../assets/images/patterns/7.png" alt="img" class="patterns-5 left-0 transform-rotate-180 z-index-0">
@@ -47,37 +105,44 @@
                         <span class="tx-primary tx-16 fw-semibold">{{ __('department.departments') }}</span>
                     </div>
                 </div>
-                
+
                 @forelse ($departments as $department)
                     <div class="col-xl-3 col-sm-6 mb-4">
-                        <a href="{{ route('departments.show', $department->id) }}">
-                            <div class="card border feature-card-15 mb-xl-0">
-                                <div class="card-body text-center">
-                                    @if ($department->image)
-                                        <span class="avatar avatar-lg rounded-circle bg-primary text-white mb-3 tx-22">
-                                            <img src="{{ $department->image_url }}" alt="" width="40px" height="40px">
-                                        </span>
-                                    @else
-                                        <span class="avatar avatar-lg rounded-circle bg-primary text-white mb-3 tx-22">
-                                            <i class="bi bi-gem"></i>
-                                        </span>
-                                    @endif
-                                    <h5>{{ $lang == 'ar' ? $department->name_ar : $department->name_en }}</h5>
-                                    <p class="mb-0">
-                                        {{ $lang == 'ar' ? $department->description_ar : $department->description_en }}
-                                    </p>
+                        <a href="{{ route('departments.show', $department->id) }}" class="text-decoration-none">
+                            <div class="card border feature-card-15 mb-xl-0 position-relative"
+                                style="width: 100%; height: 200px;">
+                                @if ($department->image)
+                                    <img src="{{ $department->image_url }}" class="card-img-top"
+                                        alt="{{ $department->name_en }}"
+                                        style="width: 100%; height: 100%; object-fit: cover;">
+                                @else
+                                    <div class="card-img-top bg-primary d-flex align-items-center justify-content-center"
+                                        style="height: 100%; width: 100%;">
+                                        <i class="bi bi-gem tx-22 text-white"></i>
+                                    </div>
+                                @endif
+                                <!-- اسم القسم في منتصف الصورة -->
+                                <div class="position-absolute top-50 start-50 translate-middle text-center text-white"
+                                    style="width: 100%;  padding: 10px; z-index: 100;">
+                                    <h5 class="mb-0">{{ $lang == 'ar' ? $department->name_ar : $department->name_en }}
+                                    </h5>
                                 </div>
                             </div>
                         </a>
                     </div>
                 @empty
+
+
+
+
+
                     <p>{{ __('department.no_departments_found') }}</p>
                 @endforelse
-    
+
             </div>
         </div>
     </section>
-    
+
     {{-- <section class="section overflow-hidden">
         <img src="../assets/images/patterns/2.png" alt="img" class="patterns-6 op-1 z-index-0 top-14p">
         <img src="../assets/images/patterns/7.png" alt="img" class="patterns-5 left-0 transform-rotate-180 z-index-0">
@@ -195,7 +260,8 @@
     <section class="section">
         <div class="container">
             <div class="heading-section">
-                <div class="heading-subtitle"><span class="tx-primary tx-16 fw-semibold">{{ __('user.providers') }}</span>
+                <div class="heading-subtitle"><span
+                        class="tx-primary tx-16 fw-semibold">{{ __('user.providers') }}</span>
                 </div>
                 <div class="heading-title">{{ __('user.providers') }}</div>
                 <div class="heading-description"> </div>

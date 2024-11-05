@@ -79,7 +79,7 @@
                         @can('Show_Comments')
                             <div class="card">
                                 <div class="card-body pb-0">
-                                    <h5 class="mb-4">Comments</h5>
+                                    <h5 class="mb-4">{{ __('general.comments') }}</h5>
                                     <div class="d-block mb-4 overflow-visible d-block d-sm-flex">
                                         <div class="me-3 mb-3">
                                             {{-- <a href="javascript:void(0);"> <img class="avatar avatar-lg rounded-circle thumb-sm"
@@ -88,18 +88,18 @@
                                         <div class="overflow-visible">
                                             @forelse ($post->comments as $comment)
                                                 <div class="border mb-4 p-4 br-5">
-                                                    <nav class="nav float-end">
-                                                    <div class="dropdown">
+                                                    {{-- <nav class="nav float-end">
+                                                    {{-- <div class="dropdown">
                                                         <a class="nav-link tx-muted fs-16 p-0 ps-4" href="javascript:;"
                                                             data-bs-toggle="dropdown" role="button" aria-haspopup="true"
-                                                            aria-expanded="false"><i class="fe fe-more-vertical"></i></a>
-                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                            aria-expanded="false"><i class="fe fe-more-vertical"></i></a> --}}
+                                                        {{-- <div class="dropdown-menu dropdown-menu-end">
                                                             <a class="dropdown-item" href="{{ route('web.send_message' , $comment->user->id) }}"><i
                                                                     class="fe fe-mail mx-1"></i> {{ __('messages.send_message') }}</a>
                                                             
-                                                        </div>
-                                                    </div>
-                                                </nav>
+                                                        </div> --}}
+                                                    {{-- </div> --
+                                                </nav> --}}
                                                     <h5 class="mt-0">
                                                         {{ $comment->user->first_name . ' ' . $comment->user->last_name }}</h5>
                                                     <p class="tx-muted"> {{ $comment->description }}</p>
@@ -114,10 +114,6 @@
                                                                 value="{{ $post->user_id }}">
                                                             <input type="hidden" name="notes" value="{{ $post->notes }}">
 
-                                                            {{-- 
-//                                                          						
-//                                                          													
-                                                            --}}
                                                             <input type="hidden" name="food" value="{{ $post->food }}">
                                                             <input type="hidden" name="date" value="{{ $post->date }}">
                                                             <input type="hidden" name="size" value="{{ $post->size }}">
@@ -189,6 +185,8 @@
                                                             </button>
                                                         </form>
                                                     @endif
+                                                    <a class="dropdown-item" href="{{ route('web.send_message' , $comment->user->id) }}"><i
+                                                        class="fe fe-mail mx-1"></i> {{ __('messages.send_message') }}</a>
                                                     {{-- <form method="POST" class="reply-form d-none" id="comment-1">
                                                         <textarea placeholder="Reply to Comment..." class="form-control my-3" rows="3"></textarea>
                                                         <div class="text-end">
@@ -227,7 +225,7 @@
                             @if ($user->id != $post->user_id && !isset($is_add) && $post->status == "open")
                                 <div class="card">
                                     <div class="card-body">
-                                        <p class="h5 mb-4">Add a Comments</p>
+                                        <p class="h5 mb-4">{{ __('general.add_comment') }}</p>
                                         <form class="form-horizontal  m-t-20" action="{{ route('comments.store') }}"
                                             method="POST">
                                             @csrf
@@ -244,7 +242,7 @@
                                         </div>
                                     </div> --}}
                                             <div class="">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                <button type="submit" class="btn btn-primary">{{ __('general.save') }}</button>
                                                 {{-- <a href="javascript:void(0)" class="btn btn-primary">Submit</a> --}}
                                             </div>
                                         </form>

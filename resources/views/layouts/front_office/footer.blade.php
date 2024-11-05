@@ -16,11 +16,11 @@
                                 Justo sea nonumy.
                             </p> --}}
                             <ul class="list-unstyled mb-0">
-                                <li class="list-item mb-2"><a href="register-domain.html" class="footer-link"><i
+                                <li class="list-item mb-2"><a href="#" class="footer-link"><i
                                             class="bi bi-telephone me-3 tx-18"></i>{{ $settings->phone ?? '' }}</a></li>
-                                <li class="list-item mb-2"><a href="register-domain.html" class="footer-link"><i
+                                <li class="list-item mb-2"><a href="#" class="footer-link"><i
                                             class="bi bi-envelope-plus me-3 tx-18"></i>{{ $settings->email ?? '' }}</a></li>
-                                <li class="list-item"><a href="register-domain.html" class="footer-link"><i
+                                <li class="list-item"><a href="#" class="footer-link"><i
                                             class="bi bi-geo-alt me-3 tx-18"></i>{{ $settings->address ?? '' }} </a></li>
                             </ul>
                             <div class="footer-btn-list d-flex align-items-center mt-4">
@@ -41,9 +41,9 @@
                         {{-- <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                             <h4 class="text-white">Domains</h4>
                             <ul class="list-unstyled footer-icon">
-                                <li class="list-item mb-2"><a href="register-domain.html" class="footer-link">Register
+                                <li class="list-item mb-2"><a href="" class="footer-link">Register
                                         Domain Name</a></li>
-                                <li class="list-item mb-2"><a href="register-domain.html" class="footer-link">View
+                                <li class="list-item mb-2"><a href="" class="footer-link">View
                                         Domain Pricing</a></li>
                                 <li class="list-item mb-2"><a href="premium-domains.html" class="footer-link">Premium
                                         Domains</a></li>

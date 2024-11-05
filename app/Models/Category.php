@@ -43,7 +43,10 @@ class Category extends Model
         return $this->hasMany(Department::class, $foreignKey)->publish()->authorExist()->orderBy('created_at', 'desc');
     }
 
-
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'products_categories');
+    }
     public function category_department()
     {
         $foreignKey = 'category_id';

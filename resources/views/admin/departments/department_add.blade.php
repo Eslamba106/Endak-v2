@@ -100,7 +100,7 @@
                     {!! $errors->has('description_en') ? '<p class="help-block">' . $errors->first('description_en') . '</p>' : '' !!}
                 </div>
             </div>
-            <div class="form-group row {{ $errors->has('topics') ? ' has-error' : '' }}">
+            {{-- <div class="form-group row {{ $errors->has('topics') ? ' has-error' : '' }}">
                 <label class="mb-3 col-sm-3 control-label">{{ __('topics') }} <span style="color:red;">*</span></label>
                 <div class="col-sm-7">
                     <?php $categories = App\Models\Category::get(); ?>
@@ -119,7 +119,7 @@
                         <span class="invalid-feedback"><strong>{{ $errors->first('category_id') }}</strong></span>
                     @endif
                 </div>
-            </div>
+            </div> --}}
             {{-- <div class="form-group row {{ $errors->has('topics') ? ' has-error' : '' }}">
                 <label class="mb-3 col-sm-3 control-label">{{ __('category.topics') }} <span style="color:red;">*</span></label>
                 <?php $categories = App\Models\Category::get(); ?>

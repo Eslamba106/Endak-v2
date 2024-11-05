@@ -1,39 +1,65 @@
 @extends('layouts.dashboard.dashboard')
 @section('title')
-    {{ __('page.pages') }}
+    {{ __('products.product_show') }}
 @endsection
 
 @section('page_name')
-    {{ __('page.create_page') }}
+    {{ __('products.product_show') }}
 @endsection
 
 @section('content')
-    <?php $lang = config('app.locale'); ?>
-    <div class="blog-post-page-header bg-dark-blue  py-5">
-        <div class="container py-3">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    <h1 class="mb-3">{{ ($lang == 'ar') ? $title_ar : $title_en }}</h1>
+<?php $lang = config('app.locale'); ?>
+
+
+
+    <div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">{{ __("products.product_show") }}</h3>
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="blog-post-container-wrap py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                    {{-- @if ($page->feature_image)
-                        <div class="post-feature-image-wrap mb-5">
-                            <img src="{{ $page->thumbnail_url->image_lg }}" alt="{{ $page->title }}" class="img-fluid">
-                        </div>
-                    @endif --}}
-
-                    <div class="post-content">
-                        {!! ($lang == 'ar') ? clean_html($page->page_content_ar) : clean_html($page->page_content_en) !!}
-                    </div>
-
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td class="width30">{{ __("department.name_ar") }}</td>
+                                <td>{{ $Product->name_ar ?? '#' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="width30">{{ __("department.name_en") }}</td>
+                                <td>{{ $Product->name_en ?? '#' }}</td>
+                            </tr>
+                            <tr>
+                            <td class="width30">{{ __('department.description_en') }}</td>
+                                <td>{{ $Product->description_en ?? '#' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="width30">{{ __('department.description_ar') }}</td>
+                                <td>{{ $Product->description_ar ?? '#' }}</td>
+                            </tr>
+                            <tr>
+                                <td class="width30">{{ __('category.categories') }}</td>
+                                <td>
+                                    
+                                    @forelse ($Product->topics as $item)
+                                        || {{ ($lang == "ar") ? $item->category_name_ar : $item->category_name_en }} || 
+                                    @empty
+                                        
+                                    @endforelse
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="width30">{{ __("department.image") }}</td>
+                                <td>
+                                <div class="image" >
+                                    <img width="100" height="100" src="{{ $Product->image_url ?? "" }}" alt="Not" class="custom_img">
+                                    
+                                </div>
+                            </td>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>

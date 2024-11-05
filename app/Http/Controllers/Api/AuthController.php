@@ -20,7 +20,6 @@ class AuthController extends Controller
     {
 
         $loginResponse = $this->userService->login($request->all());
-        // dd($loginResponse );
         if ($loginResponse != false  ) {
             $user = $request->user();
             $user['rate'] = $user->rates() ;

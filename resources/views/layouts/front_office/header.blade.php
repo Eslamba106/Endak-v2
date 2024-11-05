@@ -401,20 +401,20 @@
                                 @empty
                                 @endforelse
 
-                                {{-- <li class="slide">
-                                    <a href="switcher.html" class="side-menu__item">
-                                        <i class="bi bi-gear"></i>
-                                        <span class="fw-500 tx-15">Switcher</span>
-                                    </a>
-                                </li> --}}
+                               
 
                             </ul>
                         </li>
 
+                
                         <li class="slide has-sub">
                             <a href="javascript:void(0);" class="side-menu__item">
-                                <span class="side-menu__label">{{ __('general.lang') }}</span>
-                                <i class="fe fe-chevron-down side-menu__angle"></i>
+                                <span class="side-menu__label">
+                                    {{ (session()->has('locale') && session()->get('locale') == 'ar') ? __('general.arabic') : __('general.english') }}
+                                </span>
+                                <span class="float-right text-muted text-sm">
+                                {{-- <img src="{{ (session()->has('locale') && session()->get('locale') == 'ar') ? URL::asset('images/flags/SA.png') : URL::asset('images/flags/US.png') }}" alt=""> --}}
+                            </span>
                             </a>
                             <ul class="slide-menu child1 mega-slide-menu-onefr without-icon">
                                 <li class="slide">
@@ -439,12 +439,7 @@
                                 </li>
 
 
-                                {{-- <li class="slide">
-                                    <a href="switcher.html" class="side-menu__item">
-                                        <i class="bi bi-gear"></i>
-                                        <span class="fw-500 tx-15">Switcher</span>
-                                    </a>
-                                </li> --}}
+                                
 
                             </ul>
                         </li>

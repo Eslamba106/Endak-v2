@@ -61,9 +61,9 @@ class DepartmentController extends Controller
         }
 
         $is_create = Department::create($data);
-        if ($request->has('topics')) {
-            $is_create->topics()->sync($request->topics);
-        }
+        // if ($request->has('topics')) {
+        //     $is_create->topics()->sync($request->topics);
+        // }
         if ($request->has('inputs')) {
             $is_create->inputs()->sync($request->inputs);
         }
@@ -138,7 +138,7 @@ class DepartmentController extends Controller
         }
         $department->update($data);
         // if ($request->has('topics')) {
-            $department->topics()->sync($request->topics);
+            // $department->topics()->sync($request->topics);
         // }
         // if ($request->has('inputs')) {
             $department->inputs()->sync($request->inputs);

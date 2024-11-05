@@ -9,5 +9,6 @@ return [
     "count"  => "عدد الطلبات",
     'complete'  => "مكتمل",
     'pending'   => "قيد التنفيذ",
-    
+    'accept_offer'   => "قبول العرض",
+
 ];

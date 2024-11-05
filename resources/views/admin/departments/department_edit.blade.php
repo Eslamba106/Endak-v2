@@ -134,7 +134,7 @@
                     @endif
                 </div>
             </div>
-
+{{-- 
             <div class="form-group row {{ $errors->has('products') ? ' has-error' : '' }}">
                 <label class="mb-3 col-sm-3 control-label">{{ __('products') }} <span style="color:red;">*</span></label>
                 <div class="col-sm-7">
@@ -155,7 +155,7 @@
                         <span class="invalid-feedback"><strong>{{ $errors->first('products') }}</strong></span>
                     @endif
                 </div>
-            </div>
+            </div> --}}
 
                     {{-- @if ($categories->count())
                         <select name="topics[]" id="topics" class="form-control topics" multiple="multiple">

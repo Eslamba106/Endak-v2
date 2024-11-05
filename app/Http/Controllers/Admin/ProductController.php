@@ -42,7 +42,7 @@ class ProductController extends Controller
     public function store(Request $request){
 
         // $this->authorize('Create_Product');
-
+        
         $request->validate([
             'name_ar' => "required",
             'name_en' => "required",
@@ -66,7 +66,9 @@ class ProductController extends Controller
 
         $product = $this->product_service->store($data);
         
-
+        if ($request->has('topics')) {
+            $product->topics()->sync($request->topics);
+        }
         return redirect()->route('admin.products')->with('success' , __('products.add_success'));
 
     }
@@ -88,18 +90,18 @@ class ProductController extends Controller
         return view('admin.products.edit', compact('product'));
     }
     public function show($slug){
-        $this->authorize('Show_Product');
+        // $this->authorize('Show_Product');
         
         $Product = Product::whereSlug($slug)->first();
 
         // $data['Product'] = $Product;
-        $Products = Product::whereStep(0)->with('sub_Products')->orderBy('id', 'asc')->where('slug', '!=', $slug)->get();
+        $Products = Product::with('sub_Products')->orderBy('id', 'asc')->where('slug', '!=', $slug)->get();
         // dd($Products[1]->posts);
         if ( ! $Product){
             abort(404);
         }
 
-        return view('admin.Products.Product_show', compact('Product' , 'Products'));
+        return view('admin.products.show', compact('Product' , 'Products'));
     }
 
     public function update(Request $request, $slug){
@@ -129,6 +131,8 @@ class ProductController extends Controller
         if ($old_image && $path) {
             Storage::disk('public')->delete($old_image);
         }
+        $product->topics()->sync($request->topics);
+
         return redirect()->route('admin.products')->with('success' , "Updated Successfully");
 
     }

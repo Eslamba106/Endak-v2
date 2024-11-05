@@ -38,7 +38,7 @@ class MessageUserController extends Controller
     public function store(Request $request){
 
         $request->validate([
-            'recipient_id'   => 'required',
+            'recipient_id'          => 'required',
             'message'               => 'required',
         ]);
         
@@ -60,6 +60,7 @@ class MessageUserController extends Controller
         $data['sender_id'] = $sender->id;
         // dd($data);   
         $id = $request->recipient_id;
+        $conversation_id = null;
         $conversation = Conversation::where(function($query) use ($sender, $id) {
                 $query->where('sender_id', $sender->id)
                       ->where('recipient_id', $id);
@@ -67,18 +68,31 @@ class MessageUserController extends Controller
             ->orWhere(function($query) use ($sender, $id) {
                 $query->where('sender_id', $id)
                       ->where('recipient_id', $sender->id);
-            });
-        // $data['sender_id'] = $sender_id;
-        $is_create = $this->message_service->store($data);
-        if($is_create != null){
+            })->first();
+
             if(!$conversation){
-                Conversation::create([
-                    'sender_id'           =>  $request->sender_id,
+                $conversation_id = Conversation::create([
+                    'sender_id'           =>  $sender->id,
                     'recipient_id'   => $request->recipient_id ,
+                    
                 ]);
             }
-            return redirect()->back();
-        }
+            // dd($conversation );
+        $is_create = Message::create([
+            'conversation_id'   => ($conversation_id != null) ? $conversation_id->id : $conversation->id ,
+            'message'           => $request->message,
+            'sender_id'           =>   $sender->id,
+            'recipient_id'   => $request->recipient_id ,
+        ]);
+        // if($is_create != null){
+        //     if(!$conversation){
+        //         Conversation::create([
+        //             'sender_id'           =>  $request->sender_id,
+        //             'recipient_id'   => $request->recipient_id ,
+        //         ]);
+        //     }
+        //     return redirect()->back();
+        // }
         return redirect()->back();
 
     }

@@ -11,10 +11,12 @@ class UserServices
     public function createUser($request):User
     {
         $data = $request->all();
+        
+        $data['phone'] = $request->phone;
         $data['password'] = Hash::make($data['password']);
         $data['role_id'] = 1;
         $data['role_name'] = 'user';
-        if($data['image']){
+        if(isset($data['image'])){
             
             $data['image'] = $this->uploadImage($request);
         }
@@ -23,13 +25,10 @@ class UserServices
     }
     public function login($data)
     {
-        // dd($data);
-        if(Auth::attempt(['email' => $data['email'], 'password' => $data['password']]))
-        {
-            $user = User::active()->where('email' , $data['email'])->orWhere('phone' , $data['email'])->first();
-            return $user;
-        }elseif(Auth::attempt(['phone' => $data['phone'], 'password' => $data['password']])){
-            $user = User::active()->where('email' , $data['email'])->orWhere('phone' , $data['email'])->first();
+        dd($data);
+
+        if(Auth::attempt(['phone' => $data['phone'], 'password' => $data['password']])){
+            $user = User::active()->where('phone' , $data['phone'])->first();
             return $user;
         }
         else

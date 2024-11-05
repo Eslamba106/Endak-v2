@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\MessageUserController;
-use App\Http\Controllers\RatingUserController;
 use App\Models\Department;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderUserController;
+use App\Http\Controllers\RatingUserController;
 use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\MessageUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::get('/', function () {
     return view('front_office.home');
 })->name('home');
 Route::get('/page/{slug}', [PageController::class , 'pageSingle'])->name('page');
+Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 // // Translation
 
@@ -89,3 +91,6 @@ Route::post('/web-rate/store' , [RatingUserController::class , 'store'])->name('
 
 Route::get('/send_message/{id}' , [MessageUserController::class , 'send'])->name('web.send_message');
 Route::post('/send' , [MessageUserController::class , 'store'])->name('messages.store')->middleware('auth');
+// order item 
+
+Route::post('/order/items' , [OrderUserController::class , 'product_order'])->name('order_item');
