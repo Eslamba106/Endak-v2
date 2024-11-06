@@ -59,6 +59,7 @@ class ProductController extends Controller
             'name_ar'                   => clean_html($request->name_ar),
             'name_en'                   => clean_html($request->name_en),
             'slug'                      => $slug,
+            'owner'                  => auth()->user()->id ,
             'image'                     => $path,
             'description_ar'            => clean_html($request->description_ar),
             'description_en'            => clean_html($request->description_en),
@@ -118,6 +119,7 @@ class ProductController extends Controller
 
         $data = [
             'name_ar'                  => clean_html($request->name_ar),
+            'owner'                  => auth()->user()->id ,
             'name_en'                  => clean_html($request->name_en),
             'image'                 => ($path != 0) ? $path : $old_image,
             'description_ar'           => clean_html($request->description_ar),

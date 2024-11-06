@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Department;
+use App\Models\ProductItems;
 use Illuminate\Http\Request;
 use App\Services\PostServices;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +30,9 @@ class PostController extends Controller
     {
         // dd($id);
         $department = Department::findOrFail($id);
-        return view('front_office.posts.create', compact('department'));
+        $products = $department->products;
+        // dd($products);
+        return view('front_office.posts.create', compact('department' , 'products'));
     }
     public function store(Request $request)
     {
@@ -39,9 +42,23 @@ class PostController extends Controller
         //     'price' => "required"
         // ]);
         $user = auth()->user()->id;
-        $data = $request->all();
+        $data = $request->except(['selected_products' , 'quantities']);
         $data['user_id'] = $user;
-        $this->post_service->store($data);
+        $post = $this->post_service->store($data);
+        if($request->selected_products){
+            
+        foreach ($request->input('selected_products') as $productId) {
+            $quantity = $request->input("quantities.$productId");
+
+            if ($quantity > 0) {
+                ProductItems::create([
+                    'product_id' => $productId,
+                    'quantity' => $quantity,
+                    'post_id' => $post->id,
+                ]);
+            }
+        }
+        }
         return redirect()->route('web.posts' , $request->department_id)->with('success','Add Seccessfully');
     }
     public function show($id)

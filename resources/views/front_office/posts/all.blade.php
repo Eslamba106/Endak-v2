@@ -52,32 +52,39 @@
                                     <div class="col-md-6">
                                         <div class="card">
                                             <div class="position-relative">
-                                                
+
                                                 {{-- <a href="">
                                                     <img class="card-img-top" src="../assets/images/blog/3.jpg"
                                                         alt="img">
                                                 </a> --}}
                                                 <span class="badge bg-secondary blog-badge">{{ $post->add_order }}</span>
                                             </div>
+
                                             <div class="card-body d-flex flex-column">
-                                                <h5><a href="{{ route('web.posts.show' , $post->id) }}">{{ $post->title }}</a></h5>
-                                                <div class="tx-muted">{{ $post->description }}</div>
-                                                <div class="d-flex align-items-center pt-4 mt-auto">
-                                                    <div class="avatar me-3 cover-image rounded-circle">
-                                                        <img src="{{ $post->user->image ?? asset('images/user.png') }}"
-                                                            class="rounded-circle" alt="img" width="40">
+
+                                                    <h5><a
+                                                            href="{{ route('web.posts.show', $post->id) }}">{{ $post->title }}</a>
+                                                    </h5>
+                                                    <div class="tx-muted">{{ $post->description }}</div>
+                                                    <div class="d-flex align-items-center pt-4 mt-auto">
+                                                        <a href="{{ route('web.posts.show', $post->id) }}">
+
+                                                        <div class="avatar me-3 cover-image rounded-circle">
+                                                            <img src="{{ $post->user->image ?? asset('images/user.png') }}"
+                                                                class="rounded-circle" alt="img" width="40">
+                                                        </div>
+                                                    </a>
+
+                                                        <div>
+                                                            <a href="javascript:void(0);"
+                                                                class="h6">{{ $post->user->first_name . ' ' . $post->user->last_name }}</a>
+                                                            <small
+                                                                class="d-block tx-muted">{{ $post->created_at->shortAbsoluteDiffForHumans() }}</small>
+                                                        </div>
                                                     </div>
-                                                    <div>
-                                                        <a href="javascript:void(0);"
-                                                            class="h6">{{ $post->user->first_name . ' ' . $post->user->last_name }}</a>
-                                                        <small
-                                                            class="d-block tx-muted">{{ $post->created_at->shortAbsoluteDiffForHumans() }}</small>
-                                                    </div>
-                                                    {{-- <div class="ms-auto">
-                                                <a href="javascript:void(0)" class="icon d-inline-block tx-muted"><i class="fe fe-heart me-1 rounded-circle p-2 bg-gray-200 tx-muted"></i></a>
-                                            </div> --}}
-                                                </div>
+
                                             </div>
+
                                         </div>
                                     </div>
                                 @empty
@@ -92,8 +99,10 @@
                         <div class="col-xl-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="{{ route('web.posts.create' , $id) }}" class="custom-form-btn btn btn-lg btn-primary bg-primary-gradient rounded-pill border-0" type="button" id="btn-addon">{{ __('posts.add_post') }}</a>
-                                   
+                                    <a href="{{ route('web.posts.create', $id) }}"
+                                        class="custom-form-btn btn btn-lg btn-primary bg-primary-gradient rounded-pill border-0"
+                                        type="button" id="btn-addon">{{ __('posts.add_post') }}</a>
+
                                 </div>
                             </div>
                             {{-- <div class="card">

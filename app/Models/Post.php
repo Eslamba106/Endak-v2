@@ -26,6 +26,9 @@ class Post extends Model
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+    public function products(){
+        return $this->hasMany(ProductItems::class);
+    }
     public function department(){
         return $this->belongsTo(Department::class);
     }

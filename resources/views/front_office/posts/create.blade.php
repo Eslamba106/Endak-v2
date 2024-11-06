@@ -46,23 +46,46 @@
 
                                     <input class="form-control" type="hidden" value="{{ $department->id }}"
                                         name="department_id">
+                                        {{-- @if ($products->count()) --}}
+                                        @foreach ($products as $product)
+                                            <div class="form-group mt-2 d-flex align-items-center">
+                                                <!-- خانة اختيار متعددة للمنتج -->
+                                                <input type="checkbox" name="selected_products[]"
+                                                    id="product-{{ $product->id }}" value="{{ $product->id }}"
+                                                    class="m-2">
+
+                                                <!-- اسم المنتج وحقل إدخال الكمية -->
+                                                <div class="d-flex align-items-center justify-content-between m-2">
+                                                    <label for="product-{{ $product->id }}" class="ml-2 mr-3">
+                                                        {{ $lang == 'ar' ? $product->name_ar : $product->name_en }}
+                                                        <img src="{{ $product->image_url }}" width="50px" height="50px" alt="">
+                                                    </label>
+
+                                                    <!-- حقل إدخال الكمية -->
+                                                    <input class="form-control m-2" type="number"
+                                                        name="quantities[{{ $product->id }}]" placeholder="Enter quantity"
+                                                        style="display: none; width: 100px;"
+                                                        id="quantity-{{ $product->id }}" min="1">
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    {{-- @endif --}}
                                     @forelse ($department->inputs as $item)
-                                        <label for="">{{ ($lang == 'ar' ) ?  $item->title_ar :  $item->title_en }}</label>
+                                        <label
+                                            for="">{{ $lang == 'ar' ? $item->title_ar : $item->title_en }}</label>
                                         <input class="form-control" type="text" name="{{ $item->name }}"
-                                            placeholder="{{ ($lang == 'ar' ) ?  $item->title_ar :  $item->title_en }}">
+                                            placeholder="{{ $lang == 'ar' ? $item->title_ar : $item->title_en }}">
                                     @empty
                                         <div class="mb-3">
                                             <div class="col-xs-12">
-                                                <label
-                                                    for="">{{ __('general.title') }}</label>
+                                                <label for="">{{ __('general.title') }}</label>
                                                 <input class="form-control" type="text" name="title"
                                                     placeholder="{{ __('general.title') }}">
                                             </div>
                                         </div>
                                         <div class="mb-3">
                                             <div class="col-xs-12">
-                                                <label
-                                                    for="">{{ __('general.price') }}</label>
+                                                <label for="">{{ __('general.price') }}</label>
                                                 <input class="form-control" type="text" name="price"
                                                     placeholder="{{ __('general.price') }}">
                                             </div>
@@ -80,7 +103,8 @@
                                         </div>
                                     @empty
                                     @endforelse --}}
-
+                                    {{-- {{ dd($products) }} --}}
+                                   
                                     <div class="mt-3">
                                         <button type="submit" class="btn btn-primary">{{ __('general.save') }}</button>
 
@@ -456,7 +480,21 @@
 
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/resumablejs@1.1.0/resumable.min.js"></script>
-
+    <script>
+        // إظهار حقل الكمية عند اختيار المنتج
+        document.querySelectorAll('input[type=checkbox][name="selected_products[]"]').forEach((checkbox) => {
+            checkbox.addEventListener('change', function() {
+                // إظهار أو إخفاء حقل الكمية بناءً على حالة التحديد
+                const quantityInput = document.getElementById(`quantity-${this.value}`);
+                if (this.checked) {
+                    quantityInput.style.display = 'block';
+                } else {
+                    quantityInput.style.display = 'none';
+                    quantityInput.value = '';
+                }
+            });
+        });
+    </script>
     {{-- <script type="text/javascript">
         let browseFile = $('#browseFile');
         let resumable = new Resumable({

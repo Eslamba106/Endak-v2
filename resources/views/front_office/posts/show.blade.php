@@ -1,6 +1,6 @@
 @extends('layouts.home')
 @section('title')
-    <?php 
+    <?php
     $lang = config('app.locale');
     $user = auth()->user();
     ?>
@@ -14,7 +14,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-12 text-center">
                             <div class="">
-                                <h1 class="mb-3 content-1 text-white"> {{ $lang == 'ar' ? 'المنشور' : 'Post'  }}
+                                <h1 class="mb-3 content-1 text-white"> {{ $lang == 'ar' ? 'المنشور' : 'Post' }}
                                     {{-- <span class="tx-info-dark">Description</span> --}}
                                 </h1>
                                 {{-- <p class="mb-0 tx-28">We Fight Passionately to Get Our Clients Every Time They Deserve</p> --}}
@@ -34,6 +34,7 @@
                             @if (isset($post->image))
                                 <img class="card-img-top" src="{{ $post->image_url }}" alt="img">
                             @endif
+
                             <div class="card-body">
                                 <div class="d-md-flex">
                                     <div class="d-flex me-4 mb-3 mb-md-0 align-items-center">
@@ -42,7 +43,7 @@
                                                 alt="avatar-img">
                                         @endif
                                         <div class="pe-3">
-                                            <h6 class="mb-0">{{ $lang == 'ar' ? 'اضيف بواسطة' : 'Author Name'  }}</h6>
+                                            <h6 class="mb-0">{{ $lang == 'ar' ? 'اضيف بواسطة' : 'Author Name' }}</h6>
                                             <p class="tx-muted tx-15 fw-500 mb-0">{{ $post->user->first_name }}</p>
                                         </div>
                                     </div>
@@ -50,7 +51,7 @@
                                         <span class="avatar bg-gray-200 rounded-circle tx-muted border me-3"><i
                                                 class="fe fe-grid"></i></span>
                                         <div class="pe-3">
-                                            <h6 class="mb-0">{{ $lang == 'ar' ? 'القسم' : 'Department'  }}</h6>
+                                            <h6 class="mb-0">{{ $lang == 'ar' ? 'القسم' : 'Department' }}</h6>
                                             <p class="tx-muted tx-15 fw-500 mb-0">{{ $post->department->name_en }}</p>
                                         </div>
                                     </div>
@@ -58,7 +59,7 @@
                                         <span class="avatar bg-gray-200 rounded-circle tx-muted border me-3"><i
                                                 class="fe fe-calendar"></i></span>
                                         <div class="pe-3">
-                                            <h6 class="mb-0">{{ $lang == 'ar' ? 'التاريخ' : 'Date'  }}</h6>
+                                            <h6 class="mb-0">{{ $lang == 'ar' ? 'التاريخ' : 'Date' }}</h6>
                                             <p class="tx-muted tx-15 fw-500 mb-0">
                                                 {{ $post->created_at->shortAbsoluteDiffForHumans() }}</p>
                                         </div>
@@ -70,8 +71,21 @@
                                 <p class="card-text">{{ $post->description }}</p>
                                 <p> {{ $post->notes }}
                                 </p>
+                                @if ($post->products)
+                                    @foreach ($post->products as $item)
+                                    <?php $product = App\Models\Product::find($item->product_id) ?>
+                                    <label for="product-{{ $product->id }}" class="d-flex align-items-center justify-content-between ml-2 mr-3">
+                                        <span>{{ $lang == 'ar' ? $product->name_ar : $product->name_en }}</span>
+                                    
+                                        <img src="{{ $product->image_url }}" width="80px" height="80px" alt="">
+                                                                            
+                                        <p class="mb-0 ml-2">{{ "الكمية : " . $item->quantity }}</p>
+                                    </label>
+                                    
+                                    @endforeach
+                                @endif
                                 <p>
-                                   {{ ($post->price) ? $post->price .'$' : ""}}
+                                    {{ $post->price ? $post->price . '$' : '' }}
                                 </p>
 
                             </div>
@@ -93,19 +107,21 @@
                                                         <a class="nav-link tx-muted fs-16 p-0 ps-4" href="javascript:;"
                                                             data-bs-toggle="dropdown" role="button" aria-haspopup="true"
                                                             aria-expanded="false"><i class="fe fe-more-vertical"></i></a> --}}
-                                                        {{-- <div class="dropdown-menu dropdown-menu-end">
+                                                    {{-- <div class="dropdown-menu dropdown-menu-end">
                                                             <a class="dropdown-item" href="{{ route('web.send_message' , $comment->user->id) }}"><i
                                                                     class="fe fe-mail mx-1"></i> {{ __('messages.send_message') }}</a>
                                                             
                                                         </div> --}}
                                                     {{-- </div> --
                                                 </nav> --}}
+
                                                     <h5 class="mt-0">
                                                         {{ $comment->user->first_name . ' ' . $comment->user->last_name }}</h5>
                                                     <p class="tx-muted"> {{ $comment->description }}</p>
                                                     @if ($user->id == $post->user_id)
                                                         <form action="{{ route('web.order.save') }}" method="post">
                                                             @csrf
+
                                                             <input type="hidden" name="post_id"
                                                                 value="{{ $post->id ?? null }}">
                                                             <input type="hidden" name="department_id"
@@ -119,46 +135,74 @@
                                                             <input type="hidden" name="size" value="{{ $post->size }}">
                                                             <input type="hidden" name="general" value="{{ $post->general }}">
 
-                                                            <input type="hidden" name="fingerprint" value="{{ $post->fingerprint }}">
+                                                            <input type="hidden" name="fingerprint"
+                                                                value="{{ $post->fingerprint }}">
                                                             <input type="hidden" name="camera" value="{{ $post->camera }}">
                                                             <input type="hidden" name="type" value="{{ $post->type }}">
                                                             <input type="hidden" name="smart" value="{{ $post->smart }}">
-                                                            <input type="hidden" name="system_security" value="{{ $post->system_security }}">
-                                                            <input type="hidden" name="fire_system" value="{{ $post->fire_system }}">
-                                                            <input type="hidden" name="networks" value="{{ $post->networks }}">
-                                                            <input type="hidden" name="time" value="{{ $post->time }}">
-                                                            <input type="hidden" name="gender" value="{{ $post->gender }}">
+                                                            <input type="hidden" name="system_security"
+                                                                value="{{ $post->system_security }}">
+                                                            <input type="hidden" name="fire_system"
+                                                                value="{{ $post->fire_system }}">
+                                                            <input type="hidden" name="networks"
+                                                                value="{{ $post->networks }}">
+                                                            <input type="hidden" name="time"
+                                                                value="{{ $post->time }}">
+                                                            <input type="hidden" name="gender"
+                                                                value="{{ $post->gender }}">
 
-                                                            <input type="hidden" name="explain" value="{{ $post->explain }}">
-                                                            <input type="hidden" name="modal" value="{{ $post->modal }}">
-                                                            <input type="hidden" name="manufacturing_year" value="{{ $post->manufacturing_year }}">
-                                                            <input type="hidden" name="section" value="{{ $post->section }}">
-                                                            <input type="hidden" name="code_number" value="{{ $post->code_number }}">
-                                                            <input type="hidden" name="name" value="{{ $post->name }}">
-                                                            <input type="hidden" name="cars" value="{{ $post->cars }}">
-                                                            <input type="hidden" name="clean" value="{{ $post->clean }}">
-                                                            <input type="hidden" name="Verion" value="{{ $post->Verion }}">
-                                                            <input type="hidden" name="weight" value="{{ $post->weight }}">
-                                                            <input type="hidden" name="fixed" value="{{ $post->fixed }}">
+                                                            <input type="hidden" name="explain"
+                                                                value="{{ $post->explain }}">
+                                                            <input type="hidden" name="modal"
+                                                                value="{{ $post->modal }}">
+                                                            <input type="hidden" name="manufacturing_year"
+                                                                value="{{ $post->manufacturing_year }}">
+                                                            <input type="hidden" name="section"
+                                                                value="{{ $post->section }}">
+                                                            <input type="hidden" name="code_number"
+                                                                value="{{ $post->code_number }}">
+                                                            <input type="hidden" name="name"
+                                                                value="{{ $post->name }}">
+                                                            <input type="hidden" name="cars"
+                                                                value="{{ $post->cars }}">
+                                                            <input type="hidden" name="clean"
+                                                                value="{{ $post->clean }}">
+                                                            <input type="hidden" name="Verion"
+                                                                value="{{ $post->Verion }}">
+                                                            <input type="hidden" name="weight"
+                                                                value="{{ $post->weight }}">
+                                                            <input type="hidden" name="fixed"
+                                                                value="{{ $post->fixed }}">
 
-                                                            <input type="hidden" name="from_neighborhood" value="{{ $post->from_neighborhood }}">
-                                                            <input type="hidden" name="city" value="{{ $post->city }}">
-                                                            <input type="hidden" name="neighborhood" value="{{ $post->neighborhood }}">
-                                                            <input type="hidden" name="from_floor" value="{{ $post->from_floor }}">
-                                                            <input type="hidden" name="from_house" value="{{ $post->from_house }}">
-                                                            <input type="hidden" name="to_city" value="{{ $post->to_city }}">
-                                                            <input type="hidden" name="to_neighborhood" value="{{ $post->to_neighborhood }}">
-                                                            <input type="hidden" name="to_floor" value="{{ $post->to_floor }}">
-                                                            <input type="hidden" name="to_house" value="{{ $post->to_house }}">
-                                                            <input type="hidden" name="image" value="{{ $post->image }}">
-                                                            <input type="hidden" name="video" value="{{ $post->video }}">
-           
+                                                            <input type="hidden" name="from_neighborhood"
+                                                                value="{{ $post->from_neighborhood }}">
+                                                            <input type="hidden" name="city"
+                                                                value="{{ $post->city }}">
+                                                            <input type="hidden" name="neighborhood"
+                                                                value="{{ $post->neighborhood }}">
+                                                            <input type="hidden" name="from_floor"
+                                                                value="{{ $post->from_floor }}">
+                                                            <input type="hidden" name="from_house"
+                                                                value="{{ $post->from_house }}">
+                                                            <input type="hidden" name="to_city"
+                                                                value="{{ $post->to_city }}">
+                                                            <input type="hidden" name="to_neighborhood"
+                                                                value="{{ $post->to_neighborhood }}">
+                                                            <input type="hidden" name="to_floor"
+                                                                value="{{ $post->to_floor }}">
+                                                            <input type="hidden" name="to_house"
+                                                                value="{{ $post->to_house }}">
+                                                            <input type="hidden" name="image"
+                                                                value="{{ $post->image }}">
+                                                            <input type="hidden" name="video"
+                                                                value="{{ $post->video }}">
+
 
 
                                                             <input type="hidden" name="price"
                                                                 value="{{ $post->price }}">
                                                             <input type="hidden" name="slug"
-                                                                value="{{ $post->slug  }}">
+                                                                value="{{ $post->slug }}">
                                                             <input type="hidden" name="title"
                                                                 value="{{ $post->title }}">
                                                             <input type="hidden" name="description"
@@ -170,7 +214,7 @@
                                                                 value="{{ $post->count }}">
                                                             <input type="hidden" name="from_city"
                                                                 value="{{ $post->from_city }}">
-                                                       
+
 
 
                                                             <input type="hidden" name="service_provider_id"
@@ -185,8 +229,9 @@
                                                             </button>
                                                         </form>
                                                     @endif
-                                                    <a class="dropdown-item" href="{{ route('web.send_message' , $comment->user->id) }}"><i
-                                                        class="fe fe-mail mx-1"></i> {{ __('messages.send_message') }}</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('web.send_message', $comment->user->id) }}"><i
+                                                            class="fe fe-mail mx-1"></i> {{ __('messages.send_message') }}</a>
                                                     {{-- <form method="POST" class="reply-form d-none" id="comment-1">
                                                         <textarea placeholder="Reply to Comment..." class="form-control my-3" rows="3"></textarea>
                                                         <div class="text-end">
@@ -222,7 +267,7 @@
                             <?php $is_add = App\Models\Comment::where('post_id', $post->id)
                                 ->where('user_id', $user->id)
                                 ->first(); ?>
-                            @if ($user->id != $post->user_id && !isset($is_add) && $post->status == "open")
+                            @if ($user->id != $post->user_id && !isset($is_add) && $post->status == 'open')
                                 <div class="card">
                                     <div class="card-body">
                                         <p class="h5 mb-4">{{ __('general.add_comment') }}</p>
@@ -242,7 +287,8 @@
                                         </div>
                                     </div> --}}
                                             <div class="">
-                                                <button type="submit" class="btn btn-primary">{{ __('general.save') }}</button>
+                                                <button type="submit"
+                                                    class="btn btn-primary">{{ __('general.save') }}</button>
                                                 {{-- <a href="javascript:void(0)" class="btn btn-primary">Submit</a> --}}
                                             </div>
                                         </form>

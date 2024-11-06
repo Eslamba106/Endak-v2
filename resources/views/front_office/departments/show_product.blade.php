@@ -207,10 +207,8 @@
 @endsection
 @section('script')
     <script>
-        // إظهار حقل الكمية عند اختيار المنتج
         document.querySelectorAll('input[type=checkbox][name="selected_products[]"]').forEach((checkbox) => {
             checkbox.addEventListener('change', function() {
-                // إظهار أو إخفاء حقل الكمية بناءً على حالة التحديد
                 const quantityInput = document.getElementById(`quantity-${this.value}`);
                 if (this.checked) {
                     quantityInput.style.display = 'block';

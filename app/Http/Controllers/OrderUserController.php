@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\Models\Post;
 use App\Models\Order;
 use App\Models\OrderItems;
-use App\Services\OrderServices;
-use DB;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\ProductItems;
+use Illuminate\Http\Request;
+use App\Services\OrderServices;
 
 class OrderUserController extends Controller
 {
@@ -33,6 +35,17 @@ class OrderUserController extends Controller
             $update_post_status = DB::table('posts')->where('id', $request->post_id)->update([
                 'status' => "pending",
             ]);
+            // $post = Post::find($request->post_id);
+            $products = ProductItems::where('post_id' , $request->post_id)->get();
+            foreach ($products as $product) {
+    
+                    OrderItems::create([
+                        'product_id' => $product->product_id,
+                        'quantity' => $product->quantity,
+                        'order_id' => $request->post_id,
+                        'price' => 0, 
+                    ]);
+            }
         }
         return redirect()->route('web.order.my_orders', $id)->with('success', 'Order Creates');
     }
