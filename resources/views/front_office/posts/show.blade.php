@@ -118,6 +118,14 @@
                                                     <h5 class="mt-0">
                                                         {{ $comment->user->first_name . ' ' . $comment->user->last_name }}</h5>
                                                     <p class="tx-muted"> {{ $comment->description }}</p>
+                                                    @if(isset($comment->files))
+                                                        @foreach ($comment->files as $item)
+                                                         
+                                                        <img width="100px" height="100px" src="{{ Storage::url( $item->file) }}" alt="">
+                                                        <a href="{{ Storage::url($item->file) }}" target="_blank">Download</a>
+                                                        @endforeach
+                                                    @endif
+                                                    
                                                     @if ($user->id == $post->user_id)
                                                         <form action="{{ route('web.order.save') }}" method="post">
                                                             @csrf
@@ -229,7 +237,7 @@
                                                             </button>
                                                         </form>
                                                     @endif
-                                                    <a class="dropdown-item"
+                                                    <a class="dropdown-item  mb-2"
                                                         href="{{ route('web.send_message', $comment->user->id) }}"><i
                                                             class="fe fe-mail mx-1"></i> {{ __('messages.send_message') }}</a>
                                                     {{-- <form method="POST" class="reply-form d-none" id="comment-1">
@@ -272,7 +280,7 @@
                                     <div class="card-body">
                                         <p class="h5 mb-4">{{ __('general.add_comment') }}</p>
                                         <form class="form-horizontal  m-t-20" action="{{ route('comments.store') }}"
-                                            method="POST">
+                                            method="POST" enctype="multipart/form-data">
                                             @csrf
                                             {{-- <input type="hidden" value="{{ $post->department_id }}" name="department_id"> --}}
                                             <input type="hidden" value="{{ $post->id }}" name="post_id">
@@ -281,12 +289,12 @@
                                                     <textarea class="form-control" rows="5" placeholder="Your Comment" name="description"></textarea>
                                                 </div>
                                             </div>
-                                            {{-- <div class="mb-3">
-                                        <div class="col-xs-12">
-                                            <textarea class="form-control" rows="5" placeholder="Your Notes" name="notes"></textarea>
-                                        </div>
-                                    </div> --}}
-                                            <div class="">
+                                            <div>
+                                                <label class="mb-2" for="">{{ __('general.image') }}</label>
+                                                <input class="form-control mb-2" type="file" name="image[]" multiple>
+                                            </div>
+                                            {{-- <input type="file" name="image/" accept="audio/*" required> --}}
+                                             <div class="">
                                                 <button type="submit"
                                                     class="btn btn-primary">{{ __('general.save') }}</button>
                                                 {{-- <a href="javascript:void(0)" class="btn btn-primary">Submit</a> --}}

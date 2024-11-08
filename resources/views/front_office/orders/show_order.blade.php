@@ -345,7 +345,7 @@
 
                     </thead>
                 </table>
-                @if ($order->status == 'pending')
+                @if ($order->status == 'pending' && (auth()->id() == $order->customer_id))
                     <form action="{{ route('web.order.finish') }}" method="POST" enctype="multipart/form-data"
                         style="width:700px" class="profile-card rounded-lg shadow-xs bg-white p-15 p-md-30">
                         @csrf
@@ -368,10 +368,7 @@
                     <div style="width:700px" class="profile-card rounded-lg shadow-xs bg-white p-15 p-md-30">
                         <div
                             class="remv_control mr-2  d-flex  flex-column flex-md-row align-items-center justify-content-center">
-                            {{-- <select name="status" class="mr-3 mt-3 form-control remv_focus" hidden>
-                             <option value="2" {{ selected('2', request('status')) }}>{{ __('order.add_rate') }}
-                            </option>
-                        </select>  --}}
+                            
                             <input type="hidden" name="id" value="{{ $order->id }}">
                             <a href="{{ route('web.add_rate' , $order->id) }}"   
                                 class="btn btn-primary mt-3 mr-2">
@@ -388,24 +385,5 @@
 
 
     </section>
-    {{-- <section class="profile-cover-container"  >
-
-        <div class="profile-content pt-40"  >
-            <div  class="container position-relative d-flex justify-content-center " >
-                <div style="width:700px"  class="profile-card rounded-lg shadow-xs bg-white p-15 p-md-30 row mb-3 mb-xl-0">
-                    @forelse ($orders as $order)
-                        <div class="col-xl-4 col-lg-2 col-md-3 col-sm-4 text-center">
-                            <img src="../assets/images/blog/6.jpg" class="img-fluid br-5 w-100" width="120" alt="img">
-                        </div>
-                        <div class="col-xl-8 col-lg-9 col-md-8 col-sm-8">
-                            <span class="badge  {{ ($order->status == 'complete') ? 'bg-primary-transparent tx-primary ' : ' bg-danger-transparent tx-danger' }} me-1 mb-1 mt-3 mt-sm-0">{{ $order->status }}</span>
-                            <h6 class="mb-0"><a href=" ">  </a>{{ $order->title }}</h6>
-                            <p class="tx-muted">{{ $order->description }}</p>
-                        </div>
-                    @empty
-                    @endforelse
-                </div>
-            </div>
-        </div>
-    </section> --}}
+ 
 @endsection

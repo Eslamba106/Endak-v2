@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\OrderItems;
 use Illuminate\Support\Str;
 use App\Models\ProductItems;
 use Illuminate\Http\Request;
 use App\Services\OrderServices;
+use App\Notifications\OrderNotification;
 
 class OrderUserController extends Controller
 {
@@ -26,6 +28,7 @@ class OrderUserController extends Controller
             'service_provider_id' => "required",
             // 'post_data'            => "required",
         ]);
+        
         // dd(gettype($request->post_data));
         $data = $request->all();
         $data['slug'] = Str::slug($request->title, '-');
@@ -35,6 +38,14 @@ class OrderUserController extends Controller
             $update_post_status = DB::table('posts')->where('id', $request->post_id)->update([
                 'status' => "pending",
             ]);
+            $user = User::find($request->service_provider_id);
+            $customer =  User::find($request->customer_id);
+            $user->notify(new OrderNotification([
+                'id' => $is_create->id,
+                'title' => "تم قبول عرضك بواسطة $customer->first_name ",
+                'body' => "",
+                'url' => route('web.order.view' , $is_create->id)
+            ]));
             // $post = Post::find($request->post_id);
             $products = ProductItems::where('post_id' , $request->post_id)->get();
             foreach ($products as $product) {
@@ -68,7 +79,11 @@ class OrderUserController extends Controller
     public function show_order($id)
     {
         $order = Order::findOrFail($id);
+        $userUnreadNotification = auth()->user()->unreadNotifications;
 
+        if($userUnreadNotification) {
+            $userUnreadNotification->markAsRead();
+        }        
         return view('front_office.orders.show_order', compact('order'));
     }
 

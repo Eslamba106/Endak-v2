@@ -136,30 +136,7 @@
                         </div>
                     </li>
 
-
-
-                    {{-- <li class="d-flex align-items-center position-relative me-md-4 me-2">
-                        <a href="mailto:{{ $settings->email ?? 'example@example.com' }}" class="stretched-link"></a>
-                        <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2">
-                            <i class="bi bi-chat text-white"></i> <!-- تغيير الأيقونة هنا -->
-                        </span>
-                        <div class="d-none d-md-block">
-                            <a href="javascript:void(0);" class="nav-link tx-15 p-0">{{ __('general.message_us') }}</a>
-                            <a href="mailto:{{ $settings->email ?? 'example@example.com' }}"
-                               class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">{{ $settings->email ?? 'example@example.com' }}</a>
-                        </div>
-                    </li> --}}
-
-                    {{-- <li class="d-flex align-items-center position-relative me-md-4 me-2">
-                        <a href="tel:+1236789657" class="stretched-link"></a>
-                        <span class="avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"><i
-                                class="bi bi-telephone text-white"></i></span>
-                        <div class="d-none d-md-block">
-                            <a href="javascript:void(0);" class="nav-link tx-15 p-0">{{ __('general.call_to_us') }}</a>
-                            <a href="tel:{{ $settings->phone ?? '01150099801' }}"
-                                class="mb-0 nav-link p-0 tx-13 op-8 lh-sm">{{ $settings->phone ?? '01150099801' }}</a>
-                        </div>
-                    </li> --}}
+ 
                     <li class="d-flex align-items-center position-relative">
 
                         @if (auth()->check())
@@ -238,6 +215,49 @@
                                     </li>
                                 @empty
                                     لا توجد رسائل
+                                @endforelse
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                {{-- <li><a href="#" class="dropdown-item text-center">عرض المزيد</a></li> --}}
+                            </ul>
+                        </li>
+                    @endif
+                    @if (auth()->check())
+                        <li class="d-flex align-items-center position-relative me-md-4 me-2 dropdown">
+                            <?php  $notifications = auth()->user()->unreadNotifications ; ?>
+
+
+                            <span data-bs-toggle="dropdown" aria-expanded="false" style="color: #1a4388"
+                                class="dropdown-toggle avatar bg-white-1 border rounded-circle tx-15 border-white-2 me-2"
+                                style="border: none; margin: 0;">
+                                <i class="bi bi-alarm text-white"></i>
+                            </span>
+
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                @forelse ($notifications as $notification)
+                                {{-- <?php $sender_message = App\Models\User::where('id', $message->sender_id)->first(); ?> --}}
+
+                                    <li>
+                                        <a href="{{ $notification->data['url'] }}" class="dropdown-item">
+                                        {{-- <a href="{{ route('web.send_message', $sender_message->id) }}" class="dropdown-item"> --}}
+                                            <!-- Message Start -->
+                                            <div class="media">
+                                                <div class="d-flex align-items-center"> <!-- إضافة Flexbox -->
+                                                    <p>{{ $notification->data['title'] }}</p>
+                                                </div>
+{{-- 
+                                                <div class="media-body">
+
+                                                    <p class="text-sm">    {{ implode(' ', array_slice(explode(' ', $message->message), 0, 5)) }} @if (strlen($message->message) > 5) ... @endif
+                                                    </p>
+                                                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>{{ $message->created_at->shortAbsoluteDiffForHumans() }}</p>
+                                                </div> --}}
+                                            </div>
+                                         </a>
+                                    </li>
+                                @empty
+                                    لا توجد اشعارات
                                 @endforelse
                                 <li>
                                     <hr class="dropdown-divider">

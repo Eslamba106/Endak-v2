@@ -19,5 +19,9 @@ class Comment extends Model
     public function department(){
         return $this->belongsTo(Department::class);
     }
+    
+    public function files(){
+        return $this->hasMany(CommentsFiles::class , 'comment_id' , 'id');
+    }
 
 }

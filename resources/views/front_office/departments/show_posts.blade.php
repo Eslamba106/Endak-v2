@@ -106,6 +106,13 @@
                         <div class="col-xl-12">
                             <section class="section">
                                 <div class="container">
+                                    <div class="heading-section">
+                                        <div class="heading-subtitle"><span
+                                                class="tx-primary tx-16 fw-semibold">{{ __('products.products') }}</span>
+                                        </div>
+                                        <div class="heading-title">{{ __('products.products') }}</div>
+                                        <div class="heading-description"> </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-xl-8">
                                             <div class="row">
@@ -235,5 +242,47 @@
             </section>
         </form>
         @endif
+        @if($posts->count() == 0 && $products->count() == 0)
+        <section class="section">
+            <div class="container">
+               
+                <div class="row">
+                    <div class="col-xl-12">
+                        <section class="section">
+                            <div class="container">
+                                
+                                <div class="row">
+                                    <div class="col-xl-8">
+                                        <div class="row">
+                                             
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4">
+                                      
+                                        @if (auth()->check())
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <a href="{{ route('web.posts.create', $id) }}"
+                                                        class="custom-form-btn btn btn-lg btn-primary bg-primary-gradient rounded-pill border-0"
+                                                        type="button" id="btn-addon">{{ __('posts.add_post') }}</a>
+                                
+                                                </div>
+                                            </div>
+                                
+                                
+                                    @endif
+                                    </div>
+                                </div>
 
+                            </div>
+                        </section>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </section>
+        @endif
     @endsection

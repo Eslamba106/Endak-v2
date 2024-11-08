@@ -7,7 +7,7 @@ return [
     "orders" => "الطلبات",
     "order_complete_count"  => "الطلبات المكتملة",
     "count"  => "عدد الطلبات",
-    'complete'  => "مكتمل",
+    'complete'  => "تأكيد الاستلام",
     'pending'   => "قيد التنفيذ",
     'accept_offer'   => "قبول العرض",
 
